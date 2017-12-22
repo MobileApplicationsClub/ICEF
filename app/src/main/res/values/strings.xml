@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">ICEF 2018</string>
+    <string name="title_activity_time_line">Time Line</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_events_location_map">Event Location</string>
+    <string name="First_Time_Animation">FIRST_TIME_ANIMATION_FOR_MAP</string>
+    <string name="First_Time_Install">FIRST_TIME_EVER</string>
+    <string name="title_activity_event_details">Event Details</string>
+    <string name="title_activity_waves_about">Team</string>
+    <string name="title_activity_main">Waves, Tides of Time</string>
+    <string name="editTextNameHint">Name</string>
+    <string name="hintSearch">Search Events</string>
+    <string name="editTextNumberHint">Number</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="registerButton">Register</string>
+    <string name="editTextEmailHint">E-mail</string>
+    <string name="editTextCollegeHint">College name</string>
+    <string name="team_size">Team Size :</string>
+    <string name="college_name">College Name"</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_bpgcmaps">Map</string>
+    <string name="title_activity_sponsors">Sponsors</string>
+    <string name="countdown_timer_no_text">XX</string>
+    <string name="title_activity_image_gallery_album">Image Gallery Album</string>
+    <string name="title_activity_categories">Categories</string>
+
+    <string name="waves_core_team">Waves Core</string>
+    <string name="waves_app_team">App Team</string>
+
+    <string name="title_activity_workshops">Workshops</string>
+    <string name="content_image_gallery_stay_connected_message">Stay connected to check for updates</string>
+    <string name="title_activity_pro_nights">Pro_nights</string>
+
+    <string name="title_activity_food_stalls">FoodStalls</string>
+    <string name="title_activity_big4">BIG4</string>
+
+    <string name="working">Loading....</string>
+    <string name="gSignInKey">1050713281784-s63ep512kfuog2g3oagmsfvreamrf397.apps.googleusercontent.com</string>
+    <string name="placesAPIkey">AIzaSyCTP-X6vPl-MUVaZ_0trjoU82s4NX1bSYA</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="dbKey_batch">batch</string>
+    <string name="dbKey_Person">People</string>
+    <string name="dbKey_name">name</string>
+    <string name="dbKey_image">imageUrl</string>
+
+    <string name="abhigyan_tagline">A man\'s true wealth is the good he does in the world</string>
+    <string name="mobile_app_club">Mobile App Club</string>
+    <string name="dbKey_events">Events</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="Not_available">N/A</string>
+    <string name="title_activity_member_batches">member_batches</string>
+    <string name="title_activity_add_members">AddMembers</string>
+    <string name="title_activity_add_cupboard_item">AddCupboardItem</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_activity_eateries_detail">EateriesDetail</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+</resources>

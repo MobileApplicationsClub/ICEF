@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="4dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="bits.mac.icef_2018.MainActivity">
+
+    <RelativeLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/countdown">
+
+
+        <TextView
+            android:id="@+id/countdownToIcef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Countdown to ICEF"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/viewholder_main_timer_days"
+            android:layout_width="@dimen/countdown_timer_width"
+
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginEnd="@dimen/countdown_margin"
+            android:layout_marginRight="@dimen/countdown_margin"
+
+            android:layout_toLeftOf="@+id/content_main_timer_colon_days_hours"
+            android:layout_toStartOf="@+id/content_main_timer_colon_days_hours"
+            android:text="@string/countdown_timer_no_text"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/content_main_timer_colon_days_hours"
+            android:layout_width="@dimen/countdown_timer_colon_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginEnd="@dimen/countdown_margin"
+            android:layout_marginRight="@dimen/countdown_margin"
+            android:layout_toLeftOf="@+id/viewholder_main_timer_hours"
+            android:layout_toStartOf="@+id/viewholder_main_timer_hours"
+            android:gravity="center"
+            android:text=":"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewholder_main_timer_hours"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginEnd="@dimen/countdown_margin"
+            android:layout_marginRight="@dimen/countdown_margin"
+            android:layout_toLeftOf="@+id/content_main_timer_colon_centre"
+            android:layout_toStartOf="@+id/content_main_timer_colon_centre"
+            android:text="@string/countdown_timer_no_text"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/content_main_timer_colon_centre"
+            android:layout_width="@dimen/countdown_timer_colon_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countdownToIcef"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text=":"
+
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewholder_main_timer_minutes"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginLeft="@dimen/countdown_margin"
+            android:layout_marginStart="@dimen/countdown_margin"
+
+            android:layout_toEndOf="@+id/content_main_timer_colon_centre"
+            android:layout_toRightOf="@+id/content_main_timer_colon_centre"
+            android:text="@string/countdown_timer_no_text"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/content_main_timer_colon_mins_sec"
+            android:layout_width="@dimen/countdown_timer_colon_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginLeft="@dimen/countdown_margin"
+            android:layout_marginStart="@dimen/countdown_margin"
+            android:layout_toEndOf="@+id/viewholder_main_timer_minutes"
+            android:layout_toRightOf="@+id/viewholder_main_timer_minutes"
+            android:gravity="center"
+            android:text=":"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewholder_main_timer_seconds"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/content_main_timer_colon_centre"
+            android:layout_marginLeft="@dimen/countdown_margin"
+            android:layout_marginStart="@dimen/countdown_margin"
+            android:layout_toEndOf="@+id/content_main_timer_colon_mins_sec"
+            android:layout_toRightOf="@+id/content_main_timer_colon_mins_sec"
+            android:text="@string/countdown_timer_no_text"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/content_main_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/days_text"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/viewholder_main_timer_days"
+            android:layout_alignLeft="@+id/viewholder_main_timer_days"
+            android:layout_alignRight="@+id/viewholder_main_timer_days"
+            android:layout_alignStart="@+id/viewholder_main_timer_days"
+            android:layout_below="@+id/viewholder_main_timer_days"
+            android:gravity="center"
+            android:text="days"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/countdown_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hours_text"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/viewholder_main_timer_hours"
+            android:layout_alignLeft="@+id/viewholder_main_timer_hours"
+            android:layout_alignRight="@+id/viewholder_main_timer_hours"
+            android:layout_alignStart="@+id/viewholder_main_timer_hours"
+            android:layout_below="@+id/viewholder_main_timer_hours"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="hours"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/countdown_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/minutes_text"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/viewholder_main_timer_minutes"
+            android:layout_alignLeft="@+id/viewholder_main_timer_minutes"
+            android:layout_alignRight="@+id/viewholder_main_timer_minutes"
+
+            android:layout_alignStart="@+id/viewholder_main_timer_minutes"
+            android:layout_below="@+id/viewholder_main_timer_minutes"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="mins"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/countdown_timer_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/seconds_text"
+            android:layout_width="@dimen/countdown_timer_width"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/viewholder_main_timer_seconds"
+            android:layout_alignLeft="@+id/viewholder_main_timer_seconds"
+            android:layout_alignRight="@+id/viewholder_main_timer_seconds"
+
+            android:layout_alignStart="@+id/viewholder_main_timer_seconds"
+            android:layout_below="@+id/viewholder_main_timer_seconds"
+            android:gravity="center"
+            android:text="secs"
+            android:textColor="@color/countdown_color"
+            android:textSize="@dimen/countdown_timer_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
