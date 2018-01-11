@@ -1,10 +1,14 @@
 package bits.mac.icef_2018;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +22,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
 
+import static bits.mac.icef_2018.ICEF_HelperClass.DOMINOES;
+import static bits.mac.icef_2018.ICEF_HelperClass.FOODKING;
+import static bits.mac.icef_2018.ICEF_HelperClass.GAJA_LAXMI;
+import static bits.mac.icef_2018.ICEF_HelperClass.IC;
+import static bits.mac.icef_2018.ICEF_HelperClass.ICE_SPICE;
+import static bits.mac.icef_2018.ICEF_HelperClass.MESS_A;
+import static bits.mac.icef_2018.ICEF_HelperClass.MESS_C;
+import static bits.mac.icef_2018.ICEF_HelperClass.NC_A;
+import static bits.mac.icef_2018.ICEF_HelperClass.NC_C;
+import static bits.mac.icef_2018.ICEF_HelperClass.RED_CHILLIES;
+
 public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     LatLng leftBottomBound = new LatLng(15.385178, 73.868207);
@@ -25,16 +40,18 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
     LatLng centre = new LatLng(15.389557, 73.876974);
     FloatingActionButton mapfab;
     private GoogleMap map;
-
+    SupportMapFragment mapFragment;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bpgcmaps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.bitsMap);
+
         mapFragment.getMapAsync(this);
-  /*      mapfab = (FloatingActionButton) findViewById(R.id.fab_map);
+        mapfab = (FloatingActionButton) findViewById(R.id.fab_map);
 
         mapfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +65,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
                 }
             }
         });
-        */
+
 
     }
 
@@ -147,6 +164,36 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
             } else if (location.equals("Basement")) {
                 LatLng marker = new LatLng(15.392650, 73.880128);
                 map.addMarker(new MarkerOptions().position(marker).title("Basement"));
+            }else if (location.equals(MESS_A)) {
+                LatLng marker = new LatLng(15.39304, 73.88051);
+                map.addMarker(new MarkerOptions().position(marker).title("Auditorium"));
+            } else if (location.equals(MESS_C)) {
+                LatLng marker = new LatLng(15.39304, 73.88051);
+                map.addMarker(new MarkerOptions().position(marker).title("Audi"));
+            } else if (location.equals(NC_A)) {
+                LatLng marker = new LatLng(15.38899, 73.87638);
+                map.addMarker(new MarkerOptions().position(marker).title("Crossroads"));
+            } else if (location.equals(NC_C)) {
+                LatLng marker = new LatLng(15.391701, 73.880938);
+                map.addMarker(new MarkerOptions().position(marker).title("Computer Centre"));
+            } else if (location.equals(IC)) {
+                LatLng marker = new LatLng(15.391701, 73.880938);
+                map.addMarker(new MarkerOptions().position(marker).title("CC"));
+            } else if (location.equals(FOODKING)) {
+                LatLng marker = new LatLng(15.391680, 73.880251);
+                map.addMarker(new MarkerOptions().position(marker).title("Library Lawns"));
+            } else if (location.equals(ICE_SPICE)) {
+                LatLng marker = new LatLng(15.392513, 73.879994);
+                map.addMarker(new MarkerOptions().position(marker).title("Outside Stage"));
+            } else if (location.equals(GAJA_LAXMI)) {
+                LatLng marker = new LatLng(15.392513, 73.879994);
+                map.addMarker(new MarkerOptions().position(marker).title("Outdoor Stage"));
+            } else if (location.contains(DOMINOES)) {
+                LatLng marker = new LatLng(15.393423, 73.879933);
+                map.addMarker(new MarkerOptions().position(marker).title(location));
+            } else if (location.equals(RED_CHILLIES)) {
+                LatLng marker = new LatLng(15.393423, 73.879933);
+                map.addMarker(new MarkerOptions().position(marker).title(location));
             } else {
 
                 LatLng marker = new LatLng(15.39171, 73.87601);

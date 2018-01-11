@@ -7,7 +7,7 @@ package bits.mac.icef_2018;
 public class ICEF_HelperClass {
     public final static String batch_extra = "batchID";
 
-    public final static String MAIN_TIMELINE="Timeline";
+    public final static String MAIN_TIMELINE="Speakers";
     public final static String MAIN_SPEAKERS="speakers";
     public final static String DATES="dates";
     public final static String EATERIES="eateries";

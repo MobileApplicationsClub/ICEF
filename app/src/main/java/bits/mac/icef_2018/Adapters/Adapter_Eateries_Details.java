@@ -1,6 +1,7 @@
 package bits.mac.icef_2018.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import bits.mac.icef_2018.R;
@@ -31,7 +34,7 @@ public class Adapter_Eateries_Details extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return list.size();
+        return (list.size()-2);
     }
 
     @Override
@@ -42,12 +45,9 @@ public class Adapter_Eateries_Details extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.layout_pager_item, container, false);
-        Url = list.get(position);
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-
-        Picasso.with(mContext).load(Url).into(imageView);
-        container.addView(itemView);
-        Log.e("TAG","Kyu nahi ho raha?");
+        Url = list.get(position+2);
+     SimpleDraweeView imageView = (SimpleDraweeView) itemView.findViewById(R.id.imageView);
+    imageView.setImageURI(Url);
 
         return itemView;
     }
