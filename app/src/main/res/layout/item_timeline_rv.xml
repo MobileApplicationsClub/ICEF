@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    app:ignore="NamespaceTypo">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.4"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:id="@+id/image_event"
+            fresco:roundedCornerRadius="15dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_height="match_parent">
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="0.35"
+       android:textColor="@color/grey700"
+       android:id="@+id/Event_name"
+       android:text="Event name"
+       android:textSize="30dp"
+       android:layout_margin="10dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    app:src="@drawable/ic_my_location_white_24dp"
+                    android:background="@color/transparent"
+                    android:id="@+id/b_location"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TV_location"
+                    android:textAlignment="center"
+                    android:text="Location"
+                    android:textSize="15sp"
+                    android:textColor="@color/grey700"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    app:src="@drawable/ic_my_location_white_24dp"
+                    android:background="@color/transparent"
+                    android:id="@+id/b_time"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TV_time"
+                    android:text="Time"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/grey700"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    app:src="@drawable/ic_my_location_white_24dp"
+                    android:id="@+id/b_details"
+                    android:background="@color/transparent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TV_details"
+                    android:textAlignment="center"
+                    android:text="details"
+                    android:textSize="15sp"
+                    android:textColor="@color/grey700"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="8dp"
+        android:id="@+id/decoration"
+        android:orientation="vertical"
+        android:background="@color/grey700"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+</LinearLayout>

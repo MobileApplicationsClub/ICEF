@@ -1,18 +1,28 @@
 package bits.mac.icef_2018;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,130 +32,71 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import bits.mac.icef_2018.Adapters.Adapter_Eateries_Details;
-import bits.mac.icef_2018.View.CircularImageView;
-import bits.mac.icef_2018.fragments.Eateries_menu;
+import jp.wasabeef.blurry.Blurry;
 
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
+
 public class EateriesDetail extends AppCompatActivity {
-    /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
 
-    private static final boolean AUTO_HIDE = true;
     Intent intent;
     String eatery;
-    Boolean clicked=true;
+    Boolean clicked = true;
 
     Adapter_Eateries_Details mAdapter_Eateries_Details;
     ViewPager mViewPager;
     ArrayList<String> arrayList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FrameLayout mContainer;
+    FrameLayout mFullScreen;
+    FloatingActionButton fab;
+    View.OnClickListener abc;
+    SimpleDraweeView profile;
+
+    ImageButton Call;
+    ImageButton location;
+
+
     DatabaseReference ref;
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 1000;
 
-    /**
-     * Some older devices needs a small delay between UI widget updates
-     * and a change of the status and navigation bar.
-     */
-    private static final int UI_ANIMATION_DELAY = 300;
-    private final Handler mHideHandler = new Handler();
-    private final Runnable mHidePart2Runnable = new Runnable() {
-        @SuppressLint("InlinedApi")
-        @Override
-        public void run() {
-            // Delayed removal of status and navigation bar
-
-            // Note that some of these constants are new as of API 16 (Jelly Bean)
-            // and API 19 (KitKat). It is safe to use them, as they are inlined
-            // at compile-time and do nothing on earlier devices
-             mViewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        }
-    };
-    private View mControlsView;
-    private final Runnable mShowPart2Runnable = new Runnable() {
-        @Override
-        public void run() {
-            // Delayed display of UI elements
-            ActionBar actionBar = getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.show();
-            }
-            mControlsView.setVisibility(View.VISIBLE);
-        }
-    };
-    private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            //hide();
-        }
-    };
-    /**
-     * Touch listener to use for in-layout UI controls to delay hiding the
-     * system UI. This is to prevent the jarring behavior of controls going away
-     * while interacting with activity UI.
-     */
-/*    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
-        }
-    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eateries_detail);
-        mVisible = true;
+      Fresco.initialize(this);
 
 
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
+        //hiding Status bar
+       // hide();
 
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
+
+        //finding Views
+        mFullScreen = findViewById(R.id.fullscreen_content);
+        mContainer = findViewById(R.id.Container);
+        mViewPager = findViewById(R.id.ViewPager);
+        fab=findViewById(R.id.fab);
+        Call=findViewById(R.id.Call);
+        location=findViewById(R.id.location);
+        profile=findViewById(R.id.profile);
+
+        //referencing database
+        intent = getIntent();
+        eatery = intent.getStringExtra("EATERY");
+        ref = database.getReference().child("Eateries").child(eatery);
+
+
+        arrayList = new ArrayList<String>();
+        mAdapter_Eateries_Details = new Adapter_Eateries_Details(this, arrayList);
+
+        profile.setImageResource(R.drawable.defaultprofile);
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
-        intent = getIntent();
-        eatery=intent.getStringExtra("EATERY");
-        ref = database.getReference().child("Eateries").child(eatery);
-        arrayList=new ArrayList<String>();
-        mAdapter_Eateries_Details = new Adapter_Eateries_Details(this,arrayList);
 
-
-        // Set up the user interaction to manually show or hide the system UI.
-//        mViewPager.setOnClickListener(new View.OnClickListener() {
-  //          @Override
-    //        public void onClick(View view) {
-      //          toggle();
-        //    }
-       // });
-
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-
-
-
-        final Query qref=ref.orderByKey();
+        final Query qref = ref.orderByKey();
         qref.keepSynced(true);
         qref.addValueEventListener(new ValueEventListener() {
 
@@ -153,7 +104,7 @@ public class EateriesDetail extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
 
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    String abc=postSnapshot.getValue(String.class);
+                    String abc = postSnapshot.getValue(String.class);
                     arrayList.add(abc);
                 }
 
@@ -167,82 +118,91 @@ public class EateriesDetail extends AppCompatActivity {
             }
         });
 
-        final FrameLayout frameLayout=findViewById(R.id.Container);
-        mViewPager = (ViewPager) findViewById(R.id.fullscreen_content);
-        findViewById(R.id.dummy_button).setOnClickListener(new View.OnClickListener() {
+
+
+        final Context mcontext = this;
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment= Eateries_menu.newInstance("","");
-                android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+                Log.e("TAG","Clicked");
+                if (clicked) {
+                    Blurry.with(mcontext)
+                            .radius(6)
+                            .sampling(8)
+                            .async()
+                            .animate(100)
+                            .onto(mFullScreen);
+                    mContainer.setVisibility(View.VISIBLE);
+                    clicked = false;
 
-                if(clicked){
-                   frameLayout.setVisibility(View.VISIBLE);
-                    clicked=false;
-                    Log.e("abc","clicked");
-                }else{
-                    frameLayout.setVisibility(View.GONE);
-                    clicked=true;
-                    Log.e("abc","not clicked");
+                } else {
+
+                    mContainer.setVisibility(View.GONE);
+                    clicked = true;
+                    Blurry.delete(mFullScreen);
 
                 }
             }
         });
 
+        Call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+arrayList.get(0)));
+                startActivity(intent);
+            }
+        });
 
-    }
-
-
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
-    }
-
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+           Intent intent=new Intent(mcontext,BPGCMapsActivity.class);
+                intent.putExtra("Location",eatery);
+                startActivity(intent);
         }
+        });
+
+
+        abc= new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v){
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Do something after 100ms
+                        hide();
+                    }
+                }, 100);
+
+            }
+        };
     }
 
-    private void hide() {
-        // Hide UI first
+
+    public void hide(){
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-        mControlsView.setVisibility(View.GONE);
-        mVisible = false;
+        actionBar.hide();
 
-        // Schedule a runnable to remove the status and navigation bar after a delay
-        mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
+        int uiOptions1 = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions1);
     }
 
-    @SuppressLint("InlinedApi")
-    private void show() {
-        // Show the system bar
-        mViewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-        mVisible = true;
 
-        // Schedule a runnable to display UI elements after a delay
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+
+
     }
 
-    /**
-     * Schedules a call to hide() in delay milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-}
+
+

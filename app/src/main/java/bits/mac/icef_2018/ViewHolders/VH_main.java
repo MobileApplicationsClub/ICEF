@@ -15,6 +15,7 @@ import java.util.List;
 import bits.mac.icef_2018.Lists.MainList;
 import bits.mac.icef_2018.Main_Eateries;
 import bits.mac.icef_2018.R;
+import bits.mac.icef_2018.Speakers;
 
 import static bits.mac.icef_2018.ICEF_HelperClass.DATES;
 import static bits.mac.icef_2018.ICEF_HelperClass.EATERIES;
@@ -55,7 +56,7 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
            Intent TimelineActivity = new Intent(context, Main_Eateries.class);
            context.startActivity(TimelineActivity);
        } else if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_SPEAKERS)) {
-           Intent SpeakersActivity = new Intent(context, Main_Eateries.class);
+           Intent SpeakersActivity = new Intent(context, Speakers.class);
            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.simple_slide_in_right, R.anim.empty);
            context.startActivity(SpeakersActivity, activityOptionsCompat.toBundle());
        } else if (list.get(getAdapterPosition() - 1).getId().equals(DATES)) {
