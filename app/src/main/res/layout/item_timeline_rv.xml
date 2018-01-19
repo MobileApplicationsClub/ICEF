@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="150dp"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:weightSum="1"
+    android:id="@+id/back"
+    android:layout_margin="8dp"
     app:ignore="NamespaceTypo">
 
     <LinearLayout
@@ -38,7 +40,7 @@
        android:textColor="@color/grey700"
        android:id="@+id/Event_name"
        android:text="Event name"
-       android:textSize="30dp"
+       android:textSize="25dp"
        android:layout_margin="10dp"/>
 
 
@@ -52,17 +54,18 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:layout_marginRight="4dp"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:layout_width="match_parent"
-                    app:src="@drawable/ic_my_location_white_24dp"
-                    android:background="@color/transparent"
+                    android:layout_width="24dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center"
                     android:id="@+id/b_location"
-                    android:layout_height="match_parent" />
+                    android:background="@color/transparent"
+                    android:layout_height="24dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -77,17 +80,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:layout_marginRight="4dp"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
                     app:src="@drawable/ic_my_location_white_24dp"
                     android:background="@color/transparent"
                     android:id="@+id/b_time"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -102,17 +107,19 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:layout_marginRight="4dp"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
                     app:src="@drawable/ic_my_location_white_24dp"
                     android:id="@+id/b_details"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="match_parent"

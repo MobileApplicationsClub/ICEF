@@ -11,7 +11,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.Vector;
 
-import bits.mac.icef_2018.Lists.TimelineList;
+import bits.mac.icef_2018.Lists.SpeakersList;
 import bits.mac.icef_2018.R;
 import bits.mac.icef_2018.Speakers;
 
@@ -21,9 +21,9 @@ import bits.mac.icef_2018.Speakers;
 
 public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
-    Vector<TimelineList> vector;
+    Vector<SpeakersList> vector;
 
-    public Adapter_Speakers_rv(Context context, Vector<TimelineList> vector) {
+    public Adapter_Speakers_rv(Context context, Vector<SpeakersList> vector) {
         this.context = context;
         this.vector = vector;
     }
