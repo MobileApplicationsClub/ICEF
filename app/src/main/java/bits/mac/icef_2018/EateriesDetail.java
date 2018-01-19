@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -49,8 +50,8 @@ public class EateriesDetail extends AppCompatActivity {
     FrameLayout mContainer;
     FrameLayout mFullScreen;
     FloatingActionButton fab;
-    View.OnClickListener abc;
     SimpleDraweeView profile;
+    TextView timings;
 
     ImageButton Call;
     ImageButton location;
@@ -66,19 +67,15 @@ public class EateriesDetail extends AppCompatActivity {
       Fresco.initialize(this);
 
 
-        //hiding Status bar
-       // hide();
-
-
         //finding Views
         mFullScreen = findViewById(R.id.fullscreen_content);
         mContainer = findViewById(R.id.Container);
-        mViewPager = findViewById(R.id.ViewPager);
+        mViewPager =(ViewPager) findViewById(R.id.ViewPager);
         fab=findViewById(R.id.fab);
         Call=findViewById(R.id.Call);
         location=findViewById(R.id.location);
         profile=findViewById(R.id.profile);
-
+        timings=findViewById(R.id.Timing);
         //referencing database
         intent = getIntent();
         eatery = intent.getStringExtra("EATERY");
@@ -109,6 +106,7 @@ public class EateriesDetail extends AppCompatActivity {
                 }
 
                 mViewPager.setAdapter(mAdapter_Eateries_Details);
+                timings.setText(arrayList.get(1));
 
             }
 
@@ -165,39 +163,9 @@ public class EateriesDetail extends AppCompatActivity {
         });
 
 
-        abc= new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v){
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Do something after 100ms
-                        hide();
-                    }
-                }, 100);
-
-            }
-        };
     }
 
-
-    public void hide(){
-
-        View decorView = getWindow().getDecorView();
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
-        int uiOptions1 = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions1);
-    }
 
 
 

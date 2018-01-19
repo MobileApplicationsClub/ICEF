@@ -3,14 +3,16 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/ic_home_black_24dp" />
 
     <item
         android:id="@+id/navigation_contact"
-        android:title="Contacts" />
+        android:title="Contacts"
+        android:icon="@drawable/ic_contacts_black_24dp"/>
 
     <item
         android:id="@+id/navigation_notifications"
         android:title="About Us"
-    />
+        android:icon="@drawable/ic_info_outline_black_24dp" />
 </menu>

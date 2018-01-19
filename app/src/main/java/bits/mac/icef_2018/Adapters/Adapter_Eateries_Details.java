@@ -46,16 +46,16 @@ public class Adapter_Eateries_Details extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.layout_pager_item, container, false);
         String Url = list.get(position+2);
-     SimpleDraweeView imageView = itemView.findViewById(R.id.imageView);
-     Log.e("url",Url);
+        SimpleDraweeView imageView = itemView.findViewById(R.id.imageView);
         Uri uri = Uri.parse(Url);
-     imageView.setImageURI(uri);
-
+        imageView.setImageURI(uri);
+        container.addView(itemView);
         return itemView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((LinearLayout) object);
 
     }
 
