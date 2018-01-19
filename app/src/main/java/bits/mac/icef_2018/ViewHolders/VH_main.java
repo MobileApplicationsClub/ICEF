@@ -16,6 +16,7 @@ import bits.mac.icef_2018.Lists.MainList;
 import bits.mac.icef_2018.Main_Eateries;
 import bits.mac.icef_2018.R;
 import bits.mac.icef_2018.Speakers;
+import bits.mac.icef_2018.Timeline;
 
 import static bits.mac.icef_2018.ICEF_HelperClass.DATES;
 import static bits.mac.icef_2018.ICEF_HelperClass.EATERIES;
@@ -53,7 +54,7 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
    @Override
     public void onClick(View view){
        if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_TIMELINE)) {
-           Intent TimelineActivity = new Intent(context, Main_Eateries.class);
+           Intent TimelineActivity = new Intent(context, Timeline.class);
            context.startActivity(TimelineActivity);
        } else if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_SPEAKERS)) {
            Intent SpeakersActivity = new Intent(context, Speakers.class);

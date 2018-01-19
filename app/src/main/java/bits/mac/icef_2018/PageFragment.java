@@ -1,17 +1,28 @@
 package bits.mac.icef_2018;
 
+
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,21 +31,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
+import java.util.Vector;
 
-import bits.mac.icef_2018.ViewHolders.VH_Eateries;
-import bits.mac.icef_2018.ViewHolders.VH_timer;
+import bits.mac.icef_2018.Lists.TimelineList;
 
 
 public class PageFragment extends Fragment {
     private static final String ARG_PAGE_NUMBER = "page_number";
-    static int page;
-
+    static Bundle args=new Bundle();
+    Vector<TimelineList> vector=new Vector<>();
     public PageFragment() {
     }
 
+    @SuppressLint("ValidFragment")
+    public PageFragment(int page) {
+        args.putInt(ARG_PAGE_NUMBER,page+1);
+
+    }
+
+
     public static PageFragment newInstance(int page) {
         PageFragment fragment = new PageFragment();
-        PageFragment.page=page;
         return fragment;
     }
 
@@ -42,18 +59,28 @@ public class PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_pager, container, false);
+        RecyclerView recyclerView=rootView.findViewById(R.id.timeline_rv);
+        final Adapter_Timeline adapter_timeline=new Adapter_Timeline(vector,getActivity());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter_timeline);
+
+
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline").child("Day "+page);
+        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline").child("Day "+args.getInt(ARG_PAGE_NUMBER));
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
+                vector.clear();
+                Log.e("msg",String.valueOf(dataSnapshot.getChildrenCount()));
                 for(DataSnapshot shot:dataSnapshot.getChildren()){
 
-                    shot.getValue();
+                    vector.add(shot.getValue(TimelineList.class));
+
                 }
 
+                adapter_timeline.notifyDataSetChanged();
             }
 
             @Override
@@ -62,11 +89,6 @@ public class PageFragment extends Fragment {
             }
         });
 
-
-
-
-
-
         return rootView;
     }
 }
@@ -74,10 +96,17 @@ public class PageFragment extends Fragment {
 
 class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
+    Vector<TimelineList> vector;
+    Context mContext;
 
-public Adapter_Timeline(){
+    public Adapter_Timeline(){
 
-}
+    }
+
+    public Adapter_Timeline(Vector<TimelineList> vector,Context mContext){
+            this.vector=vector;
+            this.mContext=mContext;
+    }
 
 
     @Override
@@ -95,7 +124,7 @@ public Adapter_Timeline(){
 
     @Override
     public int getItemCount(){
-        return 2;
+        return vector.size();
     }
 
 
@@ -103,6 +132,11 @@ public Adapter_Timeline(){
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        VH_Timeline_RV vh_timeline_rv=(VH_Timeline_RV)holder;
+        vh_timeline_rv.location.setText(vector.get(position).getLocation());
+        vh_timeline_rv.time.setText(vector.get(position).getTime());
+        vh_timeline_rv.event.setText(vector.get(position).getName());
+        vh_timeline_rv.simpleDraweeView.setImageURI(vector.get(position).getImage());
 
 
     }
@@ -116,12 +150,12 @@ public Adapter_Timeline(){
     TextView time;
     TextView details;
     TextView event;
-    ImageButton b_location;
-    ImageButton b_time;
-    ImageButton b_event;
+    ImageView b_location;
+    ImageView b_time;
+    ImageView   b_event;
     SimpleDraweeView simpleDraweeView;
     View decoration;
-
+    View border;
 
     public VH_Timeline_RV(View itemView) {
         super(itemView);
@@ -130,19 +164,36 @@ public Adapter_Timeline(){
         time=itemView.findViewById(R.id.TV_time);
         details=itemView.findViewById(R.id.TV_details);
         event=itemView.findViewById(R.id.Event_name);
-        b_location=itemView.findViewById(R.id.b_location);
-        b_time=itemView.findViewById(R.id.b_time);
-        b_event=itemView.findViewById(R.id.b_details);
+        b_location=(ImageView)itemView.findViewById(R.id.b_location);
+        b_time=(ImageView)itemView.findViewById(R.id.b_time);
+        b_event=(ImageView)itemView.findViewById(R.id.b_details);
         decoration=itemView.findViewById(R.id.decoration);
-        simpleDraweeView=itemView.findViewById(R.id.simpleDraweeView);
+        simpleDraweeView=itemView.findViewById(R.id.image_event);
+        border=itemView.findViewById(R.id.back);
 
 
-        int[] androidColors = itemView.getResources().getIntArray(R.array.androidcolors);
-        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+        Random rand = new Random();
+        int r = rand.nextInt(255);
+        int g = rand.nextInt(255);
+        int b = rand.nextInt(255);
+        int randomAndroidColor = Color.rgb(r,g,b);
+
+        RoundingParams roundingParams = RoundingParams.fromCornersRadius(20f);
+        roundingParams.setBorder(randomAndroidColor, 4.0f);
+        simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
+
+
         decoration.setBackgroundColor(randomAndroidColor);
-        b_event.setColorFilter(randomAndroidColor , PorterDuff.Mode.SRC_IN);
-        b_location.setColorFilter(randomAndroidColor , PorterDuff.Mode.SRC_IN);
-        b_time.setColorFilter(randomAndroidColor , PorterDuff.Mode.SRC_IN);
+
+        b_event.setColorFilter(randomAndroidColor);
+        b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
+
+        b_location.setColorFilter(randomAndroidColor);
+        b_location.setImageResource(R.drawable.ic_mapicon);
+
+        b_time.setColorFilter(randomAndroidColor);
+        b_time.setImageResource(R.drawable.ic_access_time_black_24dp);
+
 
 
     }

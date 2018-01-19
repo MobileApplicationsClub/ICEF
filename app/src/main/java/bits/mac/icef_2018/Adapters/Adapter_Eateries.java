@@ -87,7 +87,7 @@ public class Adapter_Eateries extends RecyclerView.Adapter<RecyclerView.ViewHold
         VH_Eateries mv = (VH_Eateries) holder;
         mv.Title.setText(list.get(position).getTitle());
         mv.desc.setText(list.get(position).getDescription());
-        mv.image.setImageURI(Uri.parse("res:///" + list.get(position).getBackground()));
+      //  mv.image.setImageURI(Uri.parse("ref///"+list.get(position).getBackground()));
 
     }
 }

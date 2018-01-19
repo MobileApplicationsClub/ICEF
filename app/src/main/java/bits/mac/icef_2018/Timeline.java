@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class Timeline extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline");
     static long Count;
+    TabsPagerAdapter adapter;
+    ViewPager pager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,8 @@ public class Timeline extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               Count= dataSnapshot.getChildrenCount();
+                pager.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -40,9 +45,10 @@ public class Timeline extends AppCompatActivity {
         });
 
 
-        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        adapter= new TabsPagerAdapter(getSupportFragmentManager());
+        pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
+
 
     }
 
@@ -57,7 +63,9 @@ class TabsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance(position + 1);
+        Log.e("pager1",String.valueOf(position));
+        PageFragment pageFragment=new PageFragment(position);
+        return pageFragment;
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
@@ -24,7 +25,6 @@ public class Adapter_Eateries_Details extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
     ArrayList<String> list;
-    String Url;
 
     public Adapter_Eateries_Details(Context context, ArrayList<String> list) {
         mContext = context;
@@ -45,9 +45,11 @@ public class Adapter_Eateries_Details extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.layout_pager_item, container, false);
-        Url = list.get(position+2);
-     SimpleDraweeView imageView = (SimpleDraweeView) itemView.findViewById(R.id.imageView);
-    imageView.setImageURI(Url);
+        String Url = list.get(position+2);
+     SimpleDraweeView imageView = itemView.findViewById(R.id.imageView);
+     Log.e("url",Url);
+        Uri uri = Uri.parse(Url);
+     imageView.setImageURI(uri);
 
         return itemView;
     }

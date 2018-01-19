@@ -139,7 +139,7 @@
 
 
 
-    <integer-array name="androidcolors">
+    <string-array name="androidcolors">
         <item>@color/cyan400</item>
         <item>@color/red500</item>
         <item>@color/literary_color</item>
@@ -147,5 +147,5 @@
         <item>#AD1457</item>
         <item>#45b64e</item>
 
-    </integer-array>
+    </string-array>
 </resources>
