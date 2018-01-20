@@ -1,6 +1,7 @@
 package bits.mac.icef_2018.Adapters;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -10,9 +11,6 @@ import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -108,29 +106,14 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         public void setCoverImage(String url) {
             final ImageView imageView = itemView.findViewById(R.id.contactImage);
             //SET Correct aspect ratio
-            imageView.setImageResource(R.drawable.defaultprofile);
 
             if (URLUtil.isValidUrl(url)) {
                 try {
-                    Picasso.with(itemView.getContext()).load(url).into(imageView, new Callback() {
-
-                        @Override
-                        public void onSuccess() {
-
-                        }
-
-                        @Override
-                        public void onError() {
-                            imageView.setImageResource(R.drawable.defaultprofile);
-
-                        }
-                    });
-                }
-                catch (Exception e) {
-                    imageView.setImageResource(R.drawable.defaultprofile);
+                    Uri uri = Uri.parse(url);
+                    imageView.setImageURI(uri);
+                }catch (Exception e) {
                 }
             }
-            else imageView.setImageResource(R.drawable.defaultprofile);
         }
 
 

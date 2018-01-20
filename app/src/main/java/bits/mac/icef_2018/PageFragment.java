@@ -38,49 +38,56 @@ import bits.mac.icef_2018.Lists.TimelineList;
 
 public class PageFragment extends Fragment {
     private static final String ARG_PAGE_NUMBER = "page_number";
-    static Bundle args=new Bundle();
     Vector<TimelineList> vector=new Vector<>();
-    public PageFragment() {
+    Adapter_Timeline adapter_timeline;
+    RecyclerView recyclerView;
+    static Bundle bundle;
+    String mChild;
+    public PageFragment(){
+
     }
 
     @SuppressLint("ValidFragment")
-    public PageFragment(int page) {
-        args.putInt(ARG_PAGE_NUMBER,page+1);
+    public PageFragment(String mChild){
+        this.mChild=mChild;
 
     }
 
-
-    public static PageFragment newInstance(int page) {
-        PageFragment fragment = new PageFragment();
+    public static PageFragment getItem(String mChild) {
+        PageFragment fragment = new PageFragment(mChild);
+       // bundle=new Bundle();
+       // bundle.putString("mChild",mChild);
         return fragment;
+
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_pager, container, false);
-        RecyclerView recyclerView=rootView.findViewById(R.id.timeline_rv);
-        final Adapter_Timeline adapter_timeline=new Adapter_Timeline(vector,getActivity());
-
+        adapter_timeline=new Adapter_Timeline(vector,getActivity());
+        recyclerView=rootView.findViewById(R.id.timeline_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter_timeline);
 
 
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline").child("Day "+args.getInt(ARG_PAGE_NUMBER));
+        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline").child(mChild);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 vector.clear();
-                Log.e("msg",String.valueOf(dataSnapshot.getChildrenCount()));
                 for(DataSnapshot shot:dataSnapshot.getChildren()){
 
                     vector.add(shot.getValue(TimelineList.class));
 
                 }
-
                 adapter_timeline.notifyDataSetChanged();
+
             }
 
             @Override
