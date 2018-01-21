@@ -1,5 +1,6 @@
 package bits.mac.icef_2018.Adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -21,11 +22,14 @@ import bits.mac.icef_2018.View.batch_model;
 
 
 public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batch_VH> {
-
+    Context mContext;
     private ArrayList<batch_model> ContactList = new ArrayList<>();
     private SparseBooleanArray displayDetails = new SparseBooleanArray();
-    public Adapter_Contacts(ArrayList<batch_model> list) {
+
+
+    public Adapter_Contacts(ArrayList<batch_model> list,Context context) {
         this.ContactList = list;
+        mContext=context;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         holder.setNumber(current.getNumber());
         holder.setEmail(current.getEmail());
         holder.setDescription(current.getDescription());
-        holder.handleClick(position);
+        holder.handleClick(position,mContext);
 
     }
 
@@ -58,7 +62,9 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
     @Override
     public int getItemViewType(int position) {
         return super.getItemViewType(position);
+
     }
+
 
     class batch_VH extends RecyclerView.ViewHolder {
 
@@ -66,8 +72,11 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         public batch_VH(final View itemView) {
             super(itemView);
         }
+        TextView number;
+        TextView mail;
 
-        public void handleClick(final int pos) {
+
+        public void handleClick(final int pos, final Context context) {
             final View desc = itemView.findViewById(R.id.Description);
 
             if(displayDetails.get(pos,false))
@@ -88,6 +97,29 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
                     }
                 }
             });
+
+            number=itemView.findViewById(R.id.Number);
+            number.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+number.getText()));
+                    context.startActivity(intent);
+                }
+            });
+
+           mail=itemView.findViewById(R.id.Mail);
+            mail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.ACTION_SENDTO, mail.getText());
+                    Intent mailer = Intent.createChooser(intent, null);
+                    context.startActivity(mailer);
+                }
+            });
+
         }
 
 

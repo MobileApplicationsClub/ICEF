@@ -65,7 +65,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_timeline, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_speakers, container, false);
         name=rootView.findViewById(R.id.Name);
         venue=rootView.findViewById(R.id.Venue);
         desc=rootView.findViewById(R.id.Description);

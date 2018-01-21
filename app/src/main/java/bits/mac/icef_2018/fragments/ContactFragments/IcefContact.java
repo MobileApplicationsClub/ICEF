@@ -78,7 +78,7 @@ public class IcefContact extends BaseFragment {
         View mView= inflater.inflate(R.layout.fragment_icef_contact, container, false);
         mContactList = mView.findViewById(R.id.contactList);
         Fresco.initialize(getActivity());
-        final Adapter_Contacts adapter = new Adapter_Contacts(ContactList);
+        final Adapter_Contacts adapter = new Adapter_Contacts(ContactList,getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(false);

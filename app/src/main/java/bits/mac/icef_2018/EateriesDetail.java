@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -52,7 +53,7 @@ public class EateriesDetail extends AppCompatActivity {
     FloatingActionButton fab;
     SimpleDraweeView profile;
     TextView timings;
-
+    private ProgressBar spinner;
     ImageButton Call;
     ImageButton location;
 
@@ -74,7 +75,7 @@ public class EateriesDetail extends AppCompatActivity {
         fab=findViewById(R.id.fab);
         Call=findViewById(R.id.Call);
         location=findViewById(R.id.location);
-        profile=findViewById(R.id.profile);
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
         timings=findViewById(R.id.Timing);
         //referencing database
         intent = getIntent();
@@ -85,7 +86,6 @@ public class EateriesDetail extends AppCompatActivity {
         arrayList = new ArrayList<String>();
         mAdapter_Eateries_Details = new Adapter_Eateries_Details(this, arrayList);
 
-        profile.setImageResource(R.drawable.defaultprofile);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -106,6 +106,8 @@ public class EateriesDetail extends AppCompatActivity {
                 }
 
                 mViewPager.setAdapter(mAdapter_Eateries_Details);
+                spinner.setVisibility(View.GONE);
+
                 timings.setText(arrayList.get(1));
 
             }
