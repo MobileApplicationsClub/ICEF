@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/open_mic_night" />
+        android:src="@drawable/mic1" />
 
     <LinearLayout
         android:layout_width="match_parent"

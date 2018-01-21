@@ -1,5 +1,6 @@
 package bits.mac.icef_2018;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,7 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import bits.mac.icef_2018.Lists.EateriesList;
 import bits.mac.icef_2018.fragments.AboutUs;
 import bits.mac.icef_2018.fragments.Contact;
 import bits.mac.icef_2018.fragments.Dashboard;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     Fragment dashboard= Dashboard.newInstance();
     Fragment contact= Contact.newInstance();
     Fragment Aboutus= AboutUs.newInstance();
+    Intent intent;
 
 
 
@@ -94,17 +99,25 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.sign_out_button) {
+            FirebaseAuth.getInstance().signOut();
+            finish();
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        }else if (id == R.id.nav_timeline) {
+            intent=new Intent(this,Timeline.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_speakers) {
+            intent=new Intent(this,Speakers.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_CampusMap) {
+            intent=new Intent(this,BPGCMapsActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_eateries) {
+            intent=new Intent(this,Main_Eateries.class);
+            startActivity(intent);
 
         }
 

@@ -34,6 +34,7 @@ public class Timeline extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               Count= dataSnapshot.getChildrenCount();
+                adapter= new TabsPagerAdapter(getSupportFragmentManager());
                 pager.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -45,7 +46,6 @@ public class Timeline extends AppCompatActivity {
         });
 
 
-        adapter= new TabsPagerAdapter(getSupportFragmentManager());
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
@@ -64,8 +64,8 @@ class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Log.e("pager1",String.valueOf(position));
-        PageFragment pageFragment=new PageFragment(position);
-        return pageFragment;
+        return PageFragment.getItem("Day "+(position+1));
+
     }
 
     @Override

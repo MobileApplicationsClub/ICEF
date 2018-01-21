@@ -42,17 +42,17 @@ public class Adapter_Eateries extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public Adapter_Eateries(Context context){
         this.context=context;
-        list.add(new EateriesList("CAFETERIA","Enjoy one of the best cappuccino in campus along with the snacks at shetty sons",R.drawable.ic_launcher_background,IC));
+        list.add(new EateriesList("CAFETERIA","Enjoy one of the best cappuccino in campus along with the snacks at shetty sons",R.drawable.eateries,IC));
         list.add(new EateriesList("RED CHILLIES", "In-campus restaurant to celebrate your moments", R.drawable.ic_launcher_background, RED_CHILLIES));
         list.add(new EateriesList("A MESS", "", R.drawable.ic_launcher_background,MESS_A));
-        list.add(new EateriesList("C MESS","",R.drawable.ic_launcher_background,MESS_C));
-        list.add(new EateriesList("Gaja Laxmi Snacks", "If you love eggs than this place is for you", R.drawable.ic_launcher_background, GAJA_LAXMI));
-        list.add(new EateriesList("ICE AND SPICE", "Time to fell in love\n with the smoothies over here", R.drawable.ic_launcher_background, ICE_SPICE));
-        list.add(new EateriesList("FOOD KING", "Best Place to chill out", R.drawable.ic_launcher_background, FOODKING));
-        list.add(new EateriesList("DOMINOES", "Get your pizza delivered in just 30min ", R.drawable.ic_launcher_background, DOMINOES));
+        list.add(new EateriesList("C MESS","",R.drawable.cm,MESS_C));
+        list.add(new EateriesList("Gaja Laxmi Snacks", "If you love eggs than this place is for you", R.drawable.gj, GAJA_LAXMI));
+        list.add(new EateriesList("ICE AND SPICE", "Time to fell in love\n with the smoothies over here", R.drawable.inc, ICE_SPICE));
+        list.add(new EateriesList("FOOD KING", "Best Place to chill out", R.drawable.fk, FOODKING));
+        list.add(new EateriesList("DOMINOES", "Get your pizza delivered in just 30min ", R.drawable.dominoes, DOMINOES));
         list.add(new EateriesList("Night Canteen A", "Hungry at night!!", R.drawable.ic_launcher_background, NC_A));
         list.add(new EateriesList("Night Canteen C", "Hungry at night!!", R.drawable.ic_launcher_background, NC_C));
-        list.add(new EateriesList("Monginies", "",R.drawable.ic_launcher_background, MONGINIES));
+        list.add(new EateriesList("Monginies", "",R.drawable.mongi, MONGINIES));
 
 
 
@@ -87,7 +87,7 @@ public class Adapter_Eateries extends RecyclerView.Adapter<RecyclerView.ViewHold
         VH_Eateries mv = (VH_Eateries) holder;
         mv.Title.setText(list.get(position).getTitle());
         mv.desc.setText(list.get(position).getDescription());
-      //  mv.image.setImageURI(Uri.parse("ref///"+list.get(position).getBackground()));
+        mv.image.setImageURI(Uri.parse("res:///"+list.get(position).getBackground()));
 
     }
 }

@@ -46,10 +46,9 @@ Context context;
     public Adapter_Main(Context context) {
 
         this.context=context;
-        list.add(new MainList("TIMELINE", "When and What?", R.drawable.countdown, MAIN_TIMELINE));
-        list.add(new MainList("SPEAKERS", "",R.drawable.countdown, MAIN_SPEAKERS));
-        list.add(new MainList("IMPORTANT DATES", "Mark them on your calendar!",R.drawable.countdown, DATES));
-        list.add(new MainList("ARE YOU HUNGRY?", "Eateries inside and outside the campus",R.drawable.countdown, EATERIES));
+        list.add(new MainList("TIMELINE", "", R.drawable.timeline, MAIN_TIMELINE));
+        list.add(new MainList("SPEAKERS", "",R.drawable.mic1, MAIN_SPEAKERS));
+        list.add(new MainList("EATERIES", "",R.drawable.eateries, EATERIES));
 
 
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,7 +77,8 @@ public class IcefContact extends BaseFragment {
 
         View mView= inflater.inflate(R.layout.fragment_icef_contact, container, false);
         mContactList = mView.findViewById(R.id.contactList);
-        final Adapter_Contacts adapter = new Adapter_Contacts(ContactList);
+        Fresco.initialize(getActivity());
+        final Adapter_Contacts adapter = new Adapter_Contacts(ContactList,getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(false);
