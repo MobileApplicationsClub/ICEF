@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +32,6 @@ public class PlaceholderFragment extends Fragment {
     TextView venue;
     TextView timing;
     TextView desc;
-    int i=0;
     SimpleDraweeView image;
     int position;
     Vector<SpeakersList> vector=new Vector<>();
@@ -66,6 +65,7 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_speakers, container, false);
+
         name=rootView.findViewById(R.id.Name);
         venue=rootView.findViewById(R.id.Venue);
         desc=rootView.findViewById(R.id.Description);
@@ -87,7 +87,7 @@ public class PlaceholderFragment extends Fragment {
 
 
 
- class SectionsPagerAdapter extends FragmentStatePagerAdapter {
+ class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     Vector<SpeakersList> vector=new Vector<>();
     public SectionsPagerAdapter(FragmentManager fm, Vector<SpeakersList> vector) {

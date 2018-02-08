@@ -16,9 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import bits.mac.icef_2018.Lists.EateriesList;
 import bits.mac.icef_2018.fragments.AboutUs;
 import bits.mac.icef_2018.fragments.Contact;
 import bits.mac.icef_2018.fragments.Dashboard;
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 

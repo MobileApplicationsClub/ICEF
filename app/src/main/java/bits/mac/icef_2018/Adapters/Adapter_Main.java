@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,17 +21,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
 import bits.mac.icef_2018.ICEF_HelperClass;
 import bits.mac.icef_2018.Lists.MainList;
 import bits.mac.icef_2018.R;
 import bits.mac.icef_2018.ViewHolders.VH_main;
 import bits.mac.icef_2018.ViewHolders.VH_timer;
-
-import static bits.mac.icef_2018.ICEF_HelperClass.DATES;
 import static bits.mac.icef_2018.ICEF_HelperClass.EATERIES;
+import static bits.mac.icef_2018.ICEF_HelperClass.FAQ;
 import static bits.mac.icef_2018.ICEF_HelperClass.MAIN_SPEAKERS;
 import static bits.mac.icef_2018.ICEF_HelperClass.MAIN_TIMELINE;
+import static bits.mac.icef_2018.ICEF_HelperClass.PARTICIPANTS;
 
 /**
  * Created by aayush on 18/12/17.
@@ -48,7 +46,10 @@ Context context;
         this.context=context;
         list.add(new MainList("TIMELINE", "", R.drawable.timeline, MAIN_TIMELINE));
         list.add(new MainList("SPEAKERS", "",R.drawable.mic1, MAIN_SPEAKERS));
+        list.add(new MainList("PARTICIPANTS", "",R.drawable.parti, PARTICIPANTS));
         list.add(new MainList("EATERIES", "",R.drawable.eateries, EATERIES));
+        list.add(new MainList("FAQ", "",R.drawable.siri, FAQ));
+
 
 
 

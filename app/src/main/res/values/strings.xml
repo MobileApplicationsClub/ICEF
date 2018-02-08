@@ -71,6 +71,7 @@
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="google_status_fmt">Google User: %s</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
 
 </resources>
