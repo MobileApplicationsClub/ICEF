@@ -116,6 +116,10 @@ public class MainActivity extends AppCompatActivity
             intent=new Intent(this,Main_Eateries.class);
             startActivity(intent);
 
+        } else if (id == R.id.notification_sender) {
+            intent=new Intent(this,NotificationSender.class);
+            startActivity(intent);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

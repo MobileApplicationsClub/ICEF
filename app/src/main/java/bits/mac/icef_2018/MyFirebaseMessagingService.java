@@ -3,22 +3,40 @@ package bits.mac.icef_2018;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by aayush on 6/2/18.
  */
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
+    Notification foregroundNote;
 
+
+    public MyFirebaseMessagingService(){
+        super();
+    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage){
@@ -28,51 +46,66 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
     }
 
     private void sendMyNotification(String message) {
-/*
 
-     //   RemoteViews bigView = new RemoteViews(getApplicationContext().getPackageName(),R.layout.item_notification);
-        //bigView.setTextViewText(R.id.title,"ICEF-2018");
-       // bigView.setTextViewText(R.id.noti,message);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        // Creates an explicit intent for an ResultActivity to receive.
+        Intent resultIntent = new Intent(this, Notifications.class);
 
+// This ensures that the back button follows the recommended
+// convention for the back key.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"Message");
-        NotificationCompat.BigTextStyle style =new NotificationCompat.BigTextStyle();
-        style.bigText(message);
+// Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(Notifications.class);
 
-           builder = builder.setAutoCancel(true)
-                      .setSound(soundUri)
-                      .setSmallIcon(R.drawable.bits)
-                      .setContentTitle("ICEF 2018")
-                      .setContentIntent(pendingIntent)
-                      .setStyle(style);
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification=builder.build();
-        notificationManager.notify(0, notification );
-   */
+// Adds the Intent that starts the Activity to the top of the stack.
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-    NotificationManager manager= (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(this,"Message")
-                .setContentTitle("ICEF 2018")
-                .setContentText(message)
+// Create remote view and set bigContentView.
+        RemoteViews expandedView = new RemoteViews(this.getPackageName(),
+                R.layout.item_notification);
+
+        expandedView.setTextViewText(R.id.title, "ICEF 2018");
+        expandedView.setTextViewText(R.id.noti, message);
+
+        Notification notification = new NotificationCompat.Builder(this,"Message")
                 .setSmallIcon(R.drawable.bits)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setContentIntent(resultPendingIntent)
+                .setContentTitle("ICEF 2018")
+                .setContentText("Pinch out to expand")
+                .setPriority(Notification.PRIORITY_MAX).build();
 
-        NotificationCompat.BigTextStyle style =new NotificationCompat.BigTextStyle(builder);
-        style.bigText(message);
-        builder.setStyle(style);
-        //On click of notification it redirect to this Activity
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        notification.bigContentView = expandedView;
 
-        builder.setContentIntent(pendingIntent);
-        manager.notify(0, builder.build());
+        notificationManager.notify(1,notification);
+
+
+        DatabaseReference firebaseDatabase=FirebaseDatabase.getInstance().getReference().child("Notifications").push();
+        String key=firebaseDatabase.getKey();
+        firebaseDatabase.child("key").setValue(key);
+        firebaseDatabase.child("message").setValue(message);
+        firebaseDatabase.child("DT").setValue(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
 
     }
+//not working
+            @Override
+            public void onMessageSent(String msgID) {
+                Log.e("wouter", "##########onMessageSent: " + msgID );
+            super.onMessageSent(msgID);
+            Snackbar.make(null,"Message sent",Snackbar.LENGTH_LONG).show();
 
+        }
+//not working
+        @Override
+        public void onSendError(String msgID, Exception exception) {
+            Log.e("wouter", "onSendError ", exception );
+
+            Snackbar.make(null,"Message wasn't sent",Snackbar.LENGTH_LONG).show();
+
+            }
 }
 

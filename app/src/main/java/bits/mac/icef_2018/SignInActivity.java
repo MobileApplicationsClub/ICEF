@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import bits.mac.icef_2018.fragments.base.BaseActivity;
 
@@ -141,13 +142,14 @@ public class SignInActivity extends BaseActivity implements
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        FirebaseMessaging.getInstance().subscribeToTopic("Message");
     }
     // [END signin]
 
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Message");
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {

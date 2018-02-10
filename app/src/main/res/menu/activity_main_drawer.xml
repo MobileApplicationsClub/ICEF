@@ -30,6 +30,12 @@
             android:icon="@drawable/food"
             android:title="Eateries" />
 
+        <item
+            android:id="@+id/notification_sender"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="Notification Sender" />
+
+
     </group>
 
     <item android:title="Communicate">
