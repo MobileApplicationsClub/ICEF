@@ -27,6 +27,7 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         android:hint="@string/app_name"
+        android:scrollHorizontally="false"
         android:gravity="top|start"
         android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/textView"

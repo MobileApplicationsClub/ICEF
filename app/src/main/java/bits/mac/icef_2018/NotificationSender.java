@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -28,12 +30,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NotificationSender extends AppCompatActivity {
     EditText textView;
+    boolean b=false;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,6 @@ public class NotificationSender extends AppCompatActivity {
         setContentView(R.layout.activity_notification_sender);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -52,13 +56,14 @@ public class NotificationSender extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                message=textView.getText().toString();
 
 
                 FirebaseMessaging.getInstance().subscribeToTopic("Message");
 
                 String pName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 RemoteMessage.Builder creator = new RemoteMessage.Builder("Message");
-                creator.addData("Message", textView.getText().toString());
+                creator.addData("Message", message);
 
 
                 try {
@@ -92,9 +97,6 @@ public class NotificationSender extends AppCompatActivity {
                     Log.e("noti","s:"+s2);
 
 
-
-
-
                     InputStream is = connection.getInputStream();
                     BufferedReader rd = new BufferedReader(new InputStreamReader(is));
                     StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
@@ -108,7 +110,7 @@ public class NotificationSender extends AppCompatActivity {
 
                     textView.setText("");
                     Snackbar.make(textView,"Notification sent succesfully",Snackbar.LENGTH_LONG).show();
-
+                    b=true;
                 } catch (Exception e) {
 
                     Snackbar.make(textView,"Check your internet connection",Snackbar.LENGTH_LONG).show();
@@ -116,6 +118,14 @@ public class NotificationSender extends AppCompatActivity {
                     e.printStackTrace();
 
                 }
+                if(b){
+                    DatabaseReference firebaseDatabase= FirebaseDatabase.getInstance().getReference().child("Notifications").push();
+                    String key=firebaseDatabase.getKey();
+                    firebaseDatabase.child("key").setValue(key);
+                    firebaseDatabase.child("message").setValue(message);
+                    firebaseDatabase.child("dt").setValue(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
+                }
+
 
             }
         });

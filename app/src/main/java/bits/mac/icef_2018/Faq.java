@@ -39,7 +39,7 @@ public class Faq extends AppCompatActivity {
         recyclerView.setAdapter(adapter_faq);
 
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("FAQ");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 vector.clear();

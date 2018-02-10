@@ -79,24 +79,8 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         public void handleClick(final int pos, final Context context) {
             final View desc = itemView.findViewById(R.id.Description);
 
-            if(displayDetails.get(pos,false))
-                desc.setVisibility(View.VISIBLE);
-            else
-                desc.setVisibility(View.GONE);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(displayDetails.get(pos,false)) {
-                        desc.setVisibility(View.GONE);
-                        displayDetails.put(pos,false);
-                    }
-                    else {
-                        desc.setVisibility(View.VISIBLE);
-                        displayDetails.put(pos,true);
-                    }
-                }
-            });
+
 
             number=itemView.findViewById(R.id.Number);
             number.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +97,9 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
+                    intent.setType("message/rfc822");
                     intent.putExtra(Intent.ACTION_SENDTO, mail.getText());
-                    Intent mailer = Intent.createChooser(intent, null);
+                    Intent mailer = Intent.createChooser(intent, "Choose your E-mail application");
                     context.startActivity(mailer);
                 }
             });
@@ -124,15 +108,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
 
 
         public void setIntent(final String currentBatch) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    Intent batchDetails = new Intent(itemView.getContext(), batch_detail.class);
-                    batchDetails.putExtra(ICEF_HelperClass.batch_extra, currentBatch);
-                    itemView.getContext().startActivity(batchDetails);
-                }
-            });
         }
 
         public void setCoverImage(String url) {

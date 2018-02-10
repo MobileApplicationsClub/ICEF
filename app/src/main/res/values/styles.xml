@@ -22,7 +22,7 @@
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
+   </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -45,7 +45,7 @@
         <item name="android:background">@color/yellowA400</item>
     </style>
 
-    <style name="alertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="alertDialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/blue500</item>
         <!-- Used for the title and text -->

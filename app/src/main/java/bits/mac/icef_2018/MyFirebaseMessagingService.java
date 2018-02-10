@@ -31,7 +31,6 @@ import java.util.Date;
  */
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
-    Notification foregroundNote;
 
 
     public MyFirebaseMessagingService(){
@@ -84,14 +83,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         notificationManager.notify(1,notification);
 
 
-        DatabaseReference firebaseDatabase=FirebaseDatabase.getInstance().getReference().child("Notifications").push();
-        String key=firebaseDatabase.getKey();
-        firebaseDatabase.child("key").setValue(key);
-        firebaseDatabase.child("message").setValue(message);
-        firebaseDatabase.child("DT").setValue(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
-
     }
-//not working
+            //not working
             @Override
             public void onMessageSent(String msgID) {
                 Log.e("wouter", "##########onMessageSent: " + msgID );
@@ -99,7 +92,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             Snackbar.make(null,"Message sent",Snackbar.LENGTH_LONG).show();
 
         }
-//not working
+
+        //not working
         @Override
         public void onSendError(String msgID, Exception exception) {
             Log.e("wouter", "onSendError ", exception );
