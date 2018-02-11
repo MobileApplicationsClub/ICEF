@@ -10,7 +10,7 @@
     app:cardElevation="5dp"
     android:layout_margin="10dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-    tools:context=".Speakers">
+    tools:context="com.macbitsgoa.icef_2018.Speakers">
 
     <ScrollView
         android:layout_width="match_parent"
