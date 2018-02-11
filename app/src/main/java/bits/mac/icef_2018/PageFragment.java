@@ -41,7 +41,6 @@ public class PageFragment extends Fragment {
     Vector<TimelineList> vector=new Vector<>();
     Adapter_Timeline adapter_timeline;
     RecyclerView recyclerView;
-    static Bundle bundle;
     String mChild;
     public PageFragment(){
 
@@ -118,10 +117,21 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        RecyclerView.ViewHolder viewHolder = null;
+
+        RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.item_timeline_rv,parent,false);
-        viewHolder = new VH_Timeline_RV(view);
+        View view;
+
+        Log.e("msh1.", String.valueOf(viewType));
+
+        if(viewType == 0) {
+           view  = inflater.inflate(R.layout.item_timeline_rv, parent, false);
+            viewHolder = new VH_Timeline_RV(view);
+        }else {
+            view = inflater.inflate(R.layout.item_timeline_rv_1, parent, false);
+           viewHolder = new VH_Timeline_RV_1(view);
+        }
+
 
         return viewHolder;
 
@@ -134,20 +144,43 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         return vector.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        Log.e("msh1..", String.valueOf(position));
 
+        Log.e("msh1", String.valueOf(vector.get(position).getType()));
+        return vector.get(position).getType();
+    }
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        VH_Timeline_RV vh_timeline_rv=(VH_Timeline_RV)holder;
-        vh_timeline_rv.location.setText(vector.get(position).getLocation());
-        vh_timeline_rv.time.setText(vector.get(position).getTime());
-        vh_timeline_rv.event.setText(vector.get(position).getName());
-        vh_timeline_rv.simpleDraweeView.setImageURI(vector.get(position).getImage());
+
+        switch (holder.getItemViewType()) {
+            case 0:
+
+                VH_Timeline_RV vh_timeline_rv = (VH_Timeline_RV) holder;
+                vh_timeline_rv.simpleDraweeView.setImageURI(vector.get(position).getImage());
+                vh_timeline_rv.location.setText(vector.get(position).getLocation());
+                vh_timeline_rv.time.setText(vector.get(position).getTime());
+                vh_timeline_rv.event.setText(vector.get(position).getName());
+
+                break;
+
+            case 1:
+                VH_Timeline_RV_1 vh_timeline_rv_1 = (VH_Timeline_RV_1) holder;
+                vh_timeline_rv_1.location.setText(vector.get(position).getLocation());
+                vh_timeline_rv_1.time.setText(vector.get(position).getTime());
+                vh_timeline_rv_1.event.setText(vector.get(position).getName());
+                vh_timeline_rv_1.topic.setText(vector.get(position).getTopic());
+
+                break;
+        }
 
 
-    }
-}
+
+    }   }
+
 
 
 
@@ -164,42 +197,43 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     View decoration;
     View border;
 
+
     public VH_Timeline_RV(View itemView) {
         super(itemView);
 
-        location=itemView.findViewById(R.id.TV_location);
-        time=itemView.findViewById(R.id.TV_time);
-        details=itemView.findViewById(R.id.TV_details);
-        event=itemView.findViewById(R.id.Event_name);
-        b_location=(ImageView)itemView.findViewById(R.id.b_location);
-        b_time=(ImageView)itemView.findViewById(R.id.b_time);
-        b_event=(ImageView)itemView.findViewById(R.id.b_details);
-        decoration=itemView.findViewById(R.id.decoration);
-        simpleDraweeView=itemView.findViewById(R.id.image_event);
-        border=itemView.findViewById(R.id.back);
+      location=itemView.findViewById(R.id.TV_location);
+            time=itemView.findViewById(R.id.TV_time);
+            details=itemView.findViewById(R.id.TV_details);
+            event=itemView.findViewById(R.id.Event_name);
+            b_location=(ImageView)itemView.findViewById(R.id.b_location);
+            b_time=(ImageView)itemView.findViewById(R.id.b_time);
+            b_event=(ImageView)itemView.findViewById(R.id.b_details);
+            decoration=itemView.findViewById(R.id.decoration);
+            simpleDraweeView=itemView.findViewById(R.id.image_event);
+            border=itemView.findViewById(R.id.back);
+
+            Random rand = new Random();
+            int r = rand.nextInt(255);
+            int g = rand.nextInt(255);
+            int b = rand.nextInt(255);
+            int randomAndroidColor = Color.rgb(r,g,b);
+
+            RoundingParams roundingParams = RoundingParams.fromCornersRadius(20f);
+            roundingParams.setBorder(randomAndroidColor, 4.0f);
+            simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
+
+            decoration.setBackgroundColor(randomAndroidColor);
+
+            b_event.setColorFilter(randomAndroidColor);
+            b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
+
+            b_location.setColorFilter(randomAndroidColor);
+            b_location.setImageResource(R.drawable.ic_mapicon);
+
+            b_time.setColorFilter(randomAndroidColor);
+            b_time.setImageResource(R.drawable.ic_access_time_black_24dp);
 
 
-        Random rand = new Random();
-        int r = rand.nextInt(255);
-        int g = rand.nextInt(255);
-        int b = rand.nextInt(255);
-        int randomAndroidColor = Color.rgb(r,g,b);
-
-        RoundingParams roundingParams = RoundingParams.fromCornersRadius(20f);
-        roundingParams.setBorder(randomAndroidColor, 4.0f);
-        simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
-
-
-        decoration.setBackgroundColor(randomAndroidColor);
-
-        b_event.setColorFilter(randomAndroidColor);
-        b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
-
-        b_location.setColorFilter(randomAndroidColor);
-        b_location.setImageResource(R.drawable.ic_mapicon);
-
-        b_time.setColorFilter(randomAndroidColor);
-        b_time.setImageResource(R.drawable.ic_access_time_black_24dp);
 
 
 
@@ -209,3 +243,48 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 }
+
+
+class VH_Timeline_RV_1 extends RecyclerView.ViewHolder  {
+    TextView location;
+    TextView time;
+    TextView details;
+    TextView event;
+    TextView topic;
+    ViewGroup background;
+    ViewGroup background1;
+    ViewGroup btn;
+    ImageView b_event;
+
+    public VH_Timeline_RV_1(View itemView) {
+        super(itemView);
+
+        b_event=(ImageView)itemView.findViewById(R.id.b_details);
+            location = itemView.findViewById(R.id.TV_location);
+            time = itemView.findViewById(R.id.TV_time);
+            details = itemView.findViewById(R.id.TV_details);
+            background = itemView.findViewById(R.id.decoration);
+            background1 = itemView.findViewById(R.id.deco2);
+            event = itemView.findViewById(R.id.Event_name);
+            topic = itemView.findViewById(R.id.topic);
+            btn=itemView.findViewById(R.id.main);
+
+
+            Random rand = new Random();
+            int r = rand.nextInt(255);
+            int g = rand.nextInt(255);
+            int b = rand.nextInt(255);
+            int randomAndroidColor = Color.rgb(r, g, b);
+
+            background.setBackgroundColor(randomAndroidColor);
+            background1.setBackgroundColor(randomAndroidColor);
+
+            b_event.setColorFilter(randomAndroidColor);
+            b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
+
+
+    }
+
+}
+
+

@@ -3,10 +3,7 @@ package bits.mac.icef_2018;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import bits.mac.icef_2018.fragments.base.BaseActivity;
 
@@ -133,6 +131,7 @@ public class SignInActivity extends BaseActivity implements
 
                         // [START_EXCLUDE]
                         hideProgressDialog();
+                        finish();
                         // [END_EXCLUDE]
                     }
                 });
@@ -143,13 +142,14 @@ public class SignInActivity extends BaseActivity implements
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        FirebaseMessaging.getInstance().subscribeToTopic("Message");
     }
     // [END signin]
 
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Message");
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {

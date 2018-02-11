@@ -58,7 +58,7 @@ public class Speakers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_timeline);
-        hide();
+        //hide();
         position = 0;
         pixels = this.getResources().getDisplayMetrics().widthPixels;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
