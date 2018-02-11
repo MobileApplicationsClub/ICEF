@@ -73,7 +73,7 @@
             android:name=".Speakers"
             android:label="@string/title_activity_timeline"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".Timeline"
             android:label="@string/title_activity_timeline"
@@ -94,16 +94,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Faq"
             android:screenOrientation="sensorPortrait" />
+
+        <activity
+            android:name=".Participants"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".NotificationSender"
             android:label="@string/title_activity_notification_sender"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Notifications"
             android:label="@string/title_activity_notifications"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
