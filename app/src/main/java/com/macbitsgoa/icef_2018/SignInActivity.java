@@ -24,8 +24,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.macbitsgoa.icef_2018.fragments.base.BaseActivity;
 
-import bits.macbitsgoa.icef_2018.R;
-
 
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
@@ -150,7 +148,7 @@ public class SignInActivity extends BaseActivity implements
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
-        FirebaseMessaging.getInstance().subscribeToTopic("Message");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("Message");
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 /**
  * Created by aayush on 18/12/17.

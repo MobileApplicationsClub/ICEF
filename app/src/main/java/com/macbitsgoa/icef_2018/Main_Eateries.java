@@ -13,8 +13,6 @@ import android.view.WindowManager;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries;
 
-import bits.macbitsgoa.icef_2018.R;
-
 /**
  * Created by aayush on 18/12/17.
  */
@@ -29,6 +27,7 @@ Adapter_Eateries adapter;
         Fresco.initialize(this);
 
         setContentView(R.layout.activity_eateries);
+
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

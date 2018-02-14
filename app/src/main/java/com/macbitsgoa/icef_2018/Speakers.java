@@ -25,8 +25,6 @@ import java.util.Vector;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Speakers_rv;
 import com.macbitsgoa.icef_2018.Lists.SpeakersList;
 
-import bits.macbitsgoa.icef_2018.R;
-
 
 public class Speakers extends AppCompatActivity {
 
@@ -58,7 +56,7 @@ public class Speakers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        setContentView(R.layout.activity_timeline);
+        setContentView(R.layout.activity_speakers);
         //hide();
         position = 0;
         pixels = this.getResources().getDisplayMetrics().widthPixels;

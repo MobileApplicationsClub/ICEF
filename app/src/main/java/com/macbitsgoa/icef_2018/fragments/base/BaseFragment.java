@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.macbitsgoa.icef_2018.View.BaseActivityCallback;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 import com.macbitsgoa.icef_2018.ViewHolders.ProgressBarHandler;
 

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 /**
  * A simple {@link Fragment} subclass.

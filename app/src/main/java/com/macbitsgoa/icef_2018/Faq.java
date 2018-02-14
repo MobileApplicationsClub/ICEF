@@ -18,8 +18,6 @@ import com.macbitsgoa.icef_2018.Lists.FaqList;
 
 import java.util.Vector;
 
-import bits.macbitsgoa.icef_2018.R;
-
 public class Faq extends AppCompatActivity {
 
     RecyclerView recyclerView;

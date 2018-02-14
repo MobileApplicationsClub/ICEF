@@ -12,7 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 
 public class CircularImageView extends android.support.v7.widget.AppCompatImageView {

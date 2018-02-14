@@ -20,8 +20,6 @@ import java.util.Vector;
 
 import com.macbitsgoa.icef_2018.Lists.NotificationList;
 
-import bits.macbitsgoa.icef_2018.R;
-
 public class Notifications extends AppCompatActivity {
 
     RecyclerView recyclerView;

@@ -22,7 +22,7 @@ import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
 import java.util.ArrayList;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,9 +33,9 @@ public class IcefContact extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-
+    Adapter_Contacts adapter;
     private RecyclerView mContactList;
-    private ArrayList<batch_model> ContactList;
+    private ArrayList<batch_model> ContactList = new ArrayList<>();;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,7 +66,7 @@ public class IcefContact extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            ContactList = new ArrayList<>();
+
         }
     }
 
@@ -78,19 +78,20 @@ public class IcefContact extends BaseFragment {
         View mView= inflater.inflate(R.layout.fragment_icef_contact, container, false);
         mContactList = mView.findViewById(R.id.contactList);
         Fresco.initialize(getActivity());
-        final Adapter_Contacts adapter = new Adapter_Contacts(ContactList,getContext());
+        adapter = new Adapter_Contacts(ContactList,getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(false);
         linearLayoutManager.setStackFromEnd(false);
-
-
+       // Snackbar.make(mView,"hgvhvukbukhklhn",Snackbar.LENGTH_LONG);
+        Log.e("msg","launched");
         mContactList.setLayoutManager(linearLayoutManager);
         mContactList.setAdapter(adapter);
         //if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
+            //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             DatabaseReference mContacts = FirebaseDatabase.getInstance().getReference().child("Contact").child(mParam1);
-
+            mContacts.keepSynced(true);
 
             mContacts.addValueEventListener(new ValueEventListener() {
 
@@ -117,10 +118,19 @@ public class IcefContact extends BaseFragment {
                 }
 
             });
-      //  }
+
+
 
         return mView;
     }
+
+          /*      @Override
+               public void onResume(){
+                    IcefContact icefContact= IcefContact.newInstance("")
+
+                    super.onResume();
+                }
+*/
 
         }
 

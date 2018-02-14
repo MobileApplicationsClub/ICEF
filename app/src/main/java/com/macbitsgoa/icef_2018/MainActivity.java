@@ -1,7 +1,9 @@
 package com.macbitsgoa.icef_2018;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -12,25 +14,79 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.macbitsgoa.icef_2018.fragments.AboutUs;
 import com.macbitsgoa.icef_2018.fragments.Contact;
 import com.macbitsgoa.icef_2018.fragments.Dashboard;
 
-import bits.macbitsgoa.icef_2018.R;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment dashboard= Dashboard.newInstance();
-    Fragment contact= Contact.newInstance();
     Fragment Aboutus= AboutUs.newInstance();
     Intent intent;
+/*
+   public MainActivity() throws IOException, InvalidFormatException {
+        Log.e("xl", Environment.getExternalStorageDirectory().getAbsolutePath()+"/BATCHES.xlsx");
+        // Creating a Workbook from an Excel file (.xls or .xlsx)
+        Workbook workbook = WorkbookFactory.create(new File( Environment.getExternalStorageDirectory()+"/BATCHES.xlsx"));
+
+        // Retrieving the number of sheets in the Workbook
+        System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
+
+        // Getting the Sheet at index zero
+
+        // Create a DataFormatter to format and get each cell's value as String
+
+        DataFormatter dataFormatter = new DataFormatter();
+        int i=0;
+        System.out.println("Retrieving Sheets using for-each loop");
+        while (i<2) {
+
+            Sheet sheet = workbook.getSheetAt(i);
+
+            i=i+1;
+                Log.e("=> " , sheet.getSheetName());
 
 
+            // 2. Or you can use a for-each loop to iterate over the rows and columns
+            System.out.println("\n\nIterating over Rows and Columns using for-each loop\n");
+            for (Row row: sheet) {
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Participants").push();
+                String key= databaseReference.getKey();
+                    int k=row.getFirstCellNum();
+                    Log.e("xl",String.valueOf(k));
+                    databaseReference.child("name").setValue(dataFormatter.formatCellValue(row.getCell(k)));
+                    databaseReference.child("college").setValue(dataFormatter.formatCellValue(row.getCell(k+1)));
+                    databaseReference.child("room").setValue(dataFormatter.formatCellValue(row.getCell(k+3)));
+                    databaseReference.child("id").setValue(dataFormatter.formatCellValue(row.getCell(k+2)));
+
+
+                System.out.println();
+            }
+
+        }
+
+
+        // Closing the workbook
+
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +181,18 @@ public class MainActivity extends AppCompatActivity
             intent=new Intent(this,Notifications.class);
             startActivity(intent);
 
+        }else if (id == R.id.participants) {
+            intent=new Intent(this,Participants.class);
+            startActivity(intent);
+
+        }else if (id == R.id.faq) {
+            intent=new Intent(this,Faq.class);
+            startActivity(intent);
+
+        }else if (id == R.id.Medc) {
+            Intent intent=new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:8322580600"));
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -148,6 +216,7 @@ public class MainActivity extends AppCompatActivity
                     return true;
 
                 case R.id.navigation_contact:
+                    Fragment contact= Contact.newInstance();
                     fragmentTransaction.replace(R.id.frameLayout,contact).commit();
                     return true;
 

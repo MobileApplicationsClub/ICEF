@@ -12,13 +12,13 @@ public class TimelineList {
     private String description;
     private String image;
     private String topic;
-    private int type;
+    private String type;
 
     public TimelineList(){
 
     }
 
-    public TimelineList(String name,String location,String time,String topic,String description,String image,int type){
+    public TimelineList(String name,String location,String time,String topic,String description,String image,String type){
         this.name=name;
         this.description=description;
         this.image=image;
@@ -56,7 +56,7 @@ public class TimelineList {
         return time;
     }
 
-    public int getType(){
+    public String getType(){
         return type;
     }
 
@@ -81,7 +81,7 @@ public class TimelineList {
         this.location=location;
     }
 
-    public void setType(int type){
+    public void setType(String type){
         this.type=type;
     }
 

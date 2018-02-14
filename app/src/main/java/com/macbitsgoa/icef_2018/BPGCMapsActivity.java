@@ -21,8 +21,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
 
-import bits.macbitsgoa.icef_2018.R;
-
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.DOMINOES;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.FOODKING;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.GAJA_LAXMI;
@@ -42,7 +40,13 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
     FloatingActionButton mapfab;
     private GoogleMap map;
     SupportMapFragment mapFragment;
-    @Override
+
+    public BPGCMapsActivity(long lat,long lon){
+        LatLng marker = new LatLng(lat, lon);
+        map.addMarker(new MarkerOptions().position(marker));
+
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,9 +121,6 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
             } else if (location.equals("Library Lawns")) {
                 LatLng marker = new LatLng(15.391680, 73.880251);
                 map.addMarker(new MarkerOptions().position(marker).title("Library Lawns"));
-            } else if (location.equals("Outside Stage")) {
-                LatLng marker = new LatLng(15.392513, 73.879994);
-                map.addMarker(new MarkerOptions().position(marker).title("Outside Stage"));
             } else if (location.equals("Outdoor Stage")) {
                 LatLng marker = new LatLng(15.392513, 73.879994);
                 map.addMarker(new MarkerOptions().position(marker).title("Outdoor Stage"));
@@ -195,7 +196,16 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
             } else if (location.equals(RED_CHILLIES)) {
                 LatLng marker = new LatLng(15.393423, 73.879933);
                 map.addMarker(new MarkerOptions().position(marker).title(location));
-            } else {
+            } else if (location.equals("DLT6")) {
+                LatLng marker = new LatLng(15.393423, 73.879933);
+                map.addMarker(new MarkerOptions().position(marker).title(location));
+            }else if (location.equals("D101")) {
+                LatLng marker = new LatLng(15.393423, 73.879933);
+                map.addMarker(new MarkerOptions().position(marker).title(location));
+            }else if (location.equals("D104")) {
+                LatLng marker = new LatLng(15.393423, 73.879933);
+                map.addMarker(new MarkerOptions().position(marker).title(location));
+            }else {
 
                 LatLng marker = new LatLng(15.39171, 73.87601);
                 map.addMarker(new MarkerOptions().position(marker).title("Pharmacy"));
@@ -299,6 +309,17 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
         }
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(centre)      // Sets the center of the map to Mountain View
+                .zoom(16f)                   // Sets the zoom
+                // Sets the orientation of the camera to east
+                .tilt(50)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+    }
+
+    public void setCamera(LatLng marker){
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(marker)      // Sets the center of the map to Mountain View
                 .zoom(16f)                   // Sets the zoom
                 // Sets the orientation of the camera to east
                 .tilt(50)                   // Sets the tilt of the camera to 30 degrees

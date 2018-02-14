@@ -17,8 +17,6 @@ import com.macbitsgoa.icef_2018.Lists.SpeakersList;
 
 import java.util.Vector;
 
-import bits.macbitsgoa.icef_2018.R;
-
 /**
  * A placeholder fragment containing a simple view.
  */

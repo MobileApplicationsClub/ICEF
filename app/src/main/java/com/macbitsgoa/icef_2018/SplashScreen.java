@@ -17,33 +17,31 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import bits.macbitsgoa.icef_2018.R;
-
 public class SplashScreen extends AppCompatActivity {
 
     private final int RC_PERM_REQ_EXT_STORAGE = 7;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new Timer().schedule(new TimerTask() {
 
             @Override
             public void run() {
-
                 if (checkPermission()) {
                     // Do not wait so that user doesn't realise this is a new launch.
-                    startActivity(new Intent(SplashScreen.this,SignInActivity.class));
+
+                    startActivity(new Intent(SplashScreen.this, SignInActivity.class));
                     finish();
                 }
-
             }
         },2000);
 
     }
+
     public boolean checkPermission() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
                 || ContextCompat.checkSelfPermission(SplashScreen.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -72,7 +70,7 @@ public class SplashScreen extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == RC_PERM_REQ_EXT_STORAGE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                startActivity(new Intent(SplashScreen.this, SignInActivity.class));
+                startActivity(new Intent(SplashScreen.this, MainActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Permission Denied !, Retrying.", Toast.LENGTH_SHORT).show();
@@ -81,3 +79,14 @@ public class SplashScreen extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+

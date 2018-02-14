@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="bits.Mac.ICEF.MainActivity"
+        tools:context="com.Mac.ICEF.MainActivity"
         tools:showIn="@layout/app_bar_main">
 
 

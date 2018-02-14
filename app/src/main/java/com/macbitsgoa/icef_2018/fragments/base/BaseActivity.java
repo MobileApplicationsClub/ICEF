@@ -23,7 +23,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.View.BaseActivityCallback;
 
 

@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Main;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
 

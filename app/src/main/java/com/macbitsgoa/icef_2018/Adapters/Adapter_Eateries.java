@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.macbitsgoa.icef_2018.Lists.EateriesList;
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.ViewHolders.VH_Eateries;
 
 

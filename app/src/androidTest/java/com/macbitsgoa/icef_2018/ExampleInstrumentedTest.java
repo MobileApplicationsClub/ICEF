@@ -1,4 +1,4 @@
-package bits.macbitsgoa.icef_2018;
+package com.macbitsgoa.icef_2018;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

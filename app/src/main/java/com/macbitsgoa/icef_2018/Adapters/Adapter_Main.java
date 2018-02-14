@@ -23,9 +23,11 @@ import java.util.List;
 import java.util.Locale;
 import com.macbitsgoa.icef_2018.ICEF_HelperClass;
 import com.macbitsgoa.icef_2018.Lists.MainList;
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.ViewHolders.VH_main;
 import com.macbitsgoa.icef_2018.ViewHolders.VH_timer;
+
+import static com.macbitsgoa.icef_2018.ICEF_HelperClass.BOOK;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.EATERIES;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.FAQ;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.MAIN_SPEAKERS;
@@ -49,7 +51,7 @@ Context context;
         list.add(new MainList("PARTICIPANTS", "",R.drawable.parti, PARTICIPANTS));
         list.add(new MainList("EATERIES", "",R.drawable.eateries, EATERIES));
         list.add(new MainList("FAQ", "",R.drawable.siri, FAQ));
-
+        list.add(new MainList("Book Of Abstracts","",R.drawable.oldbooks,BOOK));
 
 
 

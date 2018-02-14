@@ -17,7 +17,7 @@ import com.macbitsgoa.icef_2018.View.batch_model;
 
 import java.util.ArrayList;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 
 public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batch_VH> {

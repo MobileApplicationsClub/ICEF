@@ -13,7 +13,7 @@ import com.macbitsgoa.icef_2018.Speakers;
 import java.util.Vector;
 
 import com.macbitsgoa.icef_2018.Lists.SpeakersList;
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 /**
  * Created by aayush on 1/1/18.

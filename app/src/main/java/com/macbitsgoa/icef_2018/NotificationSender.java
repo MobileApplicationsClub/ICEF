@@ -30,8 +30,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import bits.macbitsgoa.icef_2018.R;
-
 public class NotificationSender extends AppCompatActivity {
     EditText textView;
     boolean b=false;
@@ -58,26 +56,23 @@ public class NotificationSender extends AppCompatActivity {
 
                 FirebaseMessaging.getInstance().subscribeToTopic("Message");
 
-                String pName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 RemoteMessage.Builder creator = new RemoteMessage.Builder("Message");
                 creator.addData("Message", message);
 
 
                 try {
-                    Log.e("noti","ENTERED");
 
                     URL url = new URL("https://fcm.googleapis.com/fcm/send");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
                     connection.setRequestProperty("Content-Type", "application/json");
-                    connection.setRequestProperty("Authorization", "key=AAAAOZ05D4Q:APA91bFj006ZDIsv5iUHUT5rsgM8OHknzZUna7qXEbOXCtlKjeV5ZN-oGcF2sH9EH3oEEJMZ852DZQdwRq34pXeNin7oIaSTUUKw9NgK4lwL-xqfp7IqmuwUWFb3oYmtiqlUSaWmq1X7");
+                    connection.setRequestProperty("Authorization", "key=AAAAOZ05D4Q:APA91bE-WLPZ21lxq8m5zPnZ73aeNDoP9KBZCVGJMPH3GstuFUdNEXLSYD8umq-PN_6cd4wPWhc5EqfzqbDM77o7TYFpjdAdM9rB4Hl6TVBXrHIf37LS_kgufgRF8W8QtGs-fDek--Dd");
                     connection.setDoOutput(true);
                     connection.connect();
                     Log.e("noti","CONNECTED");
 
 
                     DataOutputStream os = new DataOutputStream(connection.getOutputStream());
-                    OutputStreamWriter writer = new OutputStreamWriter(os);
 
 
                     Map<String, Object> data = new HashMap<String, Object>();
@@ -93,7 +88,7 @@ public class NotificationSender extends AppCompatActivity {
 
                     Log.e("noti","s:"+s2);
 
-
+                    //recieving response
                     InputStream is = connection.getInputStream();
                     BufferedReader rd = new BufferedReader(new InputStreamReader(is));
                     StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
@@ -105,9 +100,11 @@ public class NotificationSender extends AppCompatActivity {
 
                     Log.e("noti","r:"+response.toString());
 
-                    textView.setText("");
-                    Snackbar.make(textView,"Notification sent succesfully",Snackbar.LENGTH_LONG).show();
-                    b=true;
+
+                   b=true;
+                   textView.setText("");
+                    Snackbar.make(textView,"Sent",Snackbar.LENGTH_LONG).show();
+
                 } catch (Exception e) {
 
                     Snackbar.make(textView,"Check your internet connection",Snackbar.LENGTH_LONG).show();
@@ -115,6 +112,7 @@ public class NotificationSender extends AppCompatActivity {
                     e.printStackTrace();
 
                 }
+
                 if(b){
                     DatabaseReference firebaseDatabase= FirebaseDatabase.getInstance().getReference().child("Notifications").push();
                     String key=firebaseDatabase.getKey();

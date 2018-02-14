@@ -3,21 +3,20 @@ package com.macbitsgoa.icef_2018.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Tabs_Contacts;
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
 
 public class Contact extends BaseFragment {
 
 
-    FragmentPagerAdapter adapterViewPager;
+    Adapter_Tabs_Contacts adapterViewPager;
 
 
     public Contact() {
@@ -48,6 +47,8 @@ public class Contact extends BaseFragment {
 
         return view;
     }
+
+
 
 
     }

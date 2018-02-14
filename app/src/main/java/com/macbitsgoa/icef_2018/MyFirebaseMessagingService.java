@@ -13,8 +13,6 @@ import android.widget.RemoteViews;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import bits.macbitsgoa.icef_2018.R;
-
 /**
  * Created by aayush on 6/2/18.
  */
@@ -34,6 +32,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
     }
 
     private void sendMyNotification(String message) {
+        Log.e("msg","OnMessageRecieved called");
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -72,13 +71,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         notificationManager.notify(1,notification);
 
 
+
+
     }
             //not working
             @Override
             public void onMessageSent(String msgID) {
                 Log.e("wouter", "##########onMessageSent: " + msgID );
             super.onMessageSent(msgID);
-            Snackbar.make(null,"Message sent",Snackbar.LENGTH_LONG).show();
+                Snackbar.make(null,"Message sent",Snackbar.LENGTH_LONG).show();
 
         }
 

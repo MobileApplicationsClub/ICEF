@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.macbitsgoa.icef_2018.OLDBOOK;
 import com.macbitsgoa.icef_2018.Speakers;
 import com.macbitsgoa.icef_2018.Timeline;
 
@@ -17,8 +18,9 @@ import com.macbitsgoa.icef_2018.Faq;
 import com.macbitsgoa.icef_2018.Lists.MainList;
 import com.macbitsgoa.icef_2018.Main_Eateries;
 import com.macbitsgoa.icef_2018.Participants;
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
+import static com.macbitsgoa.icef_2018.ICEF_HelperClass.BOOK;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.DATES;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.EATERIES;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.FAQ;
@@ -75,7 +77,10 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
        }else if (list.get(getAdapterPosition() - 1).getId().equals(PARTICIPANTS)) {
            Intent ParticipantActivity = new Intent(context, Participants.class);
            context.startActivity(ParticipantActivity);
-       }
+       }else if (list.get(getAdapterPosition() - 1).getId().equals(BOOK)) {
+           new OLDBOOK(context);
+
+                  }
 
        }
 

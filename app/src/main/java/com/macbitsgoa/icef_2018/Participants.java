@@ -24,8 +24,6 @@ import java.util.Vector;
 
 import com.macbitsgoa.icef_2018.Lists.ParticipantList;
 
-import bits.macbitsgoa.icef_2018.R;
-
 public class Participants extends AppCompatActivity {
 
     RecyclerView recyclerView;

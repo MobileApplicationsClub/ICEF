@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries_Details;
 
-import bits.macbitsgoa.icef_2018.R;
 import jp.wasabeef.blurry.Blurry;
 
 

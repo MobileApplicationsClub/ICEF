@@ -1,6 +1,6 @@
 package com.macbitsgoa.icef_2018.Lists;
 
-import bits.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.R;
 
 /**
  * Created by aayush on 18/12/17.
