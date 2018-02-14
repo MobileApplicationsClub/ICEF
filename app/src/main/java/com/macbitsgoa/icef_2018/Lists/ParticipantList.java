@@ -11,45 +11,47 @@ public class ParticipantList {
     private String id;
     private String college;
 
-    public ParticipantList(){}
+    public ParticipantList() {
+    }
 
-    public ParticipantList(String name,String college,String room,String id){
-        this.id=id;
-        this.room=room;
-        this.college=college;
-        this.name=name;
+    public ParticipantList(String name, String college, String room, String id) {
+        this.id = id;
+        this.room = room;
+        this.college = college;
+        this.name = name;
     }
 
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getRoom(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRoom() {
         return room;
     }
 
-    public String getID(){
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getID() {
         return id;
     }
 
-    public String getCollege(){
+    public void setID(String id) {
+        this.id = id;
+    }
+
+    public String getCollege() {
         return college;
     }
 
-    public void setName(String name){
-        this.name=name;
-    }
-
-
-    public void setRoom(String room){
-        this.room=room;
-    }
-    public void setCollege(String college){
-        this.college=college;
-    }
-    public void setID(String id){
-        this.id=id;
+    public void setCollege(String college) {
+        this.college = college;
     }
 
 }

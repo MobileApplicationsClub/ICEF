@@ -10,25 +10,24 @@ public class SepaeratorDecoration extends RecyclerView.ItemDecoration {
 
     int selectedItem;
 
-    public SepaeratorDecoration(Context context,int selectedItem) {
-        this.selectedItem=selectedItem;
+    public SepaeratorDecoration(Context context, int selectedItem) {
+        this.selectedItem = selectedItem;
 
-        }
+    }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
 
-        View child=parent.getLayoutManager().findViewByPosition(selectedItem);
+        View child = parent.getLayoutManager().findViewByPosition(selectedItem);
 
-        if(view == child){
-            outRect.set(8,0,8,80);
+        if (view == child) {
+            outRect.set(8, 0, 8, 80);
 
-        }else{
+        } else {
 
-            outRect.set(8,80,8,0);
+            outRect.set(8, 80, 8, 0);
         }
-
 
 
     }

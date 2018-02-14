@@ -10,31 +10,29 @@ public class NotificationList {
     private String dt;
 
 
-    public NotificationList(){
+    public NotificationList() {
 
     }
 
-    public NotificationList(String message,String dt){
-        this.message=message;
-        this.dt=dt;
+    public NotificationList(String message, String dt) {
+        this.message = message;
+        this.dt = dt;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-    public String getDt(){
+    public String getDt() {
         return dt;
     }
 
-    public void setMessage(String message){
-        this.message=message;
-    }
-
-
-    public void setDt(String dt){
-        this.dt=dt;
+    public void setDt(String dt) {
+        this.dt = dt;
     }
 
 }

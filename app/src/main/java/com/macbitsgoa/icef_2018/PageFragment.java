@@ -46,50 +46,48 @@ import java.util.Vector;
 
 public class PageFragment extends Fragment {
     private static final String ARG_PAGE_NUMBER = "page_number";
-    Vector<TimelineList> vector=new Vector<>();
+    Vector<TimelineList> vector = new Vector<>();
     Adapter_Timeline adapter_timeline;
     RecyclerView recyclerView;
     String mChild;
-    public PageFragment(){
+
+    public PageFragment() {
 
     }
 
     @SuppressLint("ValidFragment")
-    public PageFragment(String mChild){
-        this.mChild=mChild;
+    public PageFragment(String mChild) {
+        this.mChild = mChild;
 
     }
 
     public static PageFragment getItem(String mChild) {
-        PageFragment fragment = new PageFragment(mChild);
-       // bundle=new Bundle();
-       // bundle.putString("mChild",mChild);
-        return fragment;
+        // bundle=new Bundle();
+        // bundle.putString("mChild",mChild);
+        return new PageFragment(mChild);
 
     }
-
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_pager, container, false);
-        adapter_timeline=new Adapter_Timeline(vector,getActivity());
-        recyclerView=rootView.findViewById(R.id.timeline_rv);
+        adapter_timeline = new Adapter_Timeline(vector, getActivity());
+        recyclerView = rootView.findViewById(R.id.timeline_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter_timeline);
 
 
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline").child(mChild);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Timeline").child(mChild);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 vector.clear();
-                for(DataSnapshot shot:dataSnapshot.getChildren()){
+                for (DataSnapshot shot : dataSnapshot.getChildren()) {
 
                     vector.add(shot.getValue(TimelineList.class));
 
@@ -109,25 +107,25 @@ public class PageFragment extends Fragment {
 }
 
 
-class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Vector<TimelineList> vector;
     Context mContext;
     VH_Timeline_RV_1 vh_timeline_rv_1;
 
 
-    public Adapter_Timeline(){
+    public Adapter_Timeline() {
 
     }
 
-    public Adapter_Timeline(Vector<TimelineList> vector,Context mContext){
-            this.vector=vector;
-            this.mContext=mContext;
+    public Adapter_Timeline(Vector<TimelineList> vector, Context mContext) {
+        this.vector = vector;
+        this.mContext = mContext;
     }
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -135,12 +133,12 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         Log.e("msh1.", String.valueOf(viewType));
 
-        if(viewType == 0) {
-           view  = inflater.inflate(R.layout.item_timeline_rv, parent, false);
+        if (viewType == 0) {
+            view = inflater.inflate(R.layout.item_timeline_rv, parent, false);
             viewHolder = new VH_Timeline_RV(view, mContext);
-        }else {
+        } else {
             view = inflater.inflate(R.layout.item_timeline_rv_1, parent, false);
-           viewHolder = new VH_Timeline_RV_1(view,mContext);
+            viewHolder = new VH_Timeline_RV_1(view, mContext);
         }
 
 
@@ -149,9 +147,8 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
 
-
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return vector.size();
     }
 
@@ -196,21 +193,18 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
 
 
-
-    }   }
-
-
+    }
+}
 
 
-
- class VH_Timeline_RV extends RecyclerView.ViewHolder   {
+class VH_Timeline_RV extends RecyclerView.ViewHolder {
     TextView location;
     TextView time;
     TextView details;
     TextView event;
     ImageView b_location;
     ImageView b_time;
-    ImageView   b_event;
+    ImageView b_event;
     SimpleDraweeView simpleDraweeView;
     View decoration;
     View border;
@@ -219,42 +213,40 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public VH_Timeline_RV(View itemView, final Context mContext) {
         super(itemView);
 
-      location=itemView.findViewById(R.id.TV_location);
-            time=itemView.findViewById(R.id.TV_time);
-            details=itemView.findViewById(R.id.TV_details);
-            event=itemView.findViewById(R.id.Event_name);
-            b_location= itemView.findViewById(R.id.b_location);
-            b_time= itemView.findViewById(R.id.b_time);
-            b_event= itemView.findViewById(R.id.b_details);
-            decoration=itemView.findViewById(R.id.decoration);
-            simpleDraweeView=itemView.findViewById(R.id.image_event);
-            border=itemView.findViewById(R.id.back);
+        location = itemView.findViewById(R.id.TV_location);
+        time = itemView.findViewById(R.id.TV_time);
+        details = itemView.findViewById(R.id.TV_details);
+        event = itemView.findViewById(R.id.Event_name);
+        b_location = itemView.findViewById(R.id.b_location);
+        b_time = itemView.findViewById(R.id.b_time);
+        b_event = itemView.findViewById(R.id.b_details);
+        decoration = itemView.findViewById(R.id.decoration);
+        simpleDraweeView = itemView.findViewById(R.id.image_event);
+        border = itemView.findViewById(R.id.back);
 
-            Random rand = new Random();
-            int r = rand.nextInt(255);
-            int g = rand.nextInt(255);
-            int b = rand.nextInt(255);
-            int randomAndroidColor = Color.rgb(r,g,b);
+        Random rand = new Random();
+        int r = rand.nextInt(255);
+        int g = rand.nextInt(255);
+        int b = rand.nextInt(255);
+        int randomAndroidColor = Color.rgb(r, g, b);
 
-            RoundingParams roundingParams = RoundingParams.fromCornersRadius(20f);
-            roundingParams.setBorder(randomAndroidColor, 4.0f);
-            simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
+        RoundingParams roundingParams = RoundingParams.fromCornersRadius(20f);
+        roundingParams.setBorder(randomAndroidColor, 4.0f);
+        simpleDraweeView.getHierarchy().setRoundingParams(roundingParams);
 
-            decoration.setBackgroundColor(randomAndroidColor);
+        decoration.setBackgroundColor(randomAndroidColor);
 
-            b_event.setColorFilter(randomAndroidColor);
-            b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
+        b_event.setColorFilter(randomAndroidColor);
+        b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
 
-            b_location.setColorFilter(randomAndroidColor);
-            b_location.setImageResource(R.drawable.ic_mapicon);
+        b_location.setColorFilter(randomAndroidColor);
+        b_location.setImageResource(R.drawable.ic_mapicon);
 
-            b_time.setColorFilter(randomAndroidColor);
-            b_time.setImageResource(R.drawable.ic_access_time_black_24dp);
+        b_time.setColorFilter(randomAndroidColor);
+        b_time.setImageResource(R.drawable.ic_access_time_black_24dp);
 
 
     }
-
-
 
 
 }
@@ -301,7 +293,6 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
         b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
 
 
-
         b_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -314,44 +305,43 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
                 mProgressDialog.setCancelable(true);
 
 // execute this when the downloader must be fired
-         FirebaseDatabase.getInstance().getReference().child("Url").addListenerForSingleValueEvent(new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                 String url=dataSnapshot.getValue(String.class);
-                 if(url.equals("no")){
+                FirebaseDatabase.getInstance().getReference().child("Url").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String url = dataSnapshot.getValue(String.class);
+                        if (url.equals("no")) {
 
-                     Toast.makeText(mContext,"File will be availabe soon to download",Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext, "File will be availabe soon to download", Toast.LENGTH_LONG).show();
 
-                 }else {
-                     Log.e("URL",url);
-                     downloadTask = new DownloadTask(mContext,url);
-                     downloadTask.execute();
+                        } else {
+                            Log.e("URL", url);
+                            downloadTask = new DownloadTask(mContext, url);
+                            downloadTask.execute();
 
-                     mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                         @Override
-                         public void onCancel(DialogInterface dialog) {
-                             downloadTask.cancel(true);
+                            mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    downloadTask.cancel(true);
 
-                         }
-                     });
-                     
-                 
-             }}
+                                }
+                            });
 
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
 
-             }
-         });    
-             
-             
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
         });
 
 
-
     }
-
 
 
     private class DownloadTask extends AsyncTask<String, Integer, String> {
@@ -360,9 +350,9 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
         private PowerManager.WakeLock mWakeLock;
         private String URL;
 
-        public DownloadTask(Context context,String URL) {
+        public DownloadTask(Context context, String URL) {
             this.context = context;
-            this.URL=URL;
+            this.URL = URL;
         }
 
         @Override
@@ -388,7 +378,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
 
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(Environment.getExternalStorageDirectory()+"/Schedule.pdf");
+                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -448,13 +438,13 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
         protected void onPostExecute(String result) {
             mWakeLock.release();
             mProgressDialog.dismiss();
-            
+
             if (result != null)
-                Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Download error: " + result, Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(context,"File downloaded", Toast.LENGTH_SHORT).show();
-            File file = new File(Environment.getExternalStorageDirectory()+"/Schedule.pdf");
-          
+                Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
+            File file = new File(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
+
             //  Uri path = Uri.fromFile(file);
           /*  Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".my.package.name.provider", file);
 

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,13 +34,12 @@ public class Speakers extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     public static SectionsPagerAdapter mSectionsPagerAdapter;
-
+    public static ViewPager mViewPager;
+    static int position;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     public int pixels;
-    static int position;
-    public static ViewPager mViewPager;
     Adapter_Speakers_rv adapter_speakers_rv;
     LinearLayoutManager layoutManager;
     RecyclerView recyclerView;
@@ -53,7 +51,6 @@ public class Speakers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
         setContentView(R.layout.activity_speakers);
         //hide();
         position = 0;

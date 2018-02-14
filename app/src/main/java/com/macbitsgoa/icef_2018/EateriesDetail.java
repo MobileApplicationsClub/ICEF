@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import jp.wasabeef.blurry.Blurry;
 
 
-
 public class EateriesDetail extends AppCompatActivity {
 
     String eatery;
@@ -42,13 +41,10 @@ public class EateriesDetail extends AppCompatActivity {
     TextView timings;
     TextView current;
     TextView count;
-    private ProgressBar spinner;
     ImageButton Call;
     ImageButton location;
-
-
     DatabaseReference ref;
-
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +57,13 @@ public class EateriesDetail extends AppCompatActivity {
         mContainer = findViewById(R.id.Container);
         mViewPager = findViewById(R.id.ViewPager);
 
-        fab=findViewById(R.id.fab);
-        Call=findViewById(R.id.Call);
-        location=findViewById(R.id.location);
+        fab = findViewById(R.id.fab);
+        Call = findViewById(R.id.Call);
+        location = findViewById(R.id.location);
         spinner = findViewById(R.id.progressBar1);
-        timings=findViewById(R.id.Timing);
-        count=findViewById(R.id.count);
-        current=findViewById(R.id.current);
+        timings = findViewById(R.id.Timing);
+        count = findViewById(R.id.count);
+        current = findViewById(R.id.current);
 
         spinner.setVisibility(View.VISIBLE);
         eatery = getIntent().getStringExtra("EATERY");
@@ -80,17 +76,16 @@ public class EateriesDetail extends AppCompatActivity {
         mViewPager.setOffscreenPageLimit(5);
 
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
 
-
-            ref.addValueEventListener(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 arrayList.clear();
-                count.setText(String.valueOf(snapshot.getChildrenCount()-2));
+                count.setText(String.valueOf(snapshot.getChildrenCount() - 2));
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
                     String abc = postSnapshot.getValue(String.class);
@@ -119,7 +114,7 @@ public class EateriesDetail extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                current.setText(String.valueOf(position+1));
+                current.setText(String.valueOf(position + 1));
             }
 
             @Override
@@ -158,7 +153,7 @@ public class EateriesDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+arrayList.get(0)));
+                intent.setData(Uri.parse("tel:" + arrayList.get(0)));
                 startActivity(intent);
             }
         });
@@ -166,21 +161,17 @@ public class EateriesDetail extends AppCompatActivity {
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           Intent intent=new Intent(mcontext,BPGCMapsActivity.class);
-                intent.putExtra("Location",eatery);
+                Intent intent = new Intent(mcontext, BPGCMapsActivity.class);
+                intent.putExtra("Location", eatery);
                 startActivity(intent);
-        }
+            }
         });
 
 
-
     }
 
 
-
-
-
-    }
+}
 
 
 

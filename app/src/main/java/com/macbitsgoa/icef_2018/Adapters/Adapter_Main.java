@@ -44,18 +44,17 @@ import static com.macbitsgoa.icef_2018.ICEF_HelperClass.PARTICIPANTS;
 public class Adapter_Main extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<MainList> list = new ArrayList<>();
-Context context;
+    Context context;
 
     public Adapter_Main(Context context) {
 
-        this.context=context;
+        this.context = context;
         list.add(new MainList("TIMELINE", "", R.drawable.timeline, MAIN_TIMELINE));
-        list.add(new MainList("SPEAKERS", "",R.drawable.mic1, MAIN_SPEAKERS));
-        list.add(new MainList("PARTICIPANTS", "",R.drawable.parti, PARTICIPANTS));
-        list.add(new MainList("EATERIES", "",R.drawable.eateries, EATERIES));
-        list.add(new MainList("FAQ", "",R.drawable.siri, FAQ));
-        list.add(new MainList("Book Of Abstracts","",R.drawable.oldbooks,BOOK));
-
+        list.add(new MainList("SPEAKERS", "", R.drawable.mic1, MAIN_SPEAKERS));
+        list.add(new MainList("PARTICIPANTS", "", R.drawable.parti, PARTICIPANTS));
+        list.add(new MainList("EATERIES", "", R.drawable.eateries, EATERIES));
+        list.add(new MainList("FAQ", "", R.drawable.siri, FAQ));
+        list.add(new MainList("Book Of Abstracts", "", R.drawable.oldbooks, BOOK));
 
 
     }
@@ -165,7 +164,7 @@ Context context;
                 float pixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, resources.getDisplayMetrics());
                 ViewGroup.LayoutParams params = cv.daysText.getLayoutParams();
                 params.width = width;
-                params.height = (int)pixels;
+                params.height = (int) pixels;
                 cv.daysText.setLayoutParams(params);
                 cv.daysText.setGravity(Gravity.CENTER);
 
@@ -188,7 +187,6 @@ Context context;
             }
 
 
-
         } else if (holder.getItemViewType() == 1) {
 
 
@@ -203,6 +201,7 @@ Context context;
         }
 
     }
+
     @Override
     public int getItemViewType(int position) {
 
@@ -212,7 +211,6 @@ Context context;
         else
             return 1;
     }
-
 
 
     @Override

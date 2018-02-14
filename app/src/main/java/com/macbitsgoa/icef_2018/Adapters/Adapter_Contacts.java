@@ -26,7 +26,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
 
     public Adapter_Contacts(ArrayList<com.macbitsgoa.icef_2018.Lists.ContactList> list, Context context) {
         this.ContactList = list;
-        mContext=context;
+        mContext = context;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         holder.setNumber(current.getNumber());
         holder.setEmail(current.getEmail());
         holder.setDescription(current.getDescription());
-        holder.handleClick(position,mContext);
+        holder.handleClick(position, mContext);
 
     }
 
@@ -66,30 +66,28 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
     class batch_VH extends RecyclerView.ViewHolder {
 
 
-        public batch_VH(final View itemView) {
-            super(itemView);
-        }
         TextView number;
         TextView mail;
 
+        public batch_VH(final View itemView) {
+            super(itemView);
+        }
 
         public void handleClick(final int pos, final Context context) {
             final View desc = itemView.findViewById(R.id.Description);
 
 
-
-
-            number=itemView.findViewById(R.id.Number);
+            number = itemView.findViewById(R.id.Number);
             number.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+number.getText()));
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + number.getText()));
                     context.startActivity(intent);
                 }
             });
 
-           mail=itemView.findViewById(R.id.Mail);
+            mail = itemView.findViewById(R.id.Mail);
             mail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,35 +114,34 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
                 try {
                     Uri uri = Uri.parse(url);
                     imageView.setImageURI(uri);
-                }catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
         }
 
 
         public void setName(String name) {
-            Log.d("Tag",name);
+            Log.d("Tag", name);
             TextView name_view = itemView.findViewById(R.id.Name);
             name_view.setText(name);
         }
 
 
-
         public void setDescription(String details) {
-            Log.d("Tag",details);
+            Log.d("Tag", details);
             TextView description = itemView.findViewById(R.id.Description);
             description.setText(details);
         }
 
-        public void setNumber(String phone){
-            Log.d("Tag",phone);
-            TextView number=itemView.findViewById(R.id.Number);
+        public void setNumber(String phone) {
+            Log.d("Tag", phone);
+            TextView number = itemView.findViewById(R.id.Number);
             number.setText(phone);
         }
 
-        public void setEmail(String Mail){
-            Log.d("Tag",Mail);
-            TextView mail=itemView.findViewById(R.id.Mail);
+        public void setEmail(String Mail) {
+            Log.d("Tag", Mail);
+            TextView mail = itemView.findViewById(R.id.Mail);
             mail.setText(Mail);
         }
 

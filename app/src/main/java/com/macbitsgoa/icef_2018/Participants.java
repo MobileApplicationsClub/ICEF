@@ -26,7 +26,7 @@ import java.util.Vector;
 public class Participants extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Vector<ParticipantList> vector=new Vector<>();
+    Vector<ParticipantList> vector = new Vector<>();
     Adapter_Participants adapter_Participants;
 
     @Override
@@ -59,19 +59,19 @@ public class Participants extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         }
-        recyclerView=findViewById(R.id.RV_Participants);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView = findViewById(R.id.RV_Participants);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter_Participants=new Adapter_Participants(vector);
+        adapter_Participants = new Adapter_Participants(vector);
         recyclerView.setAdapter(adapter_Participants);
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Participants");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Participants");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 vector.clear();
 
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ParticipantList value = snapshot.getValue(ParticipantList.class);
                     vector.add(value);
                 }
@@ -86,22 +86,20 @@ public class Participants extends AppCompatActivity {
         });
 
 
-
     }
 }
 
 
-
-class Adapter_Participants extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter_Participants extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Vector<ParticipantList> vector;
 
 
-    public Adapter_Participants(){
+    public Adapter_Participants() {
     }
 
-    public Adapter_Participants(Vector<ParticipantList> vector){
-        this.vector=vector;
+    public Adapter_Participants(Vector<ParticipantList> vector) {
+        this.vector = vector;
     }
 
     @Override
@@ -114,15 +112,13 @@ class Adapter_Participants extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_participants, parent, false);
-        RecyclerView.ViewHolder viewHolder=new VH_Participants(view);
-        return viewHolder;
+        return new VH_Participants(view);
     }
-
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        VH_Participants abc=(VH_Participants)holder;
+        VH_Participants abc = (VH_Participants) holder;
         abc.id.setText(vector.get(position).getID());
         abc.room.setText(vector.get(position).getRoom());
         abc.university.setText(vector.get(position).getCollege());
@@ -132,11 +128,10 @@ class Adapter_Participants extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-
 }
 
 
-class VH_Participants extends RecyclerView.ViewHolder{
+class VH_Participants extends RecyclerView.ViewHolder {
     public TextView name;
     public TextView id;
     public TextView university;
@@ -145,10 +140,10 @@ class VH_Participants extends RecyclerView.ViewHolder{
 
     public VH_Participants(View itemView) {
         super(itemView);
-        room=itemView.findViewById(R.id.room);
-        id=itemView.findViewById(R.id.id);
-        university=itemView.findViewById(R.id.college);
-        name=itemView.findViewById(R.id.name);
-        simpleDraweeView=itemView.findViewById(R.id.simpleDraweeView);
+        room = itemView.findViewById(R.id.room);
+        id = itemView.findViewById(R.id.id);
+        university = itemView.findViewById(R.id.college);
+        name = itemView.findViewById(R.id.name);
+        simpleDraweeView = itemView.findViewById(R.id.simpleDraweeView);
     }
 }

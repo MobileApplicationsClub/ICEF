@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries;
 
 /**
@@ -20,15 +19,12 @@ import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries;
 @SuppressWarnings("ALL")
 public class Main_Eateries extends AppCompatActivity {
     RecyclerView recyclerView;
-Adapter_Eateries adapter;
+    Adapter_Eateries adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
-
         setContentView(R.layout.activity_eateries);
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

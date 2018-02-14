@@ -7,5 +7,5 @@ import android.support.v4.content.FileProvider;
  */
 
 @SuppressWarnings("ALL")
-public class GenericFileProvider extends FileProvider{
+public class GenericFileProvider extends FileProvider {
 }

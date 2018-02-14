@@ -31,7 +31,7 @@ import java.net.URL;
 
 @SuppressWarnings("ALL")
 public class BookOfAbstracts {
-    String url="";
+    String url = "";
     ProgressDialog mProgressDialog;
     DownloadTask downloadTask;
 
@@ -49,41 +49,42 @@ public class BookOfAbstracts {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 url = dataSnapshot.getValue(String.class);
-               if(url.equals("no")){
+                if (url.equals("no")) {
 
-                   Toast.makeText(mcontext,"File will be availabe soon to download",Toast.LENGTH_LONG).show();
+                    Toast.makeText(mcontext, "File will be availabe soon to download", Toast.LENGTH_LONG).show();
 
-               }else {
-                Log.e("URL",url);
-                downloadTask = new DownloadTask(mcontext, url);
-                downloadTask.execute();
+                } else {
+                    Log.e("URL", url);
+                    downloadTask = new DownloadTask(mcontext, url);
+                    downloadTask.execute();
 
-                mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        downloadTask.cancel(true);
+                    mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            downloadTask.cancel(true);
 
-                    }
-                    });}}
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                        }
+                    });
+                }
             }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
-        class DownloadTask extends AsyncTask<String, Integer, String> {
+    class DownloadTask extends AsyncTask<String, Integer, String> {
 
         private Context context;
         private PowerManager.WakeLock mWakeLock;
         private String URL;
 
-        public DownloadTask(Context context,String URL) {
+        public DownloadTask(Context context, String URL) {
             this.context = context;
-            this.URL=URL;
+            this.URL = URL;
         }
 
         @Override
@@ -109,7 +110,7 @@ public class BookOfAbstracts {
 
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(Environment.getExternalStorageDirectory()+"/BookOfAbstracts.pdf");
+                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/BookOfAbstracts.pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -172,11 +173,11 @@ public class BookOfAbstracts {
             mProgressDialog.dismiss();
 
             if (result != null)
-                Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Download error: " + result, Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(context,"File downloaded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
 
-           File file = new File(Environment.getExternalStorageDirectory()+"/BookOfAbstracts.pdf");
+            File file = new File(Environment.getExternalStorageDirectory() + "/BookOfAbstracts.pdf");
             //  Uri path = Uri.fromFile(file);
            /* Uri path = FileProvider.getUriForFile(context, "", file);
 

@@ -23,7 +23,7 @@ public class Adapter_Tabs_Contacts extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return 2;
-                //NUM_ITEMS;
+        //NUM_ITEMS;
     }
 
     // Returns the fragment to display for a particular page.
@@ -34,7 +34,7 @@ public class Adapter_Tabs_Contacts extends FragmentStatePagerAdapter {
                 return IcefContact.newInstance("Icef");
             //return IcefContact.newInstance("Admin");
             case 1:
-           // case 2:
+                // case 2:
                 return IcefContact.newInstance("Cabs");
             default:
                 return null;
@@ -44,9 +44,14 @@ public class Adapter_Tabs_Contacts extends FragmentStatePagerAdapter {
     // Returns the page title for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
-        if (position==1){return "CABS";}
-    if (position==0){return "ICEF";}
-    else{return "CABS";}
+        if (position == 1) {
+            return "CABS";
+        }
+        if (position == 0) {
+            return "ICEF";
+        } else {
+            return "CABS";
+        }
     }
 
 }

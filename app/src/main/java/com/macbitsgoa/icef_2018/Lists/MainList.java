@@ -9,30 +9,33 @@ import com.macbitsgoa.icef_2018.R;
 @SuppressWarnings("ALL")
 public class MainList {
 
-  //defining variables in an item
+    //defining variables in an item
     private String title;
     private String description;
     private int background;
     private String id;
 
 
-   //Constructor to add top most item
+    //Constructor to add top most item
     public MainList() {
         title = "Tides of Time";
         description = "Categories";
-        id="EVENT";
+        id = "EVENT";
         this.background = R.drawable.countdown;
     }
 
 
-    public MainList(String title, String description, int background, String id){
-        this.title=title;
-        this.background=background;
-        this.description=description;
-        this.id=id;}
+    public MainList(String title, String description, int background, String id) {
+        this.title = title;
+        this.background = background;
+        this.description = description;
+        this.id = id;
+    }
 
 
-    public String getTitle() {return title;}
+    public String getTitle() {
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;

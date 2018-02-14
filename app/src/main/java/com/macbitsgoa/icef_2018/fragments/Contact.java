@@ -22,10 +22,10 @@ public class Contact extends BaseFragment {
     public Contact() {
 
     }
+
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
-        BaseFragment fragment = new Contact();
-        return fragment;
+        return new Contact();
     }
 
     @Override
@@ -37,19 +37,16 @@ public class Contact extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_contact, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
         ViewPager vpPager = view.findViewById(R.id.vpPager);
         adapterViewPager = new Adapter_Tabs_Contacts(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 
 
-
         return view;
     }
 
 
-
-
-    }
+}
 

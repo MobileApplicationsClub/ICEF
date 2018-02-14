@@ -33,11 +33,11 @@ import static com.macbitsgoa.icef_2018.ICEF_HelperClass.PARTICIPANTS;
 
 @SuppressWarnings("ALL")
 public class VH_main extends RecyclerView.ViewHolder implements View.OnClickListener {
-    List<MainList> list;
-    private Context context;
     public TextView titleView;
     public TextView descView;
     public SimpleDraweeView image;
+    List<MainList> list;
+    private Context context;
 
     public VH_main(View itemView, Context context, List<MainList> list) {
         super(itemView);
@@ -45,7 +45,7 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
         this.list = list;
 
 
-       //finding Textfields for all views
+        //finding Textfields for all views
         titleView = itemView.findViewById(R.id.item_format_categories_title);
         descView = itemView.findViewById(R.id.item_format_categories_description);
         image = itemView.findViewById(R.id.item_format_categories_background);
@@ -55,36 +55,35 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
     }
 
 
+    @Override
+    public void onClick(View view) {
+        if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_TIMELINE)) {
+            Intent TimelineActivity = new Intent(context, Timeline.class);
+            context.startActivity(TimelineActivity);
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_SPEAKERS)) {
+            Intent SpeakersActivity = new Intent(context, Speakers.class);
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.simple_slide_in_right, R.anim.empty);
+            context.startActivity(SpeakersActivity, activityOptionsCompat.toBundle());
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(DATES)) {
+            Intent DatesActivity = new Intent(context, Main_Eateries.class);
+            context.startActivity(DatesActivity);
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(EATERIES)) {
+            Intent EateriesActivity = new Intent(context, Main_Eateries.class);
+            context.startActivity(EateriesActivity);
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(FAQ)) {
+            Intent FaqActivity = new Intent(context, Faq.class);
+            context.startActivity(FaqActivity);
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(PARTICIPANTS)) {
+            Intent ParticipantActivity = new Intent(context, Participants.class);
+            context.startActivity(ParticipantActivity);
+        } else if (list.get(getAdapterPosition() - 1).getId().equals(BOOK)) {
+            new BookOfAbstracts(context);
 
-   @Override
-    public void onClick(View view){
-       if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_TIMELINE)) {
-           Intent TimelineActivity = new Intent(context, Timeline.class);
-           context.startActivity(TimelineActivity);
-       } else if (list.get(getAdapterPosition() - 1).getId().equals(MAIN_SPEAKERS)) {
-           Intent SpeakersActivity = new Intent(context, Speakers.class);
-           ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.simple_slide_in_right, R.anim.empty);
-           context.startActivity(SpeakersActivity, activityOptionsCompat.toBundle());
-       } else if (list.get(getAdapterPosition() - 1).getId().equals(DATES)) {
-           Intent DatesActivity = new Intent(context, Main_Eateries.class);
-           context.startActivity(DatesActivity);
-       } else if (list.get(getAdapterPosition() - 1).getId().equals(EATERIES)) {
-           Intent EateriesActivity = new Intent(context, Main_Eateries.class);
-           context.startActivity(EateriesActivity);
-       } else if (list.get(getAdapterPosition() - 1).getId().equals(FAQ)) {
-           Intent FaqActivity = new Intent(context, Faq.class);
-           context.startActivity(FaqActivity);
-       }else if (list.get(getAdapterPosition() - 1).getId().equals(PARTICIPANTS)) {
-           Intent ParticipantActivity = new Intent(context, Participants.class);
-           context.startActivity(ParticipantActivity);
-       }else if (list.get(getAdapterPosition() - 1).getId().equals(BOOK)) {
-           new BookOfAbstracts(context);
+        }
 
-                  }
-
-       }
+    }
 
 
-   }
+}
 
 

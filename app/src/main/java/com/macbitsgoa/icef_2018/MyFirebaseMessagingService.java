@@ -18,22 +18,22 @@ import com.google.firebase.messaging.RemoteMessage;
  */
 
 @SuppressWarnings("ALL")
-public class MyFirebaseMessagingService extends FirebaseMessagingService{
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
-    public MyFirebaseMessagingService(){
+    public MyFirebaseMessagingService() {
         super();
     }
 
     @Override
-    public void onMessageReceived(RemoteMessage remoteMessage){
+    public void onMessageReceived(RemoteMessage remoteMessage) {
         sendMyNotification(remoteMessage.getData().get("Message"));
 
 
     }
 
     private void sendMyNotification(String message) {
-        Log.e("msg","OnMessageRecieved called");
+        Log.e("msg", "OnMessageRecieved called");
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -59,7 +59,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         expandedView.setTextViewText(R.id.title, "ICEF 2018");
         expandedView.setTextViewText(R.id.noti, message);
 
-        Notification notification = new NotificationCompat.Builder(this,"Message")
+        Notification notification = new NotificationCompat.Builder(this, "Message")
                 .setSmallIcon(R.drawable.bits)
                 .setAutoCancel(true)
                 .setContentIntent(resultPendingIntent)
@@ -69,28 +69,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
         notification.bigContentView = expandedView;
 
-        notificationManager.notify(1,notification);
-
-
+        notificationManager.notify(1, notification);
 
 
     }
-            //not working
-            @Override
-            public void onMessageSent(String msgID) {
-                Log.e("wouter", "##########onMessageSent: " + msgID );
-            super.onMessageSent(msgID);
-                Snackbar.make(null,"Message sent",Snackbar.LENGTH_LONG).show();
 
-        }
+    //not working
+    @Override
+    public void onMessageSent(String msgID) {
+        Log.e("wouter", "##########onMessageSent: " + msgID);
+        super.onMessageSent(msgID);
+        Snackbar.make(null, "Message sent", Snackbar.LENGTH_LONG).show();
 
-        //not working
-        @Override
-        public void onSendError(String msgID, Exception exception) {
-            Log.e("wouter", "onSendError ", exception );
+    }
 
-            Snackbar.make(null,"Message wasn't sent",Snackbar.LENGTH_LONG).show();
+    //not working
+    @Override
+    public void onSendError(String msgID, Exception exception) {
+        Log.e("wouter", "onSendError ", exception);
 
-            }
+        Snackbar.make(null, "Message wasn't sent", Snackbar.LENGTH_LONG).show();
+
+    }
 }
 

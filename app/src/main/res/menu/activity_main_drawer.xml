@@ -42,12 +42,6 @@
             android:icon="@drawable/ic_question_answer_black_24dp"
             android:title="Faq" />
 
-        <item
-            android:id="@+id/notification_sender"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="Notification Sender" />
-
-
     </group>
 
     <item android:title="Communicate">
@@ -61,10 +55,6 @@
                 android:icon="@drawable/ic_add_circle_outline_black_24dp"
                 android:title="Medical Aid" />
 
-            <item
-                android:id="@+id/sign_out_button"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Sign Out" />
         </menu>
     </item>
 

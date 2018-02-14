@@ -14,15 +14,17 @@ public class EateriesList {
     private String id;
 
 
+    public EateriesList(String title, String description, int background, String id) {
+        this.title = title;
+        this.background = background;
+        this.description = description;
+        this.id = id;
+    }
 
-    public EateriesList(String title,String description,int background,String id){
-        this.title=title;
-        this.background=background;
-        this.description=description;
-        this.id=id;}
 
-
-    public String getTitle() {return title;}
+    public String getTitle() {
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;

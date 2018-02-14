@@ -21,6 +21,7 @@ import java.util.Vector;
  * A placeholder fragment containing a simple view.
  */
 public class PlaceholderFragment extends Fragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -33,8 +34,7 @@ public class PlaceholderFragment extends Fragment {
     TextView desc;
     SimpleDraweeView image;
     int position;
-    Vector<SpeakersList> vector=new Vector<>();
-    private static final String ARG_SECTION_NUMBER = "section_number";
+    Vector<SpeakersList> vector = new Vector<>();
 
     public PlaceholderFragment() {
 
@@ -42,13 +42,12 @@ public class PlaceholderFragment extends Fragment {
 
     @SuppressLint("ValidFragment")
     public PlaceholderFragment(int position, Vector<SpeakersList> vector) {
-        this.vector=vector;
-        this.position=position;
+        this.vector = vector;
+        this.position = position;
     }
 
 
-
-    public static PlaceholderFragment newInstance(int sectionNumber,Vector<SpeakersList> vector) {
+    public static PlaceholderFragment newInstance(int sectionNumber, Vector<SpeakersList> vector) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -58,18 +57,16 @@ public class PlaceholderFragment extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_speakers, container, false);
 
-        name=rootView.findViewById(R.id.Name);
-        venue=rootView.findViewById(R.id.Venue);
-        desc=rootView.findViewById(R.id.Description);
-        timing=rootView.findViewById(R.id.Timing);
-        image=rootView.findViewById(R.id.image);
+        name = rootView.findViewById(R.id.Name);
+        venue = rootView.findViewById(R.id.Venue);
+        desc = rootView.findViewById(R.id.Description);
+        timing = rootView.findViewById(R.id.Timing);
+        image = rootView.findViewById(R.id.image);
 
 
         image.setImageURI(vector.get(position).getImageurl());
@@ -85,23 +82,22 @@ public class PlaceholderFragment extends Fragment {
 }
 
 
+class SectionsPagerAdapter extends FragmentPagerAdapter {
 
- class SectionsPagerAdapter extends FragmentPagerAdapter {
+    Vector<SpeakersList> vector = new Vector<>();
 
-    Vector<SpeakersList> vector=new Vector<>();
     public SectionsPagerAdapter(FragmentManager fm, Vector<SpeakersList> vector) {
         super(fm);
-        this.vector=vector;
+        this.vector = vector;
     }
 
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        Log.e("ABC",String.valueOf(position));
-        PlaceholderFragment placeholderFragment=new PlaceholderFragment(position,vector);
+        Log.e("ABC", String.valueOf(position));
 
-        return placeholderFragment;
+        return new PlaceholderFragment(position, vector);
     }
 
     @Override

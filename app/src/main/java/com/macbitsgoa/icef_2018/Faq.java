@@ -1,7 +1,7 @@
 package com.macbitsgoa.icef_2018;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +21,7 @@ import java.util.Vector;
 public class Faq extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Vector<FaqList> vector=new Vector<>();
+    Vector<FaqList> vector = new Vector<>();
     Adapter_Faq adapter_faq;
 
     @Override
@@ -29,18 +29,18 @@ public class Faq extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
 
-        recyclerView=findViewById(R.id.RV_FAQ);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView = findViewById(R.id.RV_FAQ);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter_faq=new Adapter_Faq(vector);
+        adapter_faq = new Adapter_Faq(vector);
         recyclerView.setAdapter(adapter_faq);
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("FAQ");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("FAQ");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 vector.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     FaqList value = snapshot.getValue(FaqList.class);
                     vector.add(value);
                 }
@@ -55,22 +55,20 @@ public class Faq extends AppCompatActivity {
         });
 
 
-
     }
 }
 
 
-
-class Adapter_Faq extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter_Faq extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Vector<FaqList> vector;
 
 
-    public Adapter_Faq(){
+    public Adapter_Faq() {
     }
 
-    public Adapter_Faq(Vector<FaqList> vector){
-        this.vector=vector;
+    public Adapter_Faq(Vector<FaqList> vector) {
+        this.vector = vector;
     }
 
     @Override
@@ -83,32 +81,29 @@ class Adapter_Faq extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_faq, parent, false);
-        RecyclerView.ViewHolder viewHolder=new VH_FAQ(view);
-        return viewHolder;
+        return new VH_FAQ(view);
     }
-
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        VH_FAQ abc=(VH_FAQ)holder;
+        VH_FAQ abc = (VH_FAQ) holder;
         abc.question.setText(vector.get(position).getQuestion());
         abc.answer.setText(vector.get(position).getAnswer());
 
     }
 
 
+}
 
+
+class VH_FAQ extends RecyclerView.ViewHolder {
+    public TextView answer;
+    public TextView question;
+
+    public VH_FAQ(View itemView) {
+        super(itemView);
+        question = itemView.findViewById(R.id.Question);
+        answer = itemView.findViewById(R.id.Answer);
     }
-
-
- class VH_FAQ extends RecyclerView.ViewHolder{
-     public TextView answer;
-     public TextView question;
-
-     public VH_FAQ(View itemView) {
-         super(itemView);
-       question=itemView.findViewById(R.id.Question);
-         answer=itemView.findViewById(R.id.Answer);
-     }
- }
+}

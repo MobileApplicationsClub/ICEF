@@ -56,13 +56,13 @@ public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public class VH_horizontal_rv extends RecyclerView.ViewHolder implements View.OnClickListener {
         SimpleDraweeView simpleDraweeView;
+
         public VH_horizontal_rv(View itemview) {
             super(itemview);
             simpleDraweeView = itemview.findViewById(R.id.imageholder);
             simpleDraweeView.setOnClickListener(this);
 
         }
-
 
 
         @Override
@@ -73,8 +73,7 @@ public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewH
 
         }
 
-             }
-
+    }
 
 
 }

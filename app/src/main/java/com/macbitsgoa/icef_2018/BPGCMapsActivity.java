@@ -38,9 +38,9 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
     LatLng rightTopBound = new LatLng(15.394957, 73.885857);
     LatLng centre = new LatLng(15.389557, 73.876974);
     FloatingActionButton mapfab;
-    private GoogleMap map;
     SupportMapFragment mapFragment;
     LatLng marker;
+    private GoogleMap map;
 
   /*  public BPGCMapsActivity(long lat,long lon){
         marker = new LatLng(lat, lon);
@@ -48,7 +48,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
 
     }*/
 
-    public BPGCMapsActivity(){
+    public BPGCMapsActivity() {
 
     }
 
@@ -171,7 +171,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
             } else if (location.equals("Basement")) {
                 LatLng marker = new LatLng(15.392650, 73.880128);
                 map.addMarker(new MarkerOptions().position(marker).title("Basement"));
-            }else if (location.equals(MESS_A)) {
+            } else if (location.equals(MESS_A)) {
                 LatLng marker = new LatLng(15.39304, 73.88051);
                 map.addMarker(new MarkerOptions().position(marker).title("Auditorium"));
             } else if (location.equals(MESS_C)) {
@@ -204,13 +204,13 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
             } else if (location.equals("DLT6")) {
                 LatLng marker = new LatLng(15.393423, 73.879933);
                 map.addMarker(new MarkerOptions().position(marker).title(location));
-            }else if (location.equals("D101")) {
+            } else if (location.equals("D101")) {
                 LatLng marker = new LatLng(15.393423, 73.879933);
                 map.addMarker(new MarkerOptions().position(marker).title(location));
-            }else if (location.equals("D104")) {
+            } else if (location.equals("D104")) {
                 LatLng marker = new LatLng(15.393423, 73.879933);
                 map.addMarker(new MarkerOptions().position(marker).title(location));
-            }else {
+            } else {
 
                 LatLng marker = new LatLng(15.39171, 73.87601);
                 map.addMarker(new MarkerOptions().position(marker).title("Pharmacy"));
@@ -322,7 +322,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
-    public void setCamera(){
+    public void setCamera() {
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(marker)      // Sets the center of the map to Mountain View
                 .zoom(16f)                   // Sets the zoom

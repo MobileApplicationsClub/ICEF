@@ -1,3 +1,0 @@
-# Referenced at /media/aayush/##DARK LORD/ICEF2018/app/build/intermediates/manifests/full/debug/AndroidManifest.xml:37
--keep class android.support.multidex.MultiDexApplication { <init>(...); }
-

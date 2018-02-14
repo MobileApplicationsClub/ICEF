@@ -19,7 +19,6 @@ import com.macbitsgoa.icef_2018.ViewHolders.ProgressBarHandler;
 public class BaseFragment extends Fragment {
 
 
-
     private BaseActivityCallback callback;
     private ProgressBarHandler progressBarHandler;
     private Snackbar snack;
@@ -49,8 +48,8 @@ public class BaseFragment extends Fragment {
         Toast.makeText(getContext(), message, toastType).show();
     }
 
-    public void showSnack(String message, int length) {
-        showSnack(message, length, getActivity().getWindow().getDecorView());
+    public void showSnack(String message) {
+        showSnack(message, Snackbar.LENGTH_LONG, getActivity().getWindow().getDecorView());
     }
 
     public void showSnack(String message, int length, View view) {
@@ -68,8 +67,8 @@ public class BaseFragment extends Fragment {
 
     }
 
-    public boolean showSnack(String message) {
-        showSnack(message, Snackbar.LENGTH_LONG);
+    public boolean showSnack() {
+        showSnack("Cannot fetch data");
         return true;
     }
 
@@ -93,7 +92,6 @@ public class BaseFragment extends Fragment {
     protected FragmentManager getSupportFragmentManager() {
         return getActivity().getSupportFragmentManager();
     }
-
 
 
     @Override

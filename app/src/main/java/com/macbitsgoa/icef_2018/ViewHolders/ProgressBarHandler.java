@@ -16,7 +16,6 @@ public class ProgressBarHandler {
     private ProgressBar mProgressBar;
 
     public ProgressBarHandler(Context context) {
-        Context mContext = context;
 
         ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(id.content).getRootView();
 

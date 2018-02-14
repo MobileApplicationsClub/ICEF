@@ -7,10 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.macbitsgoa.icef_2018.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import com.macbitsgoa.icef_2018.R;
+
 import uk.co.senab.photoview.PhotoView;
 
 
@@ -27,18 +28,18 @@ public class Adapter_Eateries_Details extends PagerAdapter {
         this.list = list;
     }
 
-    public Adapter_Eateries_Details(){
+    public Adapter_Eateries_Details() {
 
     }
 
     @Override
     public int getCount() {
-        return (list.size()-2);
+        return (list.size() - 2);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view ==  object;
+        return view == object;
     }
 
     @Override

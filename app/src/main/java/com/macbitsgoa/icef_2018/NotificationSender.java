@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class NotificationSender extends AppCompatActivity {
     EditText textView;
-    boolean b=false;
+    boolean b = false;
     String message;
 
     @Override
@@ -44,12 +44,12 @@ public class NotificationSender extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         final FloatingActionButton fab = findViewById(R.id.fab);
-         textView=findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message=textView.getText().toString();
+                message = textView.getText().toString();
 
 
                 FirebaseMessaging.getInstance().subscribeToTopic("Message");
@@ -67,7 +67,7 @@ public class NotificationSender extends AppCompatActivity {
                     connection.setRequestProperty("Authorization", "key=AAAAOZ05D4Q:APA91bE-WLPZ21lxq8m5zPnZ73aeNDoP9KBZCVGJMPH3GstuFUdNEXLSYD8umq-PN_6cd4wPWhc5EqfzqbDM77o7TYFpjdAdM9rB4Hl6TVBXrHIf37LS_kgufgRF8W8QtGs-fDek--Dd");
                     connection.setDoOutput(true);
                     connection.connect();
-                    Log.e("noti","CONNECTED");
+                    Log.e("noti", "CONNECTED");
 
 
                     DataOutputStream os = new DataOutputStream(connection.getOutputStream());
@@ -78,13 +78,13 @@ public class NotificationSender extends AppCompatActivity {
                     data.put("data", creator.build().getData());
 
                     JSONObject object = new JSONObject(data);
-                    Log.e("noti","o:"+object.toString());
+                    Log.e("noti", "o:" + object.toString());
 
                     String s2 = object.toString().replace("\\", "");
                     os.writeBytes(s2);
                     os.close();
 
-                    Log.e("noti","s:"+s2);
+                    Log.e("noti", "s:" + s2);
 
                     //recieving response
                     InputStream is = connection.getInputStream();
@@ -96,24 +96,24 @@ public class NotificationSender extends AppCompatActivity {
                     }
                     rd.close();
 
-                    Log.e("noti","r:"+response.toString());
+                    Log.e("noti", "r:" + response.toString());
 
 
-                   b=true;
-                   textView.setText("");
-                    Snackbar.make(textView,"Sent",Snackbar.LENGTH_LONG).show();
+                    b = true;
+                    textView.setText("");
+                    Snackbar.make(textView, "Sent", Snackbar.LENGTH_LONG).show();
 
                 } catch (Exception e) {
 
-                    Snackbar.make(textView,"Check your internet connection",Snackbar.LENGTH_LONG).show();
-                    Log.e("msg",e.getMessage());
+                    Snackbar.make(textView, "Check your internet connection", Snackbar.LENGTH_LONG).show();
+                    Log.e("msg", e.getMessage());
                     e.printStackTrace();
 
                 }
 
-                if(b){
-                    DatabaseReference firebaseDatabase= FirebaseDatabase.getInstance().getReference().child("Notifications").push();
-                    String key=firebaseDatabase.getKey();
+                if (b) {
+                    DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Notifications").push();
+                    String key = firebaseDatabase.getKey();
                     firebaseDatabase.child("key").setValue(key);
                     firebaseDatabase.child("message").setValue(message);
                     firebaseDatabase.child("dt").setValue(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
@@ -122,10 +122,6 @@ public class NotificationSender extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
 
     }

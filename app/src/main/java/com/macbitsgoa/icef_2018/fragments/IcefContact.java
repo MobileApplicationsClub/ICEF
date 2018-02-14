@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,50 +71,48 @@ public class IcefContact extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View mView= inflater.inflate(R.layout.fragment_icef_contact, container, false);
+        View mView = inflater.inflate(R.layout.fragment_icef_contact, container, false);
         RecyclerView mContactList = mView.findViewById(R.id.contactList);
-        Fresco.initialize(getActivity());
-        adapter = new Adapter_Contacts(ContactList,getContext());
+        adapter = new Adapter_Contacts(ContactList, getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(false);
         linearLayoutManager.setStackFromEnd(false);
-       // Snackbar.make(mView,"hgvhvukbukhklhn",Snackbar.LENGTH_LONG);
-        Log.e("msg","launched");
+        // Snackbar.make(mView,"hgvhvukbukhklhn",Snackbar.LENGTH_LONG);
+        Log.e("msg", "launched");
         mContactList.setLayoutManager(linearLayoutManager);
         mContactList.setAdapter(adapter);
         //if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
-            //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-            DatabaseReference mContacts = FirebaseDatabase.getInstance().getReference().child("Contact").child(mParam1);
-            mContacts.keepSynced(true);
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        DatabaseReference mContacts = FirebaseDatabase.getInstance().getReference().child("Contact").child(mParam1);
+        mContacts.keepSynced(true);
 
-            mContacts.addValueEventListener(new ValueEventListener() {
+        mContacts.addValueEventListener(new ValueEventListener() {
 
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    ContactList.clear();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        com.macbitsgoa.icef_2018.Lists.ContactList newItem = snapshot.getValue(com.macbitsgoa.icef_2018.Lists.ContactList.class);
-                        ContactList.add(newItem);
-                        Log.d("Tag",newItem.getName());
-                    }
-                    adapter.notifyDataSetChanged();
-
+                ContactList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    com.macbitsgoa.icef_2018.Lists.ContactList newItem = snapshot.getValue(com.macbitsgoa.icef_2018.Lists.ContactList.class);
+                    ContactList.add(newItem);
+                    Log.d("Tag", newItem.getName());
                 }
+                adapter.notifyDataSetChanged();
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    showSnack("Cannot fetch data");
-                    showToast(databaseError.getDetails());
-                    Log.d("db ref ", "Error");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                showSnack();
+                showToast(databaseError.getDetails());
+                Log.d("db ref ", "Error");
 
 
-                }
+            }
 
-            });
-
+        });
 
 
         return mView;
@@ -129,7 +126,7 @@ public class IcefContact extends BaseFragment {
                 }
 */
 
-        }
+}
 
 
 

@@ -22,7 +22,7 @@ import java.util.Vector;
 public class Notifications extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Vector<NotificationList> vector=new Vector<>();
+    Vector<NotificationList> vector = new Vector<>();
     Adapter_Notifications adapter_notifications;
 
     @Override
@@ -34,18 +34,18 @@ public class Notifications extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        recyclerView=findViewById(R.id.RV_Notifications);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView = findViewById(R.id.RV_Notifications);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter_notifications=new Adapter_Notifications(vector);
+        adapter_notifications = new Adapter_Notifications(vector);
         recyclerView.setAdapter(adapter_notifications);
 
-        Query databaseReference= FirebaseDatabase.getInstance().getReference().child("Notifications").orderByChild("dt");
+        Query databaseReference = FirebaseDatabase.getInstance().getReference().child("Notifications").orderByChild("dt");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 vector.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     NotificationList value = snapshot.getValue(NotificationList.class);
                     vector.add(value);
                 }
@@ -60,22 +60,20 @@ public class Notifications extends AppCompatActivity {
         });
 
 
-
     }
 }
 
 
-
-class Adapter_Notifications extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter_Notifications extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Vector<NotificationList> vector;
 
 
-    public Adapter_Notifications(){
+    public Adapter_Notifications() {
     }
 
-    public Adapter_Notifications(Vector<NotificationList> vector){
-        this.vector=vector;
+    public Adapter_Notifications(Vector<NotificationList> vector) {
+        this.vector = vector;
     }
 
     @Override
@@ -88,32 +86,29 @@ class Adapter_Notifications extends RecyclerView.Adapter<RecyclerView.ViewHolder
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_notifications, parent, false);
-        RecyclerView.ViewHolder viewHolder=new VH_NOTIFICATIONS(view);
-        return viewHolder;
+        return new VH_NOTIFICATIONS(view);
     }
-
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        VH_NOTIFICATIONS abc=(VH_NOTIFICATIONS)holder;
+        VH_NOTIFICATIONS abc = (VH_NOTIFICATIONS) holder;
         abc.message.setText(vector.get(position).getMessage());
         abc.time.setText(vector.get(position).getDt());
 
     }
 
 
-
 }
 
 
-class VH_NOTIFICATIONS extends RecyclerView.ViewHolder{
+class VH_NOTIFICATIONS extends RecyclerView.ViewHolder {
     public TextView message;
     public TextView time;
 
     public VH_NOTIFICATIONS(View itemView) {
         super(itemView);
-        message=itemView.findViewById(R.id.message);
-        time=itemView.findViewById(R.id.time);
+        message = itemView.findViewById(R.id.message);
+        time = itemView.findViewById(R.id.time);
     }
 }

@@ -22,14 +22,14 @@ import static android.content.ContentValues.TAG;
 public class AboutUs extends BaseFragment {
     String value;
     TextView editText;
+
     public AboutUs() {
         // Required empty public constructor
     }
 
 
     public static Fragment newInstance() {
-        BaseFragment fragment = new AboutUs();
-        return fragment;
+        return new AboutUs();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AboutUs extends BaseFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                 value = dataSnapshot.getValue(String.class);
+                value = dataSnapshot.getValue(String.class);
                 editText.setText(value);
                 Log.d(TAG, "Value is: " + value);
             }
@@ -60,12 +60,11 @@ public class AboutUs extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_about_us, container, false);
-         editText=view.findViewById(R.id.content_aboutus);
+        View view = inflater.inflate(R.layout.fragment_about_us, container, false);
+        editText = view.findViewById(R.id.content_aboutus);
 
-    return view;
+        return view;
     }
-
 
 
 }

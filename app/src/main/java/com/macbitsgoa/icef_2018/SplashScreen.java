@@ -20,6 +20,7 @@ import java.util.TimerTask;
 public class SplashScreen extends AppCompatActivity {
 
     private final int RC_PERM_REQ_EXT_STORAGE = 7;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
                     finish();
                 }
             }
-        },2000);
+        }, 2000);
 
     }
 

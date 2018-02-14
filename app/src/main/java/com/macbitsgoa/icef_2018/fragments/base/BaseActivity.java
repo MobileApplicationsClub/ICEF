@@ -137,9 +137,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
         Toast.makeText(BaseActivity.this, message, toastType).show();
     }
 
-   public Snackbar showSnack(String message, int length) {
+    public Snackbar showSnack(String message, int length) {
         try {
-            return showSnack(message, length,null);
+            return showSnack(message, length, null);
         } catch (Exception e) {
             return showSnack(message, length, getWindow().getDecorView());
         }
@@ -192,7 +192,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
             try {
                 progress.setMessage(message);
                 progress.show();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
@@ -251,7 +251,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
     protected void onDestroy() {
         try {
             unregisterReceiver(receiver);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         super.onDestroy();
     }

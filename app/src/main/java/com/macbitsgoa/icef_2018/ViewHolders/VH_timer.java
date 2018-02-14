@@ -49,7 +49,5 @@ public class VH_timer extends RecyclerView.ViewHolder {
         seconds = itemView.findViewById(R.id.seconds_text);
 
 
-
-
     }
 }

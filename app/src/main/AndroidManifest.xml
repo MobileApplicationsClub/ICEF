@@ -19,6 +19,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".ICEF2018"
         android:theme="@style/AppTheme">
         <service android:name="com.macbitsgoa.icef_2018.MyFirebaseMessagingService">
             <intent-filter>
@@ -90,11 +91,6 @@
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-      <!--  <activity
-            android:name="com.macbitsgoa.icef_2018.SignInActivity"
-            android:label="ICEF 2018"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name="com.macbitsgoa.icef_2018.SplashScreen"
             android:label="ICEF 2018"

@@ -10,40 +10,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Main;
 import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
 
-public class Dashboard extends BaseFragment
-      {
-        RecyclerView recyclerView;
-        Adapter_Main adapter;
-          public Dashboard() {
+public class Dashboard extends BaseFragment {
+    RecyclerView recyclerView;
+    Adapter_Main adapter;
+
+    public Dashboard() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
-        BaseFragment fragment = new Dashboard();
-        return fragment;
+        return new Dashboard();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        try {//Set up firebase to store data offline
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        } catch (Exception e) {
-        }
         Log.e("TAG", "" + FirebaseInstanceId.getInstance().getToken());
         //
 
 
-        }
+    }
 
 
     @Override
@@ -51,7 +44,7 @@ public class Dashboard extends BaseFragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view= inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         recyclerView = view.findViewById(R.id.RV_main);
         recyclerView.setHasFixedSize(true);
@@ -65,16 +58,10 @@ public class Dashboard extends BaseFragment
         adapter.notifyDataSetChanged();
 
 
-
-
         return view;
 
 
-
     }
-
-
-
 
 
 }

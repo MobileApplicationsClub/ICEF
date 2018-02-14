@@ -20,11 +20,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Timeline extends AppCompatActivity {
-    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference=firebaseDatabase.getReference().child("Timeline");
     static long Count;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = firebaseDatabase.getReference().child("Timeline");
     TabsPagerAdapter adapter;
     ViewPager pager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +59,8 @@ public class Timeline extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-              Count= dataSnapshot.getChildrenCount();
-                adapter= new TabsPagerAdapter(getSupportFragmentManager());
+                Count = dataSnapshot.getChildrenCount();
+                adapter = new TabsPagerAdapter(getSupportFragmentManager());
                 pager.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -88,14 +89,14 @@ class TabsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.e("pager1",String.valueOf(position));
-        return PageFragment.getItem("Day "+(position+1));
+        Log.e("pager1", String.valueOf(position));
+        return PageFragment.getItem("Day " + (position + 1));
 
     }
 
     @Override
     public int getCount() {
-        return (int)Timeline.Count;
+        return (int) Timeline.Count;
     }
 
     @Override
