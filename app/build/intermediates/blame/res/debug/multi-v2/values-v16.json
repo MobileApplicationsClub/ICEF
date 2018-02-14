@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "/media/aayush/##DARK LORD/ICEF2018/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "/home/aayush/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/495b673fa480400a314ded9d04eb1137/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/home/aayush/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/161499d254b950ec3c87eee1e4a81d03/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                }
+            ]
+        }
+    ]
+}

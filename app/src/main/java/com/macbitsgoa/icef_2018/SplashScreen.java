@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
                 if (checkPermission()) {
                     // Do not wait so that user doesn't realise this is a new launch.
 
-                    startActivity(new Intent(SplashScreen.this, SignInActivity.class));
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
                     finish();
                 }
             }

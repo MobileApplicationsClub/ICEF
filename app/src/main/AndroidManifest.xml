@@ -90,11 +90,11 @@
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
+      <!--  <activity
             android:name="com.macbitsgoa.icef_2018.SignInActivity"
             android:label="ICEF 2018"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name="com.macbitsgoa.icef_2018.SplashScreen"
             android:label="ICEF 2018"

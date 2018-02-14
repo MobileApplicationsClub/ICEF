@@ -113,6 +113,8 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     Vector<TimelineList> vector;
     Context mContext;
+    VH_Timeline_RV_1 vh_timeline_rv_1;
+
 
     public Adapter_Timeline(){
 
@@ -177,12 +179,19 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 break;
 
             case 1:
-                VH_Timeline_RV_1 vh_timeline_rv_1 = (VH_Timeline_RV_1) holder;
+                vh_timeline_rv_1 = (VH_Timeline_RV_1) holder;
                 vh_timeline_rv_1.location.setText(vector.get(position).getLocation());
                 vh_timeline_rv_1.time.setText(vector.get(position).getTime());
                 vh_timeline_rv_1.event.setText(vector.get(position).getName());
                 vh_timeline_rv_1.topic.setText(vector.get(position).getTopic());
 
+             /*   vh_timeline_rv_1.bpgcMapsActivity=new BPGCMapsActivity(vector.get(position).getLat(),vector.get(position).getLon());
+                vh_timeline_rv_1.location.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        vh_timeline_rv_1.bpgcMapsActivity.setCamera();
+                    }
+                });*/
                 break;
         }
 
@@ -263,6 +272,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     ImageView b_event;
     ProgressDialog mProgressDialog;
     DownloadTask downloadTask;
+    BPGCMapsActivity bpgcMapsActivity;
 
     public VH_Timeline_RV_1(View itemView, final Context mContext) {
         super(itemView);
@@ -289,6 +299,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
 
         b_event.setColorFilter(randomAndroidColor);
         b_event.setImageResource(R.drawable.ic_event_note_black_24dp);
+
 
 
         b_event.setOnClickListener(new View.OnClickListener() {
@@ -340,6 +351,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
 
 
     }
+
 
 
     private class DownloadTask extends AsyncTask<String, Integer, String> {

@@ -40,12 +40,13 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
     FloatingActionButton mapfab;
     private GoogleMap map;
     SupportMapFragment mapFragment;
+    LatLng marker;
 
-    public BPGCMapsActivity(long lat,long lon){
-        LatLng marker = new LatLng(lat, lon);
+  /*  public BPGCMapsActivity(long lat,long lon){
+        marker = new LatLng(lat, lon);
         map.addMarker(new MarkerOptions().position(marker));
 
-    }
+    }*/
 
     public BPGCMapsActivity(){
 
@@ -321,7 +322,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
-    public void setCamera(LatLng marker){
+    public void setCamera(){
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(marker)      // Sets the center of the map to Mountain View
                 .zoom(16f)                   // Sets the zoom

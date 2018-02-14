@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/media/aayush/##DARK LORD/ICEF2018/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "/home/aayush/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/161499d254b950ec3c87eee1e4a81d03/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

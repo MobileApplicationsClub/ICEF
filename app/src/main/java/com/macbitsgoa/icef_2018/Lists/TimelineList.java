@@ -1,5 +1,9 @@
 package com.macbitsgoa.icef_2018.Lists;
 
+import android.util.Log;
+
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by aayush on 16/1/18.
  */
@@ -8,22 +12,27 @@ package com.macbitsgoa.icef_2018.Lists;
 public class TimelineList {
 
     private String name;
-    private String location;
+    private long lat;
+    private long lon;
     private String time;
     private String description;
     private String image;
     private String topic;
     private String type;
+    private String location;
+
 
     public TimelineList(){
 
     }
 
-    public TimelineList(String name,String location,String time,String topic,String description,String image,String type){
+    public TimelineList(String name,String location, long lat,long lon, String time, String topic, String description, String image, String type){
         this.name=name;
         this.description=description;
         this.image=image;
         this.location=location;
+        this.lat=lat;
+        this.lon=lon;
         this.time=time;
         this.type=type;
         this.topic=topic;
@@ -53,6 +62,14 @@ public class TimelineList {
         return location;
     }
 
+    public long getLat(){
+        return lat;
+    }
+
+    public long getLon(){
+        return lon;
+    }
+
     public String getTime(){
         return time;
     }
@@ -78,8 +95,16 @@ public class TimelineList {
         this.topic=topic;
     }
 
-    public void setLocation(String location){
+    public void setLocation(String Location){
         this.location=location;
+    }
+
+    public void setLat(Long lat){
+        this.lat=lat;
+    }
+
+    public void setLon(Long lon){
+        this.lon=lon;
     }
 
     public void setType(String type){

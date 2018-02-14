@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.sign_out_button) {
-            FirebaseAuth.getInstance().signOut();
             finish();
             // Handle the camera action
         }else if (id == R.id.nav_timeline) {
