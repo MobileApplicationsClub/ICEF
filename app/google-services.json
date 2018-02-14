@@ -93,6 +93,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247450898308:android:9bfe49ceb0ea220a",
+        "android_client_info": {
+          "package_name": "com.macbitsgoa.icef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247450898308-uiugjvq4016orc38im8d30v2uats19um.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.macbitsgoa.icef",
+            "certificate_hash": "d10f53c806bcb7749d6e055c55a0cf8bed02ec00"
+          }
+        },
+        {
+          "client_id": "247450898308-f472lajp8k73dt1hi502rktbne6cpvjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4cLtFW6XwF13hMMpkWCIkm7xdEDMvezE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247450898308-f472lajp8k73dt1hi502rktbne6cpvjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"
