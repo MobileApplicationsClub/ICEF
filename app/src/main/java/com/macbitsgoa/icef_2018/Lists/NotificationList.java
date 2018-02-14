@@ -4,6 +4,7 @@ package com.macbitsgoa.icef_2018.Lists;
  * Created by aayush on 11/2/18.
  */
 
+@SuppressWarnings("ALL")
 public class NotificationList {
     private String message;
     private String dt;

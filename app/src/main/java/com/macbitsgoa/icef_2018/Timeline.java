@@ -40,7 +40,7 @@ public class Timeline extends AppCompatActivity {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
         if (myToolbar != null) {
@@ -71,7 +71,7 @@ public class Timeline extends AppCompatActivity {
         });
 
 
-        pager = (ViewPager) findViewById(R.id.pager);
+        pager = findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
 

@@ -4,6 +4,7 @@ package com.macbitsgoa.icef_2018;
  * Created by aayush on 17/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class ICEF_HelperClass {
     public final static String batch_extra = "batchID";
 

@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -22,7 +21,6 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -39,13 +37,13 @@ public class NotificationSender extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_sender);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = findViewById(R.id.fab);
          textView=findViewById(R.id.textView);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +73,7 @@ public class NotificationSender extends AppCompatActivity {
                     DataOutputStream os = new DataOutputStream(connection.getOutputStream());
 
 
-                    Map<String, Object> data = new HashMap<String, Object>();
+                    Map<String, Object> data = new HashMap<>();
                     data.put("to", "/topics/" + "Message");
                     data.put("data", creator.build().getData());
 

@@ -47,6 +47,10 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
+    public BPGCMapsActivity(){
+
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,7 @@ public class BPGCMapsActivity extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.bitsMap);
 
         mapFragment.getMapAsync(this);
-        mapfab = (FloatingActionButton) findViewById(R.id.fab_map);
+        mapfab = findViewById(R.id.fab_map);
 
         mapfab.setOnClickListener(new View.OnClickListener() {
             @Override

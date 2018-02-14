@@ -5,6 +5,7 @@ package com.macbitsgoa.icef_2018.Lists;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class EateriesList {
     //defining variables in an item
     private String title;

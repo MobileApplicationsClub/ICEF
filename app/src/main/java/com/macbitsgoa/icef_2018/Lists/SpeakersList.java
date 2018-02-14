@@ -4,6 +4,7 @@ package com.macbitsgoa.icef_2018.Lists;
  * Created by aayush on 1/1/18.
  */
 
+@SuppressWarnings("ALL")
 public class SpeakersList {
     private String name, venue, timings, description,imageurl;
     private double Lat,Long;

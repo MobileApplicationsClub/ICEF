@@ -17,6 +17,7 @@ import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class Main_Eateries extends AppCompatActivity {
     RecyclerView recyclerView;
 Adapter_Eateries adapter;
@@ -40,7 +41,7 @@ Adapter_Eateries adapter;
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
         if (myToolbar != null) {
@@ -56,7 +57,7 @@ Adapter_Eateries adapter;
         }
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.RV_Eateries);
+        recyclerView = findViewById(R.id.RV_Eateries);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

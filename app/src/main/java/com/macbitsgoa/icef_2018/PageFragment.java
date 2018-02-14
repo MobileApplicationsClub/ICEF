@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -215,9 +214,9 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             time=itemView.findViewById(R.id.TV_time);
             details=itemView.findViewById(R.id.TV_details);
             event=itemView.findViewById(R.id.Event_name);
-            b_location=(ImageView)itemView.findViewById(R.id.b_location);
-            b_time=(ImageView)itemView.findViewById(R.id.b_time);
-            b_event=(ImageView)itemView.findViewById(R.id.b_details);
+            b_location= itemView.findViewById(R.id.b_location);
+            b_time= itemView.findViewById(R.id.b_time);
+            b_event= itemView.findViewById(R.id.b_details);
             decoration=itemView.findViewById(R.id.decoration);
             simpleDraweeView=itemView.findViewById(R.id.image_event);
             border=itemView.findViewById(R.id.back);
@@ -268,7 +267,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     public VH_Timeline_RV_1(View itemView, final Context mContext) {
         super(itemView);
 
-        b_event = (ImageView) itemView.findViewById(R.id.b_details);
+        b_event = itemView.findViewById(R.id.b_details);
         location = itemView.findViewById(R.id.TV_location);
         time = itemView.findViewById(R.id.TV_time);
         details = itemView.findViewById(R.id.TV_details);

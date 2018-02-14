@@ -33,7 +33,7 @@
             android:textColor="@color/black"
             android:id="@+id/Event_name"
             android:hint="Speaker Name"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_margin="5dp"/>
 
 
@@ -43,7 +43,7 @@
             android:textColor="@color/grey700"
             android:id="@+id/topic"
             android:hint="Abstract Topic"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:layout_margin="5dp"/>
 
 
@@ -71,7 +71,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/transparent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="TODO" />
 
 
 

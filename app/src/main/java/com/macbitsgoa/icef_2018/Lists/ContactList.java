@@ -1,11 +1,11 @@
-package com.macbitsgoa.icef_2018.View;
+package com.macbitsgoa.icef_2018.Lists;
 
 
-public class batch_model {
+public class ContactList {
 
     private String key, image, name, number,description,Email;
 
-    public batch_model(String image, String name, String number, String description, String key,String Email) {
+    public ContactList(String image, String name, String number, String description, String key, String Email) {
         this.image = image;
         this.name = name;
        this.number= number;
@@ -14,7 +14,7 @@ public class batch_model {
         this.Email=Email;
     }
 
-    public batch_model() {
+    public ContactList() {
     }
 
 

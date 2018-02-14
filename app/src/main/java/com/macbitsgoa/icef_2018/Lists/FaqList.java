@@ -4,6 +4,7 @@ package com.macbitsgoa.icef_2018.Lists;
  * Created by aayush on 10/2/18.
  */
 
+@SuppressWarnings("ALL")
 public class FaqList {
     private String question;
     private String answer;

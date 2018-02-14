@@ -13,20 +13,18 @@ import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.macbitsgoa.icef_2018.View.batch_model;
+import com.macbitsgoa.icef_2018.R;
 
 import java.util.ArrayList;
-
-import com.macbitsgoa.icef_2018.R;
 
 
 public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batch_VH> {
     Context mContext;
-    private ArrayList<batch_model> ContactList = new ArrayList<>();
+    private ArrayList<com.macbitsgoa.icef_2018.Lists.ContactList> ContactList = new ArrayList<>();
     private SparseBooleanArray displayDetails = new SparseBooleanArray();
 
 
-    public Adapter_Contacts(ArrayList<batch_model> list,Context context) {
+    public Adapter_Contacts(ArrayList<com.macbitsgoa.icef_2018.Lists.ContactList> list, Context context) {
         this.ContactList = list;
         mContext=context;
     }
@@ -41,7 +39,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
 
     @Override
     public void onBindViewHolder(batch_VH holder, int position) {
-        batch_model current = ContactList.get(position);
+        com.macbitsgoa.icef_2018.Lists.ContactList current = ContactList.get(position);
         holder.setCoverImage(current.getImage());
         holder.setIntent(current.getKey());
         holder.setName(current.getName());

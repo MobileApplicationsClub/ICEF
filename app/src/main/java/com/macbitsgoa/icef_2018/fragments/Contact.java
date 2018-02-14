@@ -25,7 +25,7 @@ public class Contact extends BaseFragment {
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         BaseFragment fragment = new Contact();
-        return (Fragment)fragment;
+        return fragment;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Contact extends BaseFragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_contact, container, false);
 
-        ViewPager vpPager = (ViewPager) view.findViewById(R.id.vpPager);
+        ViewPager vpPager = view.findViewById(R.id.vpPager);
         adapterViewPager = new Adapter_Tabs_Contacts(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 

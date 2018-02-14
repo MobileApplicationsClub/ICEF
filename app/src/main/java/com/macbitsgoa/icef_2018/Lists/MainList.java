@@ -6,6 +6,7 @@ import com.macbitsgoa.icef_2018.R;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class MainList {
 
   //defining variables in an item

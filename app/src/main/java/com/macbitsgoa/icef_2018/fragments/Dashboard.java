@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Main;
-
 import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
@@ -29,7 +28,7 @@ public class Dashboard extends BaseFragment
     // TODO: Rename and change types and number of parameters
     public static Fragment newInstance() {
         BaseFragment fragment = new Dashboard();
-        return (Fragment) fragment;
+        return fragment;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Dashboard extends BaseFragment
 
         View view= inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.RV_main);
+        recyclerView = view.findViewById(R.id.RV_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
