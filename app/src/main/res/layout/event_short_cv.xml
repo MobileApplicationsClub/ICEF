@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    fresco:cardBackgroundColor="@color/colorPrimary"
+    fresco:cardBackgroundColor="@color/colorPrimaryDark"
     android:elevation="3dp"
     android:layout_margin="2dp"
     android:layout_marginBottom="5dp"
@@ -29,6 +29,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="center"
+            android:layout_gravity="center"
             fresco:roundAsCircle="true"
             android:layout_marginLeft="10dp"
             fresco:roundedCornerRadius="40dp"
@@ -67,9 +68,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
                 android:text="Lores ipsum..."
                 android:textColor="@color/white"
+
                 android:textSize="18sp" />
+            <TextView
+                android:id="@+id/Mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Lores ipsum..."
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
 
 
@@ -78,17 +91,6 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/Mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Lores ipsum..."
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"/>
 
 </LinearLayout>
 

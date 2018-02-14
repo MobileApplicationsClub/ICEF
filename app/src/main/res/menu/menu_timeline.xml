@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="bits.mac.icef_2018.Speakers">
+    tools:context="com.macbitsgoa.icef_2018.com.macbitsgoa.icef_2018.Speakers">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
