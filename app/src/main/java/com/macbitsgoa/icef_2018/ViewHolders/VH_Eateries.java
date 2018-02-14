@@ -11,15 +11,15 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.icef_2018.EateriesDetail;
 import com.macbitsgoa.icef_2018.ICEF_HelperClass;
 import com.macbitsgoa.icef_2018.Lists.EateriesList;
+import com.macbitsgoa.icef_2018.R;
 
 import java.util.List;
-
-import com.macbitsgoa.icef_2018.R;
 
 /**
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class VH_Eateries extends RecyclerView.ViewHolder implements View.OnClickListener {
    public TextView Title;
     public TextView desc;
@@ -27,13 +27,13 @@ public class VH_Eateries extends RecyclerView.ViewHolder implements View.OnClick
     List<EateriesList> list;
     Context context;
 
-    public VH_Eateries(View itemView,List list,Context context) {
+    public VH_Eateries(View itemView,List<EateriesList> list,Context context) {
         super(itemView);
         this.context=context;
         this.list=list;
-        Title=(TextView)itemView.findViewById(R.id.item_format_categories_title);
-        desc=(TextView)itemView.findViewById(R.id.item_format_categories_description);
-        image=(SimpleDraweeView)itemView.findViewById(R.id.item_format_categories_background);
+        Title= itemView.findViewById(R.id.item_format_categories_title);
+        desc= itemView.findViewById(R.id.item_format_categories_description);
+        image= itemView.findViewById(R.id.item_format_categories_background);
 
         image.setOnClickListener(this);
     }
@@ -52,7 +52,6 @@ public class VH_Eateries extends RecyclerView.ViewHolder implements View.OnClick
         } else if (list.get(getAdapterPosition()).getId().equals(ICEF_HelperClass.MESS_A)) {
             Intent intent = new Intent(context, EateriesDetail.class);
             intent.putExtra("EATERY", ICEF_HelperClass.MESS_A);
-            Toast.makeText(context,"clicked",Toast.LENGTH_LONG);
             context.startActivity(intent);
         } else if (list.get(getAdapterPosition()).getId().equals(ICEF_HelperClass.MESS_C)) {
             Intent intent = new Intent(context, EateriesDetail.class);

@@ -1,4 +1,4 @@
-package com.macbitsgoa.icef_2018.fragments.ContactFragments;
+package com.macbitsgoa.icef_2018.fragments;
 
 
 import android.os.Bundle;
@@ -17,12 +17,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Contacts;
-import com.macbitsgoa.icef_2018.View.batch_model;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
 import java.util.ArrayList;
-
-import com.macbitsgoa.icef_2018.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,8 +32,7 @@ public class IcefContact extends BaseFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     Adapter_Contacts adapter;
-    private RecyclerView mContactList;
-    private ArrayList<batch_model> ContactList = new ArrayList<>();;
+    private ArrayList<com.macbitsgoa.icef_2018.Lists.ContactList> ContactList = new ArrayList<>();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,7 +55,7 @@ public class IcefContact extends BaseFragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
-        return (Fragment)fragment;
+        return fragment;
     }
 
     @Override
@@ -76,7 +73,7 @@ public class IcefContact extends BaseFragment {
         // Inflate the layout for this fragment
 
         View mView= inflater.inflate(R.layout.fragment_icef_contact, container, false);
-        mContactList = mView.findViewById(R.id.contactList);
+        RecyclerView mContactList = mView.findViewById(R.id.contactList);
         Fresco.initialize(getActivity());
         adapter = new Adapter_Contacts(ContactList,getContext());
 
@@ -100,7 +97,7 @@ public class IcefContact extends BaseFragment {
 
                     ContactList.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        batch_model newItem = snapshot.getValue(batch_model.class);
+                        com.macbitsgoa.icef_2018.Lists.ContactList newItem = snapshot.getValue(com.macbitsgoa.icef_2018.Lists.ContactList.class);
                         ContactList.add(newItem);
                         Log.d("Tag",newItem.getName());
                     }

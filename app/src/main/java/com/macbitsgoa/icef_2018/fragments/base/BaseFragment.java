@@ -11,10 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.macbitsgoa.icef_2018.View.BaseActivityCallback;
-
+import com.macbitsgoa.icef_2018.BaseActivityCallback;
 import com.macbitsgoa.icef_2018.R;
-
 import com.macbitsgoa.icef_2018.ViewHolders.ProgressBarHandler;
 
 

@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.PowerManager;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -18,7 +16,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Downloader;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,12 +29,13 @@ import java.net.URL;
  * Created by aayush on 14/2/18.
  */
 
-public class OLDBOOK {
+@SuppressWarnings("ALL")
+public class BookOfAbstracts {
     String url="";
     ProgressDialog mProgressDialog;
     DownloadTask downloadTask;
 
-    public OLDBOOK(final Context mcontext) {
+    public BookOfAbstracts(final Context mcontext) {
 
         mProgressDialog = new ProgressDialog(mcontext);
         mProgressDialog.setMessage("Downloading");

@@ -2,16 +2,16 @@ package com.macbitsgoa.icef_2018.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.macbitsgoa.icef_2018.fragments.ContactFragments.IcefContact;
+import com.macbitsgoa.icef_2018.fragments.IcefContact;
 
 
 /**
  * Created by aayush on 9/11/17.
  */
 
+@SuppressWarnings("ALL")
 public class Adapter_Tabs_Contacts extends FragmentStatePagerAdapter {
     private static int NUM_ITEMS = 3;
 

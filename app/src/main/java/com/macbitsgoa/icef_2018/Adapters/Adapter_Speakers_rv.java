@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.macbitsgoa.icef_2018.Lists.SpeakersList;
+import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.Speakers;
 
 import java.util.Vector;
-
-import com.macbitsgoa.icef_2018.Lists.SpeakersList;
-import com.macbitsgoa.icef_2018.R;
 
 /**
  * Created by aayush on 1/1/18.
  */
 
+@SuppressWarnings("ALL")
 public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
     Vector<SpeakersList> vector;
@@ -58,7 +58,7 @@ public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewH
         SimpleDraweeView simpleDraweeView;
         public VH_horizontal_rv(View itemview) {
             super(itemview);
-            simpleDraweeView = (SimpleDraweeView) itemview.findViewById(R.id.imageholder);
+            simpleDraweeView = itemview.findViewById(R.id.imageholder);
             simpleDraweeView.setOnClickListener(this);
 
         }

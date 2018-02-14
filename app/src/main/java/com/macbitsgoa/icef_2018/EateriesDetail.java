@@ -3,12 +3,11 @@ package com.macbitsgoa.icef_2018;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -20,9 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries_Details;
 
 import java.util.ArrayList;
-import com.macbitsgoa.icef_2018.Adapters.Adapter_Eateries_Details;
 
 import jp.wasabeef.blurry.Blurry;
 
@@ -60,12 +59,12 @@ public class EateriesDetail extends AppCompatActivity {
         //finding Views
         mFullScreen = findViewById(R.id.fullscreen_content);
         mContainer = findViewById(R.id.Container);
-        mViewPager =(ViewPager) findViewById(R.id.ViewPager);
+        mViewPager = findViewById(R.id.ViewPager);
 
         fab=findViewById(R.id.fab);
         Call=findViewById(R.id.Call);
         location=findViewById(R.id.location);
-        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner = findViewById(R.id.progressBar1);
         timings=findViewById(R.id.Timing);
         count=findViewById(R.id.count);
         current=findViewById(R.id.current);

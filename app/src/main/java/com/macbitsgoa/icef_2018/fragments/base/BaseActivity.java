@@ -23,8 +23,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.macbitsgoa.icef_2018.BaseActivityCallback;
 import com.macbitsgoa.icef_2018.R;
-import com.macbitsgoa.icef_2018.View.BaseActivityCallback;
 
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseActivityCallback {

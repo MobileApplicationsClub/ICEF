@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.fragments.base.BaseFragment;
 
@@ -30,7 +29,7 @@ public class AboutUs extends BaseFragment {
 
     public static Fragment newInstance() {
         BaseFragment fragment = new AboutUs();
-        return (Fragment)fragment;
+        return fragment;
     }
 
     @Override

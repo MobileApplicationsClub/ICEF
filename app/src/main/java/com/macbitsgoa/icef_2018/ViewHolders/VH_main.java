@@ -8,17 +8,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.macbitsgoa.icef_2018.OLDBOOK;
-import com.macbitsgoa.icef_2018.Speakers;
-import com.macbitsgoa.icef_2018.Timeline;
-
-import java.util.List;
-
+import com.macbitsgoa.icef_2018.BookOfAbstracts;
 import com.macbitsgoa.icef_2018.Faq;
 import com.macbitsgoa.icef_2018.Lists.MainList;
 import com.macbitsgoa.icef_2018.Main_Eateries;
 import com.macbitsgoa.icef_2018.Participants;
 import com.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.Speakers;
+import com.macbitsgoa.icef_2018.Timeline;
+
+import java.util.List;
 
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.BOOK;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.DATES;
@@ -32,6 +31,7 @@ import static com.macbitsgoa.icef_2018.ICEF_HelperClass.PARTICIPANTS;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class VH_main extends RecyclerView.ViewHolder implements View.OnClickListener {
     List<MainList> list;
     private Context context;
@@ -46,9 +46,9 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
 
 
        //finding Textfields for all views
-        titleView = (TextView) itemView.findViewById(R.id.item_format_categories_title);
-        descView = (TextView) itemView.findViewById(R.id.item_format_categories_description);
-        image = (SimpleDraweeView) itemView.findViewById(R.id.item_format_categories_background);
+        titleView = itemView.findViewById(R.id.item_format_categories_title);
+        descView = itemView.findViewById(R.id.item_format_categories_description);
+        image = itemView.findViewById(R.id.item_format_categories_background);
 
         image.setOnClickListener(this);
 
@@ -78,7 +78,7 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
            Intent ParticipantActivity = new Intent(context, Participants.class);
            context.startActivity(ParticipantActivity);
        }else if (list.get(getAdapterPosition() - 1).getId().equals(BOOK)) {
-           new OLDBOOK(context);
+           new BookOfAbstracts(context);
 
                   }
 

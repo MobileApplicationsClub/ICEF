@@ -1,4 +1,4 @@
-package com.macbitsgoa.icef_2018.View;
+package com.macbitsgoa.icef_2018;
 
 import android.content.Context;
 

@@ -14,10 +14,9 @@ import android.widget.RelativeLayout.LayoutParams;
 public class ProgressBarHandler {
 
     private ProgressBar mProgressBar;
-    private Context mContext;
 
     public ProgressBarHandler(Context context) {
-        mContext = context;
+        Context mContext = context;
 
         ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(id.content).getRootView();
 

@@ -4,6 +4,7 @@ package com.macbitsgoa.icef_2018.Lists;
  * Created by aayush on 16/1/18.
  */
 
+@SuppressWarnings("ALL")
 public class TimelineList {
 
     private String name;

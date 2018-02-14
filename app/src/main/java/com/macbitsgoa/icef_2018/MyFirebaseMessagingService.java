@@ -17,6 +17,7 @@ import com.google.firebase.messaging.RemoteMessage;
  * Created by aayush on 6/2/18.
  */
 
+@SuppressWarnings("ALL")
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
 

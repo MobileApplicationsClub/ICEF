@@ -11,14 +11,6 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
     </style>
 
-    <style name="ButtonTheme" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorControlHighlight">@color/grey500</item>
-        <item name="android:borderlessButtonStyle">@style/CustomBorder</item>
-
-    </style>
-
-    <style name="CustomBorder" parent="Widget.AppCompat.Button.Borderless.Colored" />
-
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -28,31 +20,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Widget.CardContent" parent="android:Widget">
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:orientation">vertical</item>
-    </style>
     y
-
-    <style name="AppTheme.PopupOverlay.Transparent" parent="AppTheme.PopupOverlay">
-        <item name="actionBarItemBackground">@color/yellow500</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay.Transparent" parent="AppTheme.AppBarOverlay">
-        <item name="android:background">@color/yellowA400</item>
-    </style>
-
-    <style name="alertDialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/blue500</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">@color/colorPrimary</item>
-        <!-- Used for the background -->
-        <item name="android:background">@color/white</item>
-    </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
@@ -68,7 +36,7 @@
         <item name="cardPreventCornerOverlap">true</item>
     </style>
 
-    <style name="CardView" parent="Base.CardView"></style>
+    <style name="CardView" parent="Base.CardView" />
 
     <style name="CardView.Dark">
         <item name="cardBackgroundColor">@color/cardview_dark_background</item>
@@ -103,17 +71,8 @@
 
     </style>
 
-    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/black</item>
-    </style>
-
     <style name="Button_fab" parent="Base.TextAppearance.AppCompat.Button">
         <item name="backgroundTint">#ffe100</item>
-    </style>
-
-    <style name="Theme.Custom_tab_theme" parent="@android:style/Theme.Holo.Light">
-
     </style>
 
 

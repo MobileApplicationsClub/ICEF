@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.macbitsgoa.icef_2018.Lists.EateriesList;
 import com.macbitsgoa.icef_2018.R;
 import com.macbitsgoa.icef_2018.ViewHolders.VH_Eateries;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.DOMINOES;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.FOODKING;
@@ -33,6 +31,7 @@ import static com.macbitsgoa.icef_2018.ICEF_HelperClass.RED_CHILLIES;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class Adapter_Eateries extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<EateriesList> list= new ArrayList<>();

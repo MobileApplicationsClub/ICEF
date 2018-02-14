@@ -14,6 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
+import com.macbitsgoa.icef_2018.ICEF_HelperClass;
+import com.macbitsgoa.icef_2018.Lists.MainList;
+import com.macbitsgoa.icef_2018.R;
+import com.macbitsgoa.icef_2018.ViewHolders.VH_main;
+import com.macbitsgoa.icef_2018.ViewHolders.VH_timer;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,11 +28,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import com.macbitsgoa.icef_2018.ICEF_HelperClass;
-import com.macbitsgoa.icef_2018.Lists.MainList;
-import com.macbitsgoa.icef_2018.R;
-import com.macbitsgoa.icef_2018.ViewHolders.VH_main;
-import com.macbitsgoa.icef_2018.ViewHolders.VH_timer;
 
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.BOOK;
 import static com.macbitsgoa.icef_2018.ICEF_HelperClass.EATERIES;
@@ -38,6 +40,7 @@ import static com.macbitsgoa.icef_2018.ICEF_HelperClass.PARTICIPANTS;
  * Created by aayush on 18/12/17.
  */
 
+@SuppressWarnings("ALL")
 public class Adapter_Main extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<MainList> list = new ArrayList<>();

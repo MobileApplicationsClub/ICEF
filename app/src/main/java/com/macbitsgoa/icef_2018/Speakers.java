@@ -1,14 +1,13 @@
 package com.macbitsgoa.icef_2018;
 
+import android.os.Bundle;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -19,11 +18,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Vector;
-
 import com.macbitsgoa.icef_2018.Adapters.Adapter_Speakers_rv;
 import com.macbitsgoa.icef_2018.Lists.SpeakersList;
+
+import java.util.Vector;
 
 
 public class Speakers extends AppCompatActivity {
@@ -60,7 +58,7 @@ public class Speakers extends AppCompatActivity {
         //hide();
         position = 0;
         pixels = this.getResources().getDisplayMetrics().widthPixels;
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -84,7 +82,7 @@ public class Speakers extends AppCompatActivity {
             }
         });
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         recyclerView = findViewById(R.id.h_rv);
         sepaeratorDecoration = new SepaeratorDecoration(Speakers.this, 0);
 
