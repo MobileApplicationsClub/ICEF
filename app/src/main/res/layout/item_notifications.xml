@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="Answer"
             android:textColor="@color/white"
-            android:textSize="8sp"
+            android:textSize="12sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.5"
