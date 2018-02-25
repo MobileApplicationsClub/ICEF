@@ -7,6 +7,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey700">#616161</color>
+    <color name="black_background">#f0000000</color>
 
     <!--utilities colors-->
 
