@@ -20,8 +20,8 @@ import java.util.Vector;
 
 @SuppressWarnings("ALL")
 public class Adapter_Speakers_rv extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    Context context;
-    Vector<SpeakersList> vector;
+    private Context context;
+    private Vector<SpeakersList> vector;
 
     public Adapter_Speakers_rv(Context context, Vector<SpeakersList> vector) {
         this.context = context;

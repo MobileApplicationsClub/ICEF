@@ -66,13 +66,11 @@ public class Notifications extends AppCompatActivity {
 
 class Adapter_Notifications extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Vector<NotificationList> vector;
+    private Vector<NotificationList> vector;
 
 
-    public Adapter_Notifications() {
-    }
 
-    public Adapter_Notifications(Vector<NotificationList> vector) {
+    Adapter_Notifications(Vector<NotificationList> vector) {
         this.vector = vector;
     }
 
@@ -106,7 +104,7 @@ class VH_NOTIFICATIONS extends RecyclerView.ViewHolder {
     public TextView message;
     public TextView time;
 
-    public VH_NOTIFICATIONS(View itemView) {
+     VH_NOTIFICATIONS(View itemView) {
         super(itemView);
         message = itemView.findViewById(R.id.message);
         time = itemView.findViewById(R.id.time);

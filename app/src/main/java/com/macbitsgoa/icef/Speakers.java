@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,13 +39,12 @@ public class Speakers extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     public int pixels;
-    Adapter_Speakers_rv adapter_speakers_rv;
-    LinearLayoutManager layoutManager;
-    RecyclerView recyclerView;
-    Vector<SpeakersList> vector = new Vector<>();
-    SepaeratorDecoration sepaeratorDecoration;
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = firebaseDatabase.getReference().child("Speakers");
+    private Adapter_Speakers_rv adapter_speakers_rv;
+    private RecyclerView recyclerView;
+    private Vector<SpeakersList> vector = new Vector<>();
+    private SepaeratorDecoration sepaeratorDecoration;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference().child("Speakers");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +82,7 @@ public class Speakers extends AppCompatActivity {
         sepaeratorDecoration = new SepaeratorDecoration(Speakers.this, 0);
 
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         adapter_speakers_rv = new Adapter_Speakers_rv(this, vector);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), vector);
 
@@ -127,21 +125,6 @@ public class Speakers extends AppCompatActivity {
     }
 
 
-    public void hide() {
-
-        View decorView = getWindow().getDecorView();
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        //  ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
-
-        int uiOptions1 = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions1);
-    }
 
 
     @Override

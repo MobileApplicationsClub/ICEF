@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,10 @@ import java.util.ArrayList;
 
 
 public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batch_VH> {
-    Context mContext;
+    private Context mContext;
     private ArrayList<com.macbitsgoa.icef.Lists.ContactList> ContactList = new ArrayList<>();
-    private SparseBooleanArray displayDetails = new SparseBooleanArray();
+    private TextView number;
+    private TextView mail;
 
 
     public Adapter_Contacts(ArrayList<com.macbitsgoa.icef.Lists.ContactList> list, Context context) {
@@ -41,12 +41,11 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
     public void onBindViewHolder(batch_VH holder, int position) {
         com.macbitsgoa.icef.Lists.ContactList current = ContactList.get(position);
         holder.setCoverImage(current.getImage());
-        holder.setIntent(current.getKey());
         holder.setName(current.getName());
         holder.setNumber(current.getNumber());
         holder.setEmail(current.getEmail());
         holder.setDescription(current.getDescription());
-        holder.handleClick(position, mContext);
+        holder.handleClick(mContext);
 
     }
 
@@ -66,16 +65,12 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
     class batch_VH extends RecyclerView.ViewHolder {
 
 
-        TextView number;
-        TextView mail;
 
-        public batch_VH(final View itemView) {
+        batch_VH(final View itemView) {
             super(itemView);
         }
 
-        public void handleClick(final int pos, final Context context) {
-            final View desc = itemView.findViewById(R.id.Description);
-
+        void handleClick(final Context context) {
 
             number = itemView.findViewById(R.id.Number);
             number.setOnClickListener(new View.OnClickListener() {
@@ -102,11 +97,8 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
         }
 
 
-        public void setIntent(final String currentBatch) {
 
-        }
-
-        public void setCoverImage(String url) {
+        void setCoverImage(String url) {
             final ImageView imageView = itemView.findViewById(R.id.contactImage);
             //SET Correct aspect ratio
 
@@ -139,7 +131,7 @@ public class Adapter_Contacts extends RecyclerView.Adapter<Adapter_Contacts.batc
             number.setText(phone);
         }
 
-        public void setEmail(String Mail) {
+        void setEmail(String Mail) {
             Log.d("Tag", Mail);
             TextView mail = itemView.findViewById(R.id.Mail);
             mail.setText(Mail);

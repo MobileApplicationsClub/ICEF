@@ -255,15 +255,15 @@ class VH_Timeline_RV extends RecyclerView.ViewHolder {
 class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     TextView location;
     TextView time;
-    TextView details;
+    private TextView details;
     TextView event;
     TextView topic;
-    ViewGroup background;
-    ViewGroup background1;
+    private ViewGroup background;
+    private ViewGroup background1;
     ViewGroup btn;
-    ImageView b_event;
-    ProgressDialog mProgressDialog;
-    DownloadTask downloadTask;
+    private ImageView b_event;
+    private ProgressDialog mProgressDialog;
+    private DownloadTask downloadTask;
     BPGCMapsActivity bpgcMapsActivity;
 
     public VH_Timeline_RV_1(View itemView, final Context mContext) {

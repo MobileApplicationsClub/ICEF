@@ -43,7 +43,7 @@ public class VH_Eateries extends RecyclerView.ViewHolder implements View.OnClick
         if (list.get(getAdapterPosition()).getId().equals(ICEF_HelperClass.NC_A)) {
             Intent intent = new Intent(context, EateriesDetail.class);
             intent.putExtra("EATERY", ICEF_HelperClass.NC_A);
-
+            context.startActivity(intent);
 
         } else if (list.get(getAdapterPosition()).getId().equals(ICEF_HelperClass.NC_C)) {
             Intent intent = new Intent(context, EateriesDetail.class);

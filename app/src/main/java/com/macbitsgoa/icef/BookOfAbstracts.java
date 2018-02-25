@@ -31,9 +31,9 @@ import java.net.URL;
 
 @SuppressWarnings("ALL")
 public class BookOfAbstracts {
-    String url = "";
-    ProgressDialog mProgressDialog;
-    DownloadTask downloadTask;
+    private String url = "";
+    private ProgressDialog mProgressDialog;
+    private DownloadTask downloadTask;
 
     public BookOfAbstracts(final Context mcontext) {
 
@@ -178,22 +178,8 @@ public class BookOfAbstracts {
                 Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
 
             File file = new File(Environment.getExternalStorageDirectory() + "/BookOfAbstracts.pdf");
-            //  Uri path = Uri.fromFile(file);
-           /* Uri path = FileProvider.getUriForFile(context, "", file);
 
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(path, "application/pdf");
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            try {
-                context.startActivity(intent);
-            }
-            catch (ActivityNotFoundException e) {
-                Toast.makeText(context, "No application available to view PDF", Toast.LENGTH_LONG).show();
-            }*/
-
-            Uri path = Uri.fromFile(file);
+             Uri path = Uri.fromFile(file);
             Intent objIntent = new Intent(Intent.ACTION_VIEW);
             objIntent.setDataAndType(path, "application/pdf");
             objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

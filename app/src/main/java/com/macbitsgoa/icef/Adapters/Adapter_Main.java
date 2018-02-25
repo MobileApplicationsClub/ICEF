@@ -31,7 +31,7 @@ import java.util.Locale;
 
 import static com.macbitsgoa.icef.ICEF_HelperClass.BOOK;
 import static com.macbitsgoa.icef.ICEF_HelperClass.EATERIES;
-import static com.macbitsgoa.icef.ICEF_HelperClass.FAQ;
+import static com.macbitsgoa.icef.ICEF_HelperClass.GALLERY;
 import static com.macbitsgoa.icef.ICEF_HelperClass.MAIN_SPEAKERS;
 import static com.macbitsgoa.icef.ICEF_HelperClass.MAIN_TIMELINE;
 import static com.macbitsgoa.icef.ICEF_HelperClass.PARTICIPANTS;
@@ -53,7 +53,8 @@ public class Adapter_Main extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         list.add(new MainList("SPEAKERS", "", R.drawable.mic1, MAIN_SPEAKERS));
         list.add(new MainList("PARTICIPANTS", "", R.drawable.parti, PARTICIPANTS));
         list.add(new MainList("EATERIES", "", R.drawable.eateries, EATERIES));
-        list.add(new MainList("FAQ", "", R.drawable.siri, FAQ));
+       // list.add(new MainList("FAQ", "", R.drawable.siri, FAQ));
+        list.add(new MainList("MEMORIES", "", R.drawable.admissions,GALLERY));
         list.add(new MainList("Book Of Abstracts", "", R.drawable.oldbooks, BOOK));
 
 
@@ -151,7 +152,7 @@ public class Adapter_Main extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             //Current date is more than waves start date
             //Later on we can add a check for end date also
             else {
-                cv.daysText.setText("ICEF is HERE");
+                cv.daysText.setText("Thanks! FOR MAKING\nICEF 2018\nA GRAND SUCCESS");
 
                 //Getting the width of the screen and setting it as the width of daysText
                 WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
