@@ -261,8 +261,9 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     private ViewGroup background;
     private ViewGroup background1;
     ViewGroup btn;
-    private ImageView b_event;
     private ProgressDialog mProgressDialog;
+
+    private ImageView b_event;
     private DownloadTask downloadTask;
     BPGCMapsActivity bpgcMapsActivity;
 
@@ -344,7 +345,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     }
 
 
-    private class DownloadTask extends AsyncTask<String, Integer, String> {
+     class DownloadTask extends AsyncTask<String, Integer, String> {
 
         private Context context;
         private PowerManager.WakeLock mWakeLock;
@@ -375,10 +376,13 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
                 // this will be useful to display download percentage
                 // might be -1: server did not report the length
                 int fileLength = connection.getContentLength();
+                File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ICEF/");
+                if(! file.exists()){
+                    file.mkdirs();}
 
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
+                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/ICEF/Schedule.pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -443,7 +447,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
                 Toast.makeText(context, "Download error: " + result, Toast.LENGTH_LONG).show();
             else
                 Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
-            File file = new File(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
+            File file = new File(Environment.getExternalStorageDirectory() + "/ICEF/Schedule.pdf");
 
             //  Uri path = Uri.fromFile(file);
           /*  Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".my.package.name.provider", file);

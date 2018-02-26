@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
 import com.macbitsgoa.icef.Adapters.ImageSliderAdapter;
+import com.macbitsgoa.icef.Lists.GalleryFormat;
 import com.macbitsgoa.icef.fragments.base.BaseActivity;
 
 import java.io.File;

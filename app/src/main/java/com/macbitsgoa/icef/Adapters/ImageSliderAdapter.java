@@ -12,10 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.macbitsgoa.icef.fragments.base.BaseActivity;
-import com.macbitsgoa.icef.GalleryFormat;
+import com.macbitsgoa.icef.Lists.GalleryFormat;
 import com.macbitsgoa.icef.R;
+import com.macbitsgoa.icef.fragments.base.BaseActivity;
 import com.macbitsgoa.icef.viewImage;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;

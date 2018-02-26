@@ -6,19 +6,20 @@ package com.macbitsgoa.icef.Lists;
 
 @SuppressWarnings("ALL")
 public class SpeakersList {
-    private String name, venue, timings, description, imageurl;
+    private String name, venue, timings, description, imageurl,url;
     private double Lat, Long;
 
     public SpeakersList() {
     }
 
-    public SpeakersList(String name, String venue, String timings, String description, String imageurl, double Lat, double Long) {
+    public SpeakersList(String name,String url, String venue, String timings, String description, String imageurl, double Lat, double Long) {
         this.name = name;
         this.venue = venue;
         this.timings = timings;
         this.description = description;
         this.imageurl = imageurl;
         this.Lat = Lat;
+        this.url=url;
         this.Long = Long;
 
     }
@@ -37,6 +38,14 @@ public class SpeakersList {
 
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url=url;
     }
 
     public String getTimings() {

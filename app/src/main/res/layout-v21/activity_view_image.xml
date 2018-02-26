@@ -8,7 +8,7 @@
     android:background="@color/black_background"
     android:orientation="vertical">
 
-    <com.macbitsgoa.abhigyaan.utils.HorizontalViewPager
+    <com.macbitsgoa.icef.HorizontalViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
