@@ -99,22 +99,37 @@ public class PlaceholderFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog = new ProgressDialog(getContext());
-                mProgressDialog.setMessage("Downloading");
-                mProgressDialog.setIndeterminate(true);
-                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                mProgressDialog.setCancelable(true);
+                File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ICEF/Presentations/"+vector.get(position).getName()+".pdf");
+                 if(file.exists()) {
 
-                downloadTask = new DownloadTask(getContext(),vector.get(position).getUrl(),vector.get(position).getName());
-                downloadTask.execute();
-
-                mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        downloadTask.cancel(true);
-
+                    Uri path = Uri.fromFile(file);
+                    Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                    objIntent.setDataAndType(path, "application/pdf");
+                    objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Intent intent1 = Intent.createChooser(objIntent, "Open PDF with..");
+                    try {
+                        getActivity().startActivity(intent1);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(getActivity(), "Activity Not Found Exception ", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }else {
+
+                     mProgressDialog = new ProgressDialog(getContext());
+                     mProgressDialog.setMessage("Downloading");
+                     mProgressDialog.setIndeterminate(true);
+                     mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                     mProgressDialog.setCancelable(true);
+                     downloadTask = new DownloadTask(getContext(), vector.get(position).getUrl(), vector.get(position).getName());
+                     downloadTask.execute();
+                     mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                         @Override
+                         public void onCancel(DialogInterface dialog) {
+                             downloadTask.cancel(true);
+
+                         }
+                     });
+
+                 }
 
 
             }
@@ -122,7 +137,8 @@ public class PlaceholderFragment extends Fragment {
         return rootView;
     }
 
-    class DownloadTask extends AsyncTask<String, Integer, String> {
+
+ private class DownloadTask extends AsyncTask<String, Integer, String> {
 
         private Context context;
         private PowerManager.WakeLock mWakeLock;

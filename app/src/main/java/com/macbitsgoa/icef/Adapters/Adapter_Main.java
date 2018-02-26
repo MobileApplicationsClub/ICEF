@@ -152,7 +152,7 @@ public class Adapter_Main extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             //Current date is more than waves start date
             //Later on we can add a check for end date also
             else {
-                cv.daysText.setText("Thanks! FOR MAKING\nICEF 2018\nA GRAND SUCCESS");
+                cv.daysText.setText("ICEF 2018");
 
                 //Getting the width of the screen and setting it as the width of daysText
                 WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);

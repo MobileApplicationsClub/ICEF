@@ -181,14 +181,6 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 vh_timeline_rv_1.time.setText(vector.get(position).getTime());
                 vh_timeline_rv_1.event.setText(vector.get(position).getName());
                 vh_timeline_rv_1.topic.setText(vector.get(position).getTopic());
-
-             /*   vh_timeline_rv_1.bpgcMapsActivity=new BPGCMapsActivity(vector.get(position).getLat(),vector.get(position).getLon());
-                vh_timeline_rv_1.location.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        vh_timeline_rv_1.bpgcMapsActivity.setCamera();
-                    }
-                });*/
                 break;
         }
 
@@ -316,18 +308,34 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
 
                         } else {
                             Log.e("URL", url);
-                            downloadTask = new DownloadTask(mContext, url);
-                            downloadTask.execute();
+                            File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ICEF/Schedule.pdf");
 
-                            mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                @Override
-                                public void onCancel(DialogInterface dialog) {
-                                    downloadTask.cancel(true);
+                            if(file.exists()) {
 
+                                Uri path = Uri.fromFile(file);
+                                Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                                objIntent.setDataAndType(path, "application/pdf");
+                                objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Intent intent1 = Intent.createChooser(objIntent, "Open PDF with..");
+                                try {
+                                    mContext.startActivity(intent1);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(mContext, "Activity Not Found Exception ", Toast.LENGTH_SHORT).show();
                                 }
-                            });
 
+                            }else {
+                                downloadTask = new DownloadTask(mContext, url);
+                                downloadTask.execute();
 
+                                mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialog) {
+                                        downloadTask.cancel(true);
+
+                                    }
+                                });
+
+                            }
                         }
                     }
 

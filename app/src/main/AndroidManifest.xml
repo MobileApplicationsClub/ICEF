@@ -59,6 +59,13 @@
             android:label="@string/app_name"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.macbitsgoa.icef.Main_Eateries"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name="com.macbitsgoa.icef.EateriesDetail"
             android:configChanges="orientation|keyboardHidden|screenSize"
