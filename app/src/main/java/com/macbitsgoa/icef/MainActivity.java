@@ -28,39 +28,6 @@ public class MainActivity extends AppCompatActivity
     Intent intent;
 
 
-   /* public MainActivity() throws IOException, InvalidFormatException {
-        Log.e("xl", Environment.getExternalStorageDirectory().getAbsolutePath()+"/Schedule.xlsx");
-        // Creating a Workbook from an Excel file (.xls or .xlsx)
-        Workbook workbook = WorkbookFactory.create(new File( Environment.getExternalStorageDirectory()+"/Schedule.xlsx"));
-        // Retrieving the number of sheets in the Workbook
-        System.out.println("Workbook has " + workbook.getNumberOfSheets() + " Sheets : ");
-        // Getting the Sheet at index zero
-        // Create a DataFormatter to format and get each cell's value as String
-        DataFormatter dataFormatter = new DataFormatter();
-        int i=0;
-        System.out.println("Retrieving Sheets using for-each loop");
-        while (i<2) {
-            Sheet sheet = workbook.getSheetAt(i);
-            i=i+1;
-            Log.e("=> " , sheet.getSheetName());
-            // 2. Or you can use a for-each loop to iterate over the rows and columns
-            System.out.println("\n\nIterating over Rows and Columns using for-each loop\n");
-            for (Row row: sheet) {
-                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Timeline").child("Day "+i).push();
-                String key= databaseReference.getKey();
-                int k=row.getFirstCellNum();
-                Log.e("xl",String.valueOf(k));
-                databaseReference.child("name").setValue(dataFormatter.formatCellValue(row.getCell(k+1)));
-                databaseReference.child("time").setValue(dataFormatter.formatCellValue(row.getCell(k)));
-                databaseReference.child("topic").setValue(dataFormatter.formatCellValue(row.getCell(k+2)));
-                databaseReference.child("location").setValue(dataFormatter.formatCellValue(row.getCell(k+3)));
-                databaseReference.child("type").setValue(dataFormatter.formatCellValue(row.getCell(k+4)));
-                System.out.println();
-            }
-        }
-        // Closing the workbook
-    }*/
-
 
     //actions for dashboard tabs
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -166,8 +133,8 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(this, BPGCMapsActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.notification_sender) {
-        intent=new Intent(this,NotificationSender.class);
+        }else if (id == R.id.Developers) {
+        intent=new Intent(this,AboutMacActivity.class);
         startActivity(intent);
 
     } else if (id == R.id.nav_eateries) {
