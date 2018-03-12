@@ -3,6 +3,7 @@ package com.macbitsgoa.icef.Adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.PagerAdapter;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.chrisbanes.photoview.OnPhotoTapListener;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.macbitsgoa.icef.Lists.GalleryFormat;
 import com.macbitsgoa.icef.R;
 import com.macbitsgoa.icef.fragments.base.BaseActivity;
@@ -21,7 +24,6 @@ import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImageSliderAdapter extends PagerAdapter {
     Context context;
@@ -46,6 +48,7 @@ public class ImageSliderAdapter extends PagerAdapter {
         return view == object;
     }
 
+    @NonNull
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View itemView = layoutInflater.inflate(R.layout.gallery_row, container, false);
@@ -57,43 +60,29 @@ public class ImageSliderAdapter extends PagerAdapter {
         final View pB = itemView.findViewById(R.id.progressBar);
         card.setVisibility(View.INVISIBLE);
 
-        if (target == null) {
-            target = new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    imageView.setImageBitmap(bitmap);
-                    savedImages.put(position, bitmap);
-                    card.setVisibility(View.VISIBLE);
-                    pB.setVisibility(View.INVISIBLE);
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-                    activity.showToast("Error Loading image");
-                    activity.finish();
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-                }
-            };
-        }
-
-
-        final PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageView);
-        TextView imageTitle = itemView.findViewById(R.id.imageTitle);
-        if (savedImages.containsKey(position)) {
-            imageView.setImageBitmap(savedImages.get(position));
+        pB.setVisibility(View.VISIBLE);
+        if (activity.isNetworkAvailable(context)) {
+            Picasso.with(context).load(images.get(position).getImageurl()).into(imageView);
             card.setVisibility(View.VISIBLE);
-            pB.setVisibility(View.INVISIBLE);
+            imageView.setVisibility(View.VISIBLE);
+            pB.setVisibility(View.GONE);
+            final PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageView);
             mAttacher.update();
+            mAttacher.setOnPhotoTapListener(new OnPhotoTapListener() {
+                @Override
+                public void onPhotoTap(ImageView view, float x, float y) {
+                    ((viewImage) context).onClick();
+
+                }
+            });
+
         } else {
-            if (activity.isNetworkAvailable(context)) {
-                Picasso.with(context).load(images.get(position).getImageurl()).into(target);
-            } else {
-                activity.showSnack("Internet unavailable");
-            }
+            pB.setVisibility(View.GONE);
+            activity.showSnack("Internet unavailable");
         }
+
+
+        TextView imageTitle = itemView.findViewById(R.id.imageTitle);
         imageTitle.setText(images.get(position).getName());
 
 
@@ -105,18 +94,7 @@ public class ImageSliderAdapter extends PagerAdapter {
             }
         });
 
-        mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
-            @Override
-            public void onPhotoTap(View view, float x, float y) {
-                ((viewImage) context).onClick();
 
-            }
-
-            @Override
-            public void onOutsidePhotoTap() {
-
-            }
-        });
         container.addView(itemView);
         return itemView;
     }

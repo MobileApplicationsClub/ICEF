@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.Medc) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:8322580600"));
+            intent.setData(Uri.parse("tel:+918322580600"));
             startActivity(intent);
         }
 

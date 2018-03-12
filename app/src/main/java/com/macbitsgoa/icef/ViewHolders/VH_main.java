@@ -1,11 +1,13 @@
 package com.macbitsgoa.icef.ViewHolders;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -89,6 +91,11 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
             new BookOfAbstracts(context);
 
         }else if(list.get(getAdapterPosition()-1).getId().equals(GALLERY)){
+
+            final ProgressDialog dialog = new ProgressDialog(context);
+            dialog.setMessage("Fetching Images");
+            dialog.show();
+
             imageList=new ArrayList<>();
             Intent gallery=new Intent(context,viewImage.class);
             FirebaseDatabase.getInstance().getReference().child(GALLERY).addValueEventListener(new ValueEventListener() {
@@ -106,6 +113,7 @@ public class VH_main extends RecyclerView.ViewHolder implements View.OnClickList
                     context.startActivity(intent);
                 }
 
+                dialog.cancel();
 
                 }
 

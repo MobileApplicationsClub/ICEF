@@ -7,12 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.macbitsgoa.icef.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import uk.co.senab.photoview.PhotoView;
 
 
 public class Adapter_Eateries_Details extends PagerAdapter {
