@@ -48,8 +48,6 @@ public class Adapter_Eateries_Details extends PagerAdapter {
         PhotoView imageView = itemView.findViewById(R.id.imageView);
 
         Picasso.with(mContext).load(String.valueOf(list.get(position + 2))).into(imageView);
-
-
         imageView.setZoomable(true);
         container.addView(itemView);
         return itemView;

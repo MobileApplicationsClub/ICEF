@@ -23,7 +23,7 @@ public class saveImage {
         if (TextUtils.isEmpty(name)) {
 
             Date date = Calendar.getInstance().getTime();
-            file = new File(dir, "ICEF" + date.getTime());
+            file = new File(dir, "ICEF" + date.getTime()+".jpg");
 
         } else
             file = new File(dir, name + ".jpg");

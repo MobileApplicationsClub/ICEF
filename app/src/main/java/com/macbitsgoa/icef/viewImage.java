@@ -53,8 +53,10 @@ public class viewImage extends BaseActivity implements touchCallback {
         saveImage saveImage = new saveImage();
 
         GalleryFormat item = images.get(pager.getCurrentItem());
-        if (localAbsoluteFilePath == null)
+        if (localAbsoluteFilePath == null) {
             localAbsoluteFilePath = saveImage.saveImageLocally(adapter.getImage(pager.getCurrentItem()), item.getName(), dirPath);
+            Toast.makeText(this, "Please Wait", Toast.LENGTH_LONG).show();
+        }
         if (localAbsoluteFilePath != null && !localAbsoluteFilePath.equals("")) {
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -67,10 +69,9 @@ public class viewImage extends BaseActivity implements touchCallback {
     }
 
     void saveToGallery() {
-        showProgressDialog("Saving");
+        Toast.makeText(this, "Please Wait", Toast.LENGTH_LONG).show();
         GalleryFormat item = images.get(pager.getCurrentItem());
         localAbsoluteFilePath = saveImage.saveImageLocally(adapter.getImage(pager.getCurrentItem()), item.getName(), dirPath);
-        hideProgressDialog();
         if (localAbsoluteFilePath != null)
             Toast.makeText(this, "Saved Successfully", Toast.LENGTH_LONG).show();
         else
