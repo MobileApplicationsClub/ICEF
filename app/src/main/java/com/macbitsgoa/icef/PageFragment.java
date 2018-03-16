@@ -181,14 +181,6 @@ class Adapter_Timeline extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 vh_timeline_rv_1.time.setText(vector.get(position).getTime());
                 vh_timeline_rv_1.event.setText(vector.get(position).getName());
                 vh_timeline_rv_1.topic.setText(vector.get(position).getTopic());
-
-             /*   vh_timeline_rv_1.bpgcMapsActivity=new BPGCMapsActivity(vector.get(position).getLat(),vector.get(position).getLon());
-                vh_timeline_rv_1.location.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        vh_timeline_rv_1.bpgcMapsActivity.setCamera();
-                    }
-                });*/
                 break;
         }
 
@@ -255,15 +247,16 @@ class VH_Timeline_RV extends RecyclerView.ViewHolder {
 class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     TextView location;
     TextView time;
-    TextView details;
+    private TextView details;
     TextView event;
     TextView topic;
-    ViewGroup background;
-    ViewGroup background1;
+    private ViewGroup background;
+    private ViewGroup background1;
     ViewGroup btn;
-    ImageView b_event;
-    ProgressDialog mProgressDialog;
-    DownloadTask downloadTask;
+    private ProgressDialog mProgressDialog;
+
+    private ImageView b_event;
+    private DownloadTask downloadTask;
     BPGCMapsActivity bpgcMapsActivity;
 
     public VH_Timeline_RV_1(View itemView, final Context mContext) {
@@ -315,18 +308,34 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
 
                         } else {
                             Log.e("URL", url);
-                            downloadTask = new DownloadTask(mContext, url);
-                            downloadTask.execute();
+                            File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ICEF/Schedule.pdf");
 
-                            mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                @Override
-                                public void onCancel(DialogInterface dialog) {
-                                    downloadTask.cancel(true);
+                            if(file.exists()) {
 
+                                Uri path = Uri.fromFile(file);
+                                Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                                objIntent.setDataAndType(path, "application/pdf");
+                                objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Intent intent1 = Intent.createChooser(objIntent, "Open PDF with..");
+                                try {
+                                    mContext.startActivity(intent1);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(mContext, "Activity Not Found Exception ", Toast.LENGTH_SHORT).show();
                                 }
-                            });
 
+                            }else {
+                                downloadTask = new DownloadTask(mContext, url);
+                                downloadTask.execute();
 
+                                mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialog) {
+                                        downloadTask.cancel(true);
+
+                                    }
+                                });
+
+                            }
                         }
                     }
 
@@ -344,7 +353,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
     }
 
 
-    private class DownloadTask extends AsyncTask<String, Integer, String> {
+     class DownloadTask extends AsyncTask<String, Integer, String> {
 
         private Context context;
         private PowerManager.WakeLock mWakeLock;
@@ -375,10 +384,13 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
                 // this will be useful to display download percentage
                 // might be -1: server did not report the length
                 int fileLength = connection.getContentLength();
+                File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ICEF/");
+                if(! file.exists()){
+                    file.mkdirs();}
 
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
+                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/ICEF/Schedule.pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -443,7 +455,7 @@ class VH_Timeline_RV_1 extends RecyclerView.ViewHolder {
                 Toast.makeText(context, "Download error: " + result, Toast.LENGTH_LONG).show();
             else
                 Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
-            File file = new File(Environment.getExternalStorageDirectory() + "/Schedule.pdf");
+            File file = new File(Environment.getExternalStorageDirectory() + "/ICEF/Schedule.pdf");
 
             //  Uri path = Uri.fromFile(file);
           /*  Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".my.package.name.provider", file);

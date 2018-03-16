@@ -1,5 +1,6 @@
 package com.macbitsgoa.icef;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -29,9 +30,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NotificationSender extends AppCompatActivity {
-    EditText textView;
-    boolean b = false;
-    String message;
+    private EditText textView;
+    private boolean b = false;
+    private String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class NotificationSender extends AppCompatActivity {
         textView = findViewById(R.id.textView);
 
         fab.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat")
             @Override
             public void onClick(View view) {
                 message = textView.getText().toString();

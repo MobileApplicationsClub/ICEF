@@ -42,6 +42,11 @@
             android:icon="@drawable/ic_question_answer_black_24dp"
             android:title="Faq" />
 
+        <item
+            android:id="@+id/Developers"
+            android:icon="@drawable/ic_developer_board_black_24dp"
+            android:title="Developers" />
+
     </group>
 
     <item android:title="Communicate">

@@ -31,9 +31,10 @@ import java.net.URL;
 
 @SuppressWarnings("ALL")
 public class BookOfAbstracts {
-    String url = "";
-    ProgressDialog mProgressDialog;
-    DownloadTask downloadTask;
+    private String url = "";
+    private ProgressDialog mProgressDialog;
+    private DownloadTask downloadTask;
+    Long count;
 
     public BookOfAbstracts(final Context mcontext) {
 
@@ -43,28 +44,60 @@ public class BookOfAbstracts {
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         mProgressDialog.setCancelable(true);
 
+        FirebaseDatabase.getInstance().getReference().child("BookDownloads").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    count=dataSnapshot.getValue(Long.class);
+            }
 
-        FirebaseDatabase.getInstance().getReference().child("BookUrl").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        FirebaseDatabase.getInstance().getReference().child("BookUrl").addValueEventListener (new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 url = dataSnapshot.getValue(String.class);
+
                 if (url.equals("no")) {
 
                     Toast.makeText(mcontext, "File will be availabe soon to download", Toast.LENGTH_LONG).show();
 
                 } else {
-                    Log.e("URL", url);
-                    downloadTask = new DownloadTask(mcontext, url);
-                    downloadTask.execute();
+                    File file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ICEF/BookOfAbstracts.pdf");
 
-                    mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            downloadTask.cancel(true);
+                    if(file.exists()){
 
+                        Uri path = Uri.fromFile(file);
+                        Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                        objIntent.setDataAndType(path, "application/pdf");
+                        objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Intent intent1 = Intent.createChooser(objIntent, "Open PDF with..");
+                        try {
+                            mcontext.startActivity(intent1);
+                        } catch (ActivityNotFoundException e) {
+                            Toast.makeText(mcontext, "Activity Not Found Exception ", Toast.LENGTH_SHORT).show();
                         }
-                    });
+
+
+                    }else {
+
+                        Log.e("URL", url);
+                        downloadTask = new DownloadTask(mcontext, url);
+                        downloadTask.execute();
+                        FirebaseDatabase.getInstance().getReference().child("BookDownloads").setValue(count+1);
+                        mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                downloadTask.cancel(true);
+
+                            }
+                        });
+
+                    }
                 }
             }
 
@@ -110,7 +143,7 @@ public class BookOfAbstracts {
 
                 // download the file
                 input = connection.getInputStream();
-                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/BookOfAbstracts.pdf");
+                output = new FileOutputStream(Environment.getExternalStorageDirectory() + "/ICEF/BookOfAbstracts.pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -177,23 +210,9 @@ public class BookOfAbstracts {
             else
                 Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
 
-            File file = new File(Environment.getExternalStorageDirectory() + "/BookOfAbstracts.pdf");
-            //  Uri path = Uri.fromFile(file);
-           /* Uri path = FileProvider.getUriForFile(context, "", file);
+            File file = new File(Environment.getExternalStorageDirectory() + "/ICEF/BookOfAbstracts.pdf");
 
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(path, "application/pdf");
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            try {
-                context.startActivity(intent);
-            }
-            catch (ActivityNotFoundException e) {
-                Toast.makeText(context, "No application available to view PDF", Toast.LENGTH_LONG).show();
-            }*/
-
-            Uri path = Uri.fromFile(file);
+             Uri path = Uri.fromFile(file);
             Intent objIntent = new Intent(Intent.ACTION_VIEW);
             objIntent.setDataAndType(path, "application/pdf");
             objIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

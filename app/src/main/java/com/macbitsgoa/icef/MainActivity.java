@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity
     Fragment dashboard = Dashboard.newInstance();
     Fragment Aboutus = AboutUs.newInstance();
     Intent intent;
+
+
+
     //actions for dashboard tabs
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -130,7 +133,11 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(this, BPGCMapsActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_eateries) {
+        }else if (id == R.id.Developers) {
+        intent=new Intent(this,AboutMacActivity.class);
+        startActivity(intent);
+
+    } else if (id == R.id.nav_eateries) {
             intent = new Intent(this, Main_Eateries.class);
             startActivity(intent);
 
@@ -148,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.Medc) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:8322580600"));
+            intent.setData(Uri.parse("tel:+918322580600"));
             startActivity(intent);
         }
 

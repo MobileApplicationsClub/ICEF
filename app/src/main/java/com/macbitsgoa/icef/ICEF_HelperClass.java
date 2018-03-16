@@ -15,6 +15,7 @@ public class ICEF_HelperClass {
     public final static String PARTICIPANTS = "Participants";
     public final static String FAQ = "faq";
     public final static String BOOK = "Book";
+    public final static String GALLERY = "Gallery";
 
     //CountdownTimer
     public final static String ICEFSTARTDATE = "16022018";  //format: ddmmyyyy
