@@ -7,7 +7,7 @@
     android:id="@+id/frameLayout"
     android:background="@color/black"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-    tools:context="com.macbitsgoa.icef.EateriesDetail">
+    tools:context="com.macbitsgoa.icef.bits.macbitsgoa.icef.EateriesDetail">
 
 
 

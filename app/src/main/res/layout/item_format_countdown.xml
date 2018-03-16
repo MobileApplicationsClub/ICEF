@@ -10,7 +10,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="4dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.macbitsgoa.icef.MainActivity">
+    tools:context="com.macbitsgoa.icef.bits.macbitsgoa.icef.MainActivity">
 
     <RelativeLayout
 
