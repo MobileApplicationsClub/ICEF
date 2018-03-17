@@ -19,9 +19,9 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.macbitsgoa.icef.ICEF2018"
+        android:name="bits.mac.icef_2018.ICEF2018"
         android:theme="@style/AppTheme">
-        <service android:name="com.macbitsgoa.icef.MyFirebaseMessagingService">
+        <service android:name="bits.mac.icef_2018.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -39,7 +39,7 @@
             android:resource="@color/colorPrimaryDark" />
 
         <provider
-            android:name="com.macbitsgoa.icef.GenericFileProvider"
+            android:name="bits.mac.icef_2018.GenericFileProvider"
             android:authorities="${applicationId}.my.package.name.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -49,32 +49,32 @@
         </provider>
 
         <activity
-            android:name="com.macbitsgoa.icef.MainActivity"
+            android:name="bits.mac.icef_2018.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.macbitsgoa.icef.AboutMacActivity"
+            android:name="bits.mac.icef_2018.AboutMacActivity"
             android:label="@string/app_name"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.macbitsgoa.icef.Main_Eateries"
+            android:name="bits.mac.icef_2018.Main_Eateries"
             android:label="@string/app_name"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.macbitsgoa.icef.EateriesDetail"
+            android:name="bits.mac.icef_2018.EateriesDetail"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_eateries_detail"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
         <activity
-            android:name="com.macbitsgoa.icef.viewImage"
+            android:name="bits.mac.icef_2018.viewImage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Gallery"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -92,22 +92,22 @@
             android:value="AIzaSyANZJ_Dll_PvQLjpSHmL_b_NW2AzKMQTyg" />
 
         <activity
-            android:name="com.macbitsgoa.icef.BPGCMapsActivity"
+            android:name="bits.mac.icef_2018.BPGCMapsActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name="com.macbitsgoa.icef.Speakers"
+            android:name="bits.mac.icef_2018.Speakers"
             android:label="@string/title_activity_timeline"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name="com.macbitsgoa.icef.Timeline"
+            android:name="bits.mac.icef_2018.Timeline"
             android:label="@string/title_activity_timeline"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.macbitsgoa.icef.SplashScreen"
+            android:name="bits.mac.icef_2018.SplashScreen"
             android:label="ICEF 2018"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -119,20 +119,20 @@
         </activity>
 
         <activity
-            android:name="com.macbitsgoa.icef.Faq"
+            android:name="bits.mac.icef_2018.Faq"
             android:screenOrientation="sensorPortrait" />
 
         <activity
-            android:name="com.macbitsgoa.icef.Participants"
+            android:name="bits.mac.icef_2018.Participants"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name="com.macbitsgoa.icef.NotificationSender"
+            android:name="bits.mac.icef_2018.NotificationSender"
             android:label="@string/title_activity_notification_sender"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.macbitsgoa.icef.Notifications"
+            android:name="bits.mac.icef_2018.Notifications"
             android:label="@string/title_activity_notifications"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar">

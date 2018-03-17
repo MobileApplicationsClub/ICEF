@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.macbitsgoa.icef.SplashScreen">
+    tools:context="com.macbitsgoa.icef.bits.macbitsgoa.icef.SplashScreen">
 
 
     <LinearLayout
